@@ -21,9 +21,10 @@
         
     </div> -->
     <div class="user-icon"(click)="actionOn()">
+        <a [routerLink]="['/seller']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
         <div class="action"*ngIf="this.action">
-         <a href="">Logout</a>
-         <a href="">Profile</a>
+         <a [routerLink]="['/seller']">Logout</a>
+         <a [routerLink]="['/seller']">Profile</a>
         </div>
     </div>
 </nav>
