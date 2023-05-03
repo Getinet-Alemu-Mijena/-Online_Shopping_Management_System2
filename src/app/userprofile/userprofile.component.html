@@ -21,7 +21,7 @@
         
     </div> -->
     <div class="user-icon"(click)="actionOn()">
-        <a [routerLink]="['/seller']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
+        <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
         <div class="action"*ngIf="this.action">
          <a [routerLink]="['/login']">Logout</a>
          <a [routerLink]="['/userprofile']">Profile</a>
@@ -31,14 +31,18 @@
 
 <div class="container">
     <div class="left-sidebar">
-         <ul>
-            <li><a href="">Manage Product</a></li>
-            <li><a href="">Activity</a></li>
-            <li><a href="">Manage Product</a></li>
-            <li><a href="">Manage Product</a></li>
-            <li><a href="">Manage Product</a></li>
-            <li><a href="">Manage Product</a></li>
-         </ul>
+        <div class="user-photo">
+            <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
+        </div>
+        <h2>Getinet Alemu Mijena</h2>
+        <h3>Getinet Alemu Mijena</h3>
+        <p>
+            My name is Getinet Alemu and my country is Ethiopia.
+             I was born in 1998 from my father alemu Mijena and my
+              mother Shibire tadese. Now am student at haramaya.
+        </p>
+       <button>Edit Profile</button>
+       <h4><img src="assets/Images/download.png" alt=""> Haramaya University</h4>
     </div>
     <div class="main-content">
 

@@ -25,7 +25,7 @@
     align-content: flex-end;
 }
 
-.navbar .user-icon a img{
+.navbar .user-icon a img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -147,49 +147,123 @@
 
 .container {
     display: grid;
-    grid-template-rows: 100vh;
+    grid-template-rows: 1fr;
     grid-template-columns: 25% 1fr;
     grid-template-areas: "left main";
 }
 
+@media (max-width: 768px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 .container .left-sidebar {
     grid-area: left;
-    background-color: rgb(255, 255, 255);
+    background-color: #f2f2f2;
     margin: 2px;
     border-radius: 12px;
-    position: sticky;
-    top: 0%;
-    z-index: 90;
     box-shadow: 6px 6px 5px 10px wheat;
-    margin-left: 30px;
-}
-.container .left-sidebar ul li{
-    list-style: none;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
 }
-.container .left-sidebar ul li a{
-    text-decoration: none;
-    padding: 10%;
+
+.container .left-sidebar .user-photo {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .container .left-sidebar .user-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
+
+
+
+.container .left-sidebar .user-photo a img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .container .left-sidebar .user-photo a img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
+
+.container .left-sidebar h2 {
     font-family: 'Times New Roman', Times, serif;
-    font-size: larger;
+    font-size: large;
     font-weight: 600;
     font-style: normal;
+}
+
+.container .left-sidebar h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 200;
+    font-style: normal;
+    color: rgb(202, 187, 187);
+}
+
+.container .left-sidebar p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 200;
+    font-style: normal;
+    border: 1px solid #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+}
+
+.container .left-sidebar button {
+    cursor: pointer;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 600;
     background-color: white;
-    color: #2b031b;
-    margin: 5%;
-    border-radius: 10px;
-    border: 0 solid green;
-    transition: 1s;
+    transition: 1.5s;
 }
-.container .left-sidebar ul li a:hover{
-    background-color: aqua;
+
+@media (max-width: 768px) {
+    .container .left-sidebar button {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
+        padding-top: 50px;
+        border: none;
+        border-radius: 12px;
+    }
 }
+
+.container .left-sidebar button:hover {
+    background-color: green;
+}
+
+.container .left-sidebar h4 img {
+    width: 10%;
+    height: 40%;
+}
+
 .container .main-content {
     grid-area: main;
-    background-color: #f5f5f5 azure;
+    background-color: #f2f2f2;
     margin: 2px;
     border-radius: 12px;
 }
