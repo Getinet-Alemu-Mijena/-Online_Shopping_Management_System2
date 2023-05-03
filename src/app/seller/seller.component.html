@@ -1,0 +1,45 @@
+
+
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="#"><img src="assets/Logos/images.png" alt=""></a>
+    </div>
+    <div class="navbar-toggle" (click)="toggleNavbar()">
+            <span></span>
+        <span></span>
+        <span></span>
+        
+    </div>
+    
+    <!-- <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+        </ul>
+        
+    </div> -->
+    <div class="user-icon"(click)="actionOn()">
+        <div class="action"*ngIf="this.action">
+         <a href="">Logout</a>
+         <a href="">Profile</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="left-sidebar">
+         <ul>
+            <li><a href="">Manage Product</a></li>
+            <li><a href="">Activity</a></li>
+            <li><a href="">Manage Product</a></li>
+            <li><a href="">Manage Product</a></li>
+            <li><a href="">Manage Product</a></li>
+            <li><a href="">Manage Product</a></li>
+         </ul>
+    </div>
+    <div class="main-content">
+
+    </div>
+</div>
