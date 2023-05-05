@@ -30,7 +30,7 @@
 </nav>
 
 <div class="container">
-    <div class="left-sidebar">
+    <div class="left-sidebar"*ngIf="!this.edit_profile">
         <div class="user-photo">
             <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
         </div>
@@ -41,10 +41,41 @@
              I was born in 1998 from my father alemu Mijena and my
               mother Shibire tadese. Now am student at haramaya.
         </p>
-       <button>Edit Profile</button>
-       <h4><img src="assets/Images/download.png" alt=""> Haramaya University</h4>
+       <button (click)="editProfile()">Edit Profile</button>
+       <!-- <h4><img src="assets/Images/download.png" alt=""> Haramaya University</h4> -->
     </div>
-    <div class="main-content">
 
+    <div class="left-sidebar" *ngIf="this.edit_profile">
+        <form action="">
+        <div class="user-photo">
+           <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
+       </div>
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" placeholder="User Name">
+        </div>
+        <div class="form-group">
+            <label>Bio</label>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Bio"></textarea>
+        </div>
+          <button>Save</button>
+          <button class="btn-danger">Cancel</button>
+       </form>
+    </div>
+
+    <div class="main-content">
+        <div class="user-status">
+            <ul>
+                <li><img src="assets/Images/personalInfo.png" alt=""><a href="">Personal Information </a></li>
+                <li><img src="assets/Images/balance.png" alt=""><a href="">Balance</a></li>
+                <li><img src="assets/Images/orderHistory.png" alt=""><a href="">Order History</a></li>
+                <li><img src="assets/Images/salesPerformance.png" alt=""><a href="">Sales performance</a></li>
+                <li><img src="assets/Images/ordermanagement.png" alt=""><a href="">Order management</a></li>
+                <li><img src="assets/Images/analytics.png" alt=""><a href="">Analytics</a></li>
+                <li><img src="assets/Images/products.png" alt=""><a href="">Products</a></li>
+                <li><img src="assets/Images/storeinformation.png" alt=""><a href="">Store information</a></li>
+                <li><img src="assets/Images/account.png" alt=""><a href="">Account settings</a></li>
+            </ul>
+        </div>
     </div>
 </div>
