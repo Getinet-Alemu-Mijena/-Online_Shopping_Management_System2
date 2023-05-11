@@ -122,6 +122,7 @@
                 <h1>Getinet</h1>
                 <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
                 <button *ngIf="this.saveButton">Save</button>
+                <button *ngIf="this.saveButton">Cancel</button>
                 <button (click)="updateInfo()" *ngIf="!this.edit_Input">Edit</button>
             </div>
         </form>

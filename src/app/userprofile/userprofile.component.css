@@ -330,7 +330,8 @@ body{
 }
 
 .container .left-sidebar .btn-danger {
-    background-color: red;
+    background-color: rgb(218, 165, 165);
+    margin: 3px;
 }
 
 @media (max-width: 768px) {
@@ -426,12 +427,14 @@ body{
     font-weight: 600;
     padding: 12px;
     margin: 12px;
+    color: rgb(215, 126, 18);
 }
 .container .main-content form .form-group h1{
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
     font-weight: 600;
     padding: 12px;
+    color: rgb(30, 5, 5);
 }
 
 .container .main-content form .form-group input{
