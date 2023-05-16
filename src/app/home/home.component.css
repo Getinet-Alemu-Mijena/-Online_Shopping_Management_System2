@@ -41,7 +41,7 @@ body{
 }
 
 .navbar-logo a img {
-    width: 80%;
+    width: 200px;
     height: 60px;
     border-radius: 10px;
     box-shadow: 5px 6px 6px gray;
