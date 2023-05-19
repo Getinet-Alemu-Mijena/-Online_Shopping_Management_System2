@@ -331,7 +331,7 @@ body{
 }
 
 .container .left-sidebar .btn-danger {
-    background-color: rgb(218, 165, 165);
+    background-color: #f2f2f2;
     margin: 3px;
 }
 
@@ -347,7 +347,7 @@ body{
 }
 
 .container .left-sidebar button:hover {
-    background-color: green;
+    background-color: rgb(73, 96, 73);
 }
 
 .container .left-sidebar h4 img {
