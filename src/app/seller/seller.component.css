@@ -7,8 +7,10 @@
     color: wheat;
     width: 100%;
     box-shadow: 6px 6px 5px rgb(36, 33, 33);
-    position: sticky;
-    top: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     margin-bottom: 5px;
 }
@@ -150,6 +152,7 @@
     grid-template-rows: auto;
     grid-template-columns: 25% 1fr;
     grid-template-areas: "left main";
+    margin-top: 90px;
 }
 
 @media (max-width: 768px) {
@@ -168,6 +171,12 @@
     top: 0%;
     z-index: 90;
     box-shadow: 6px 6px 5px 10px wheat;
+}
+
+@media (max-width: 768px) {
+    .container .left-sidebar {
+       width: 100%;
+    }
 }
 
 .container .left-sidebar ul li {

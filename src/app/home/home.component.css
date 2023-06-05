@@ -11,8 +11,10 @@ body{
     color: wheat;
     width: 100%;
     box-shadow: 6px 6px 5px rgb(36, 33, 33);
-    position: sticky;
-    top: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
 }
 
@@ -121,6 +123,7 @@ body{
     margin: 5px;
     overflow: auto;
     margin: 2px;
+    margin-top: 100px;
 }
 
 .container .products {
