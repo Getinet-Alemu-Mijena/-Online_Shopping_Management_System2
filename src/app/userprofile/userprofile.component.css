@@ -28,6 +28,7 @@ body{
     display: flex;
     flex-direction: column;
     align-content: flex-end;
+    margin-right: 15px;
 }
 
 .navbar .user-icon a img {

@@ -12,7 +12,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 
 .navbar .user-icon {
@@ -25,6 +25,7 @@
     display: flex;
     flex-direction: column;
     align-content: flex-end;
+    margin-right: 15px;
 }
 
 .navbar .user-icon a img {

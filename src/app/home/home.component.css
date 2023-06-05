@@ -6,7 +6,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 2px;
     background-color: black;
     color: wheat;
     width: 100%;
@@ -47,7 +47,7 @@ body{
     height: 60px;
     border-radius: 10px;
     box-shadow: 5px 6px 6px gray;
-    padding: 5px;
+    /* padding: 5px; */
     margin-left: 100px;
 }
 
