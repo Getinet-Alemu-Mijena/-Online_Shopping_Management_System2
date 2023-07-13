@@ -32,8 +32,8 @@
 <div class="container">
     <div class="left-sidebar">
          <ul>
-            <li><a href="">View Products</a></li>
-            <li><a href="">Activity</a></li>
+            <li><a [routerLink]="" (click)="viewProduct()">View Products</a></li>
+            <li><a href="">Upload Products</a></li>
             <li><a href="">Product management</a></li>
             <li><a href="">Payment processing</a></li>
             <li><a href="">Communication</a></li>
@@ -42,6 +42,136 @@
          </ul>
     </div> 
     <div class="main-content">
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
+       <div class="seller-products"*ngIf = " this.viewproduct ">
+        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
+        <div class="product-property">
+            <p>Product Id</p>
+            <p>Product name</p>
+            <p>Product category</p>
+            <p>Product Price</p>
+        </div>
+       </div>
 
+       <div class="upload-product">
+          <form action=""*ngIf = " !this.viewproduct ">
+            <div class="form-group">
+                <label for="">Produt Name:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Price:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Description:</label>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Produt Brand:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Dimensions:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Quantity:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Weight:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Category:</label>
+                <select name="" id="">
+                    <option value="">Electronics</option>
+                    <option value="">Electronics</option>
+                    <option value="">Electronics</option>
+                    <option value="">Electronics</option>
+                    <option value="">Electronics</option>
+                    <option value="">Electronics</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Produt Key Features:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="">Produt Image:</label>
+                <input class="my-file" type="file">
+            </div>
+            <div class="form-group">
+                <label for="">Produt's Images:</label>
+                <input class="my-file" type="file" id="image-upload" name="images[]" multiple>
+            </div>
+            <div class="form-group">
+                <button>Submit</button>
+            </div>
+          </form>
+       </div>
     </div>
 </div>

@@ -3,16 +3,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: black;
+    background-color: rgb(227, 216, 216);
     color: wheat;
     width: 100%;
-    box-shadow: 6px 6px 5px rgb(36, 33, 33);
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    /* margin-bottom: 5px; */
 }
 
 .navbar .user-icon {
@@ -168,10 +167,7 @@
     grid-area: left;
     background-color: rgb(255, 255, 255);
     border-radius: 12px;
-    position: sticky;
-    top: 0%;
-    z-index: 90;
-    box-shadow: 6px 6px 5px 10px wheat;
+    box-shadow: 6px 6px 5px 10px rgb(212, 209, 203);
 }
 
 @media (max-width: 768px) {
@@ -179,42 +175,41 @@
        width: 100%;
     }
 }
-
 .container .left-sidebar ul li {
     list-style: none;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
+    margin: 10px;
 }
 
 .container .left-sidebar ul li a {
     text-decoration: none;
-    padding: 10%;
+    padding: 5%;
     font-family: 'Times New Roman', Times, serif;
     font-size: larger;
     font-weight: 600;
     font-style: normal;
     background-color: white;
     color: #2b031b;
-    margin: 5%;
     border-radius: 10px;
     border: 0 solid green;
     transition: 1s;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .container .left-sidebar ul li a {
-        padding: 20px;
         font-size: medium;
         font-weight: 300;
-        margin: 3%;
         border-radius: 50px;
     }
 }
 
 .container .left-sidebar ul li a:hover {
-    background-color: aqua;
+    background-color: rgb(143, 155, 155);
+    color: white;
 }
 
 .container .main-content {
@@ -222,4 +217,126 @@
     background-color: #f5f5f5 azure;
     margin: 2px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.container .main-content .seller-products{
+    width: 250px;
+    height: auto;
+    margin-left: 20px;
+    border-radius: 12px;
+    box-shadow: 6px 6px 5px white;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.container .main-content .seller-products:hover{
+    transform: scale(1.2);
+}
+.container .main-content .seller-products img{
+    width: 250px;
+    height: 300px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.container .main-content .seller-products .product-property{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container .main-content .seller-products .product-property p{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(242, 175, 6);
+}
+.container .main-content .upload-product .form-group{
+    margin: 35px;
+}
+.container .main-content form{
+    /* background-color: aqua; */
+    width: 100vh;
+}
+@media (max-width: 768px) {
+    .container .main-content form {
+        width: 100%;
+    }
+}
+.container .main-content .upload-product .form-group label{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-weight:800;
+  font-style: normal;
+  font-size: larger;
+  margin: 12px;
+  display: block;
+}
+.container .main-content .upload-product .form-group input{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: larger;
+  font-weight: 400;
+  font-variant: calc(1.2em);
+  padding: 15px;
+  border-radius: 12px;
+  width: 100%;
+  border-color: rgb(228, 170, 64);
+  transform: 1s;
+}
+.container .main-content .upload-product .form-group select{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-weight: 400;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border-color: violet;
+    cursor: pointer;
+    transition: 1s;
+}
+.container .main-content .upload-product .form-group select:hover{
+    color: bisque;
+}
+.container .main-content .upload-product .form-group input:hover{
+    border-color: rgb(12, 19, 16);
+}
+.container .main-content .upload-product .form-group textarea{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: 400;
+    font-variant: calc(1.2em);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    border-color: rgb(228, 170, 64);
+    transform: 1s;
+}
+.container .main-content .upload-product .form-group textarea:hover{
+    border-color: rgb(19, 29, 26);
+}
+.container .main-content .upload-product form .form-group .my-file{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1a0d0d;
+    background-color: #f2f2f2;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.container .main-content .upload-product .form-group button{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    font-weight: 800;
+    background-color: #f1ebeb;
+    color: rgb(15, 4, 4);
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    transition: 1s;
+}
+.container .main-content .upload-product .form-group button:hover{
+    background-color: white;
+    color: rgb(93, 85, 85);
 }

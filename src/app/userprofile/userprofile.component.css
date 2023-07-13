@@ -7,10 +7,10 @@ body{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: black;
+    background-color: rgb(227, 216, 216);
     color: wheat;
     width: 100%;
-    box-shadow: 6px 6px 5px rgb(36, 33, 33);
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
     position: fixed;
     top: 0;
     left: 0;
@@ -156,7 +156,7 @@ body{
     grid-template-rows: 1fr;
     grid-template-columns: 25% 1fr;
     grid-template-areas: "left main";
-    margin-top: 100px;
+    margin-top: 85px;
 }
 
 .container .hidden {

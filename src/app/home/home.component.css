@@ -7,15 +7,16 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 2px;
-    background-color: black;
+    background-color: rgb(227, 216, 216);
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
     color: wheat;
     width: 100%;
-    box-shadow: 6px 6px 5px rgb(36, 33, 33);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    height: auto;
 }
 
 .navbar-links {
@@ -43,11 +44,10 @@ body{
 }
 
 .navbar-logo a img {
-    width: 200px;
+    width: 150px;
     height: 60px;
     border-radius: 10px;
     box-shadow: 5px 6px 6px gray;
-    /* padding: 5px; */
     margin-left: 100px;
 }
 
@@ -68,14 +68,14 @@ body{
 }
 
 .navbar-links li {
-    margin: 0 10px;
-    color: wheat;
+    margin: 20px;
+    font-weight: 600;
+    color: rgb(145, 138, 118);
 }
 
 .navbar-links li a {
     font-size: 16px;
     text-decoration: none;
-    color: wheat;
 }
 
 @media screen and (max-width: 768px) {
@@ -113,17 +113,140 @@ body{
         transform: translateY(6px) rotate(45deg);
     }
 }
+.container{
+    margin-top: 80px;
+    display: block;
+    height: auto;
+}
+.container .online-shping{
+    width: 100%;
+    height: 70vh;
+    border-radius: 12px;
+    /* background-color: #f2f2f2; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color:rgb(228, 153, 14) ;
+}
 
-.container {
+@media screen and (max-width: 768px) {
+    .container .online-shping{
+        height: 30vh;
+    }
+}
+.container .online-shping .cart-image{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: white;
+    /* margin-right: 15px; */
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+}
+
+@media screen and (max-width: 768px) {
+    .container .online-shping .cart-image{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    /* margin: 4px; */
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+    }
+}
+.container .online-shping .cart-image img{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+    .container .online-shping .cart-image img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    }
+}
+
+.container .online-shping .just-for-you{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin-top: 5px;
+    border-radius: 12px;
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+}
+@media screen and (max-width: 768px) {
+    .container .online-shping .just-for-you{
+    width: 200px;
+    height: 200px;
+    }
+}
+.container .online-shping .just-for-you img{
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+}
+@media screen and (max-width: 768px) {
+    .container .online-shping .just-for-you img{
+    width: 200px;
+    height: 200px;
+    }
+}
+.container .promotion{
+    width: 100%;
+    height: auto;
+    /* background-color: blueviolet; */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.container .promotion .new-arrival{
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    margin: 20px;
+    background-color: white;
+    box-shadow: 6px 6px 5px white;
+}
+.container .promotion .new-arrival img{
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.container h1{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 15px;
+    margin-bottom: 10px;
+    text-decoration: underline; 
+    text-decoration-color: gold;
+}
+
+.container h4{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 15px;
+    margin-bottom: 10px;
+}
+.container p{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    font-weight: 600;
+    margin: 50px;
+}
+
+
+.container .all-products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1 1 auto;
     justify-content: center;
     margin: 5px;
-    overflow: auto;
-    margin: 2px;
-    margin-top: 100px;
 }
 
 .container .products {

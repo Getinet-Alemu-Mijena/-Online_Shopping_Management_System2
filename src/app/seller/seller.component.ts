@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class SellerComponent {
   isNavbarOpen:boolean = false;
   action:boolean = false;
+  viewproduct:boolean = false;
   toggleNavbar():boolean {
     alert("clicked");
    return this.isNavbarOpen = !this.isNavbarOpen;
@@ -15,4 +16,8 @@ export class SellerComponent {
   actionOn(){
      this.action = true;
   }
+  viewProduct(){
+    this.viewproduct = true;
+  }
+
 }
