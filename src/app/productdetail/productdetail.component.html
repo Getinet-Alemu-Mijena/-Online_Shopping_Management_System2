@@ -1,0 +1,225 @@
+<nav class="navbar">
+    <!-- <h3>EthioEcommerce</h3> -->
+    <div class="navbar-logo">
+        <a href="#"><img src="assets/Logos/images.png" alt=""></a>
+    </div>
+    <div class="navbar-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="navbar-links">
+        <ul>
+            <li>
+                <select name="" id="" size="1">
+                    <option value="">Select a category</option>
+                    <option value="amazon-devices">Amazon Devices</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="baby-products">Baby Products</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="books">Books</option>
+                    <option value="clothing">Clothing, Shoes & Jewelry</option>
+                    <option value="computers">Computers & Accessories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="grocery">Grocery & Gourmet Food</option>
+                    <option value="health">Health & Household</option>
+                    <option value="home-garden">Home & Kitchen</option>
+                    <option value="movies-music-games">Movies, Music & Games</option>
+                    <option value="office-products">Office Products</option>
+                    <option value="pets">Pet Supplies</option>
+                    <option value="sports-outdoors">Sports & Outdoors</option>
+                    <option value="tools-home-improvement">Tools & Home Improvement</option>
+                    <option value="toys-games">Toys & Games</option>
+                    <option value="video-games">Video Games</option>
+                    <option value="watches">Watches</option>
+                    <option value="jewelry">Jewelry</option>
+                    <option value="music">Music</option>
+                    <option value="cameras">Cameras & Photography</option>
+                    <option value="office-furniture">Office Furniture</option>
+                    <option value="cell-phones">Cell Phones & Accessories</option>
+                    <option value="fitness">Fitness & Exercise</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" placeholder="Search">
+            </li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Specifications</a></li>
+            <li><a href="#">Contact/Support</a></li>
+            <li><a href="#">
+                Related-Products</a></li>
+                <li><a href="#">Shipping/Returns</a></li>
+                <li><a href="#">Reviews</a></li>
+            <li><a href="#">Account/Profile</a></li>
+            <li><a href="">
+                <img src="assets/Images/charts.jpg" alt="">
+            </a></li>
+            <li>1</li>
+            <li><a href="#">Cart</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="sub-nav">
+    <img src="assets/Images/menupng.webp" alt="" (click)="categoryOfProduct()"><p>All</p>
+    <li><a href="">Today's Deals</a></li>
+    <li><a href="">Customer Service</a></li>
+    <li><a href="">Registry</a></li>
+    <li><a href="">Gift Cards</a></li>
+    <li><a href="">Sell</a></li>
+</div>
+
+<div class="container">
+    <div class="left-sidebar"*ngIf="this.category || !this.backicon ">
+         <div class="sub-images-container">
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <div class="images">
+            <img src="assets/Logos/images.png" alt="">
+           </div>
+           <p>Video</p>
+         </div>
+         <div class="big-image">
+            <img src="assets/Logos/images.png" alt="">
+            <p>Roll over image to zoom in</p>
+         </div>
+    </div>
+
+
+    <div class="category" *ngIf="!this.category || this.backicon  ">
+        <img src="assets/Images/backicon.png" alt=""(click)="remove()">
+        <h1>Shop By Department</h1>
+        <ul>
+            <li><a href="#">Amazon Devices</a></li>
+            <li><a href="#">Automotive</a></li>
+            <li><a href="#">Baby Products</a></li>
+            <li><a href="#">Beauty</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Clothing, Shoes & Jewelry</a></li>
+            <li><a href="#">Computers & Accessories</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li><a href="#">Grocery & Gourmet Food</a></li>
+            <li><a href="#">Health & Household</a></li>
+            <li><a href="#">Home & Kitchen</a></li>
+            <li><a href="#">Movies, Music & Games</a></li>
+            <li><a href="#">Office Products</a></li>
+            <li><a href="#">Pet Supplies</a></li>
+            <li><a href="#">Sports & Outdoors</a></li>
+            <li><a href="#">Tools & Home Improvement</a></li>
+            <li><a href="#">Toys & Games</a></li>
+            <li><a href="#">Video Games</a></li>
+            <li><a href="#">Sign In</a></li>
+          </ul>
+          
+   </div>
+
+
+    <div class="main-content">
+        <h4>
+            Logitech G915 TKL Tenkeyless Lightspeed Wireless RGB Mechanical 
+            Gaming Keyboard, Low Profile Switch Options, Lightsync RGB, Advanced 
+            Wireless and Bluetooth Support - Clicky
+        </h4>
+        <hr>
+        <table class="product-properties">
+            <tr>
+              <th>Brand</th>
+              <td>Logitech G</td>
+            </tr>
+            <tr>
+              <th>Compatible Devices</th>
+              <td>Gaming Console</td>
+            </tr>
+            <tr>
+              <th>Connectivity Technology</th>
+              <td>HDMI</td>
+            </tr>
+            <tr>
+              <th>Keyboard Description</th>
+              <td>Mechanical, Gaming</td>
+            </tr>
+            <tr>
+              <th>Recommended Uses For Product</th>
+              <td>Gaming</td>
+            </tr>
+            <tr>
+              <th>Special Feature</th>
+              <td>Integrated Backlighting, Built-in Battery, Compact Keyboard, Low-profile Keys</td>
+            </tr>
+            <tr>
+              <th>Color</th>
+              <td>Black</td>
+            </tr>
+            <tr>
+              <th>Operating System</th>
+              <td>Windows 7 or later (64-bit) or macOS X 10.11 or later</td>
+            </tr>
+            <tr>
+              <th>Number of Keys</th>
+              <td>90</td>
+            </tr>
+            <tr>
+              <th>Keyboard backlighting color support</th>
+              <td>RGB</td>
+            </tr>
+          </table>
+          
+        <hr>
+        <h2>About this item</h2>
+        <ul>
+               <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                    aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+               <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+
+                <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                            aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                 <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                    aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                 <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                            aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                    
+                 <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                                aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+                 <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean 
+                                                    aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
+        </ul>
+    </div>
+    <div class="right-sidebar">
+        <div class="add-to-cart">
+            <h3>Add an Accessory:</h3>
+            <h4>
+                Logitech G915 TKL Tenkeyless Lightspeed Wireless RGB Mechanical 
+                Gaming Keyboard, Low Profile Switch Options, Lightsync RGB, Advanced 
+                Wireless and Bluetooth Support - Clicky
+                
+            </h4>
+            <p>123.747 birr</p>
+            <button>Add to chart</button>
+        </div>
+    </div>
+</div>

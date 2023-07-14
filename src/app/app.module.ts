@@ -11,6 +11,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SellerComponent } from './seller/seller.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { FilehandlingComponent } from './filehandling/filehandling.component';
+import { ProductdetailComponent } from './productdetail/productdetail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FilehandlingComponent } from './filehandling/filehandling.component';
     RegistrationComponent,
     SellerComponent,
     UserprofileComponent,
-    FilehandlingComponent
+    FilehandlingComponent,
+    ProductdetailComponent
   ],
   imports: [
     BrowserModule,
