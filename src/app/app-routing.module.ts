@@ -7,6 +7,8 @@ import { SellerComponent } from './seller/seller.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { FilehandlingComponent } from './filehandling/filehandling.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path:'userprofile',component:UserprofileComponent},
   {path:'files',component:FilehandlingComponent},
   {path:'product-detail',component:ProductdetailComponent},
+  {path:'customer',component:CustomerComponent},
+  {path:'admins',component:AdminComponent},
   {path:'Home',component:HomeComponent},
   { path: '',   redirectTo: 'Home', pathMatch: 'full' }
 ];

@@ -12,19 +12,20 @@
     </div>
     
     <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
-        <ul>
-            <!-- <li><a href="/dashboard">Dashboard</a></li> -->
-            <!-- <li><a href="/products">Products</a></li> -->
-            <li><a href="/orders">Orders</a></li>
-            <li><a href="/inventory">Inventory</a></li>
-            <!-- <li><a href="/analytics">Analytics</a></li> -->
-            <!-- <li><a href="/messages">Messages</a></li> -->
-            <li><a href="/promotions">Promotions</a></li>
-            <!-- <li><a href="/payments">Payments</a></li> -->
-            <li><a href="/settings">Store Settings</a></li>
+        <ul class="customer-navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products/Categories</a></li>
+            <li><a href="/my-orders">My Orders</a></li>
+            <li><a href="/wishlist">Wishlist</a></li>
+            <li><a href="/cart">Cart/Checkout</a></li>
+            <li><a href="/my-account">My Account</a></li>
+            <li><a href="/deals">Deals/Sales</a></li>
             <li><a href="/help">Help/Support</a></li>
-            <li><a [routerLink]="['/userprofile']">Account</a></li>
+            <li><a href="/track-order">Track Order</a></li>
+            <li><a href="/sign-in">Sign In/Sign Up</a></li>
           </ul>
+          
+          
           
         
     </div>
@@ -39,15 +40,20 @@
 
 <div class="container">
     <div class="left-sidebar">
-         <ul>
-            <li><a [routerLink]="" (click)="viewProduct()">View Products</a></li>
-            <li><a (click)="uploadProduct()">Upload Products</a></li>
-            <li><a href="">Product management</a></li>
-            <li><a href="">Payment processing</a></li>
-            <li><a href="">Communication</a></li>
-            <li><a href="">Reports and analytics</a></li>
-            <li><a href="">Feedback and ratings</a></li>
-         </ul>
+        <ul class="customer-navigation">
+            <li><a href="#">Browsing and Searching</a></li>
+            <li><a href="#">Product Selection</a></li>
+            <li><a href="#">Placing Orders</a></li>
+            <li><a href="#">Payment Processing</a></li>
+            <li><a href="#">Tracking and Monitoring</a></li>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Reviewing and Rating</a></li>
+            <li><a href="#">Returns and Exchanges</a></li>
+            <li><a href="#">Account Management</a></li>
+            <li><a href="#">Recommendations and Referrals</a></li>
+          </ul>
+          
+          
     </div> 
     <div class="main-content">
        <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">

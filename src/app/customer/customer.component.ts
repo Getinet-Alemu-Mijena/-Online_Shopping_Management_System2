@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-seller',
-  templateUrl: './seller.component.html',
-  styleUrls: ['./seller.component.css']
+  selector: 'app-customer',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css']
 })
-export class SellerComponent {
+export class CustomerComponent {
   isNavbarOpen:boolean = false;
   action:boolean = false;
   uploadproduct:boolean = false;
@@ -17,13 +17,4 @@ export class SellerComponent {
   actionOn(){
      this.action = true;
   }
-  uploadProduct(){
-    this.uploadproduct = true;
-    this.viewproduct = false;
-  }
-  viewProduct(){
-    this.viewproduct = true;
-    this.uploadproduct = false;
-  }
-
 }

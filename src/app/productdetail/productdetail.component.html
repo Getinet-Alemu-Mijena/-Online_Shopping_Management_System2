@@ -43,14 +43,14 @@
             <li>
                 <input type="text" placeholder="Search">
             </li>
-            <li><a href="#">Home</a></li>
+            <li><a [routerLink]="['/Home']">Home</a></li>
             <li><a href="#">Specifications</a></li>
             <li><a href="#">Contact/Support</a></li>
             <li><a href="#">
                 Related-Products</a></li>
                 <li><a href="#">Shipping/Returns</a></li>
                 <li><a href="#">Reviews</a></li>
-            <li><a href="#">Account/Profile</a></li>
+            <li><a [routerLink]="['/userprofile']">Account/Profile</a></li>
             <li><a href="">
                 <img src="assets/Images/charts.jpg" alt="">
             </a></li>
@@ -65,11 +65,12 @@
     <li><a href="">Customer Service</a></li>
     <li><a href="">Registry</a></li>
     <li><a href="">Gift Cards</a></li>
-    <li><a href="">Sell</a></li>
+    <li><a [routerLink]="['/seller']">Sell</a></li>
 </div>
 
+
 <div class="container">
-    <div class="left-sidebar">
+    <div class="left-sidebar" *ngIf="this.backicon  || !this.category">
          <div class="sub-images-container">
            <div class="images">
             <img src="assets/Logos/images.png" alt="">
@@ -103,8 +104,8 @@
          </div>
     </div>
 
-
-    <!-- <div class="category">
+   
+    <div class="category" *ngIf="this.category && !this.backicon ">
         <img src="assets/Images/backicon.png" alt=""(click)="remove()">
         <h1>Shop By Department</h1>
         <ul>
@@ -129,7 +130,7 @@
             <li><a href="#">Sign In</a></li>
           </ul>
           
-   </div> -->
+   </div>
 
 
     <div class="main-content">
@@ -222,4 +223,7 @@
             <button>Add to chart</button>
         </div>
     </div>
+
+
+    
 </div>

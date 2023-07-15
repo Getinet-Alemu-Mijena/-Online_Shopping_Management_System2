@@ -86,6 +86,7 @@ body {
     font-weight: 400;
     border: none;
     border-radius: 12px;
+    color: #000;
 }
 
 .navbar-links li input {
@@ -156,6 +157,9 @@ body {
     flex-wrap: nowrap;
     justify-content: flex-start;
     box-shadow: 6px 6px 5px rgb(200, 184, 184);
+    position: sticky;
+    right: 0;
+    left: 0;
 }
 
 .sub-nav img {
@@ -233,6 +237,7 @@ body {
     margin-bottom: 20px;
     padding: 5px;
     z-index: 100;
+    cursor: pointer;
 }
 
 
@@ -280,6 +285,17 @@ body {
     grid-area: main;
     background-color: white;
     padding: 15px;
+}
+
+.container .main-content select{
+    padding: 12px;
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    margin-bottom: 10px;
 }
 
 .container .main-content h4 {

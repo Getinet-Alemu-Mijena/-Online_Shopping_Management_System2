@@ -12,9 +12,11 @@ export class ProductdetailComponent {
   backicon:boolean = false;
   categoryOfProduct(){
     this.category = true;
+    this.backicon = false;
   }
 
   remove(){
    this.backicon = true;
+   this.category = false;
   }
 }

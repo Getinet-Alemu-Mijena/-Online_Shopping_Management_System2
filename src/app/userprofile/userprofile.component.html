@@ -9,15 +9,22 @@
 
     </div>
 
-    <!-- <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
+    <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
         <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-        </ul>
+            <li><a href="/my-orders">My Orders</a></li>
+            <li><a href="/my-wishlist">My Wishlist</a></li>
+            <li><a href="/my-account">My Account</a></li>
+            <li><a href="/my-reviews">My Reviews</a></li>
+            <li><a href="/my-rewards">My Rewards</a></li>
+            <li><a href="/my-notifications">My Notifications</a></li>
+            <li><a href="/my-subscriptions">My Subscriptions</a></li>
+            <li><a href="/my-support-tickets">My Support Tickets</a></li>
+            <li><a href="/my-settings">My Settings</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+          
         
-    </div> -->
+    </div>
     <div class="user-icon" (click)="actionOn()">
         <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
         <div class="action" *ngIf="this.action">

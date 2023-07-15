@@ -12,19 +12,19 @@
     </div>
     
     <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
-        <ul>
-            <!-- <li><a href="/dashboard">Dashboard</a></li> -->
-            <!-- <li><a href="/products">Products</a></li> -->
-            <li><a href="/orders">Orders</a></li>
-            <li><a href="/inventory">Inventory</a></li>
-            <!-- <li><a href="/analytics">Analytics</a></li> -->
-            <!-- <li><a href="/messages">Messages</a></li> -->
-            <li><a href="/promotions">Promotions</a></li>
-            <!-- <li><a href="/payments">Payments</a></li> -->
-            <li><a href="/settings">Store Settings</a></li>
-            <li><a href="/help">Help/Support</a></li>
-            <li><a [routerLink]="['/userprofile']">Account</a></li>
+        <ul class="admin-navigation">
+            <li><a href="/admin/dashboard">Dashboard</a></li>
+            <li><a href="/admin/products">Products</a></li>
+            <li><a href="/admin/orders">Orders</a></li>
+            <li><a href="/admin/customers">Customers</a></li>
+            <li><a href="/admin/inventory">Inventory</a></li>
+            <li><a href="/admin/analytics">Analytics</a></li>
+            <li><a href="/admin/payments">Payments</a></li>
+            <li><a href="/admin/discounts">Discounts/Coupons</a></li>
+            <li><a href="/admin/reports">Reports</a></li>
+            <li><a href="/admin/settings">Settings</a></li>
           </ul>
+          
           
         
     </div>
@@ -39,15 +39,19 @@
 
 <div class="container">
     <div class="left-sidebar">
-         <ul>
-            <li><a [routerLink]="" (click)="viewProduct()">View Products</a></li>
-            <li><a (click)="uploadProduct()">Upload Products</a></li>
-            <li><a href="">Product management</a></li>
-            <li><a href="">Payment processing</a></li>
-            <li><a href="">Communication</a></li>
-            <li><a href="">Reports and analytics</a></li>
-            <li><a href="">Feedback and ratings</a></li>
-         </ul>
+        <ul>
+            <li><a href="#">User Management</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Order Management</a></li>
+            <li><a href="#">Customer Support</a></li>
+            <li><a href="#">Analytics and Reporting</a></li>
+            <li><a href="#">Platform Maintenance</a></li>
+            <li><a href="#">Marketing and Promotions</a></li>
+            <li><a href="#">Vendor Management</a></li>
+            <li><a href="#">Payment Processing</a></li>
+            <li><a href="#">Platform Settings and Customization</a></li>
+          </ul>
+          
     </div> 
     <div class="main-content">
        <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">

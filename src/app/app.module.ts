@@ -12,6 +12,8 @@ import { SellerComponent } from './seller/seller.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { FilehandlingComponent } from './filehandling/filehandling.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProductdetailComponent } from './productdetail/productdetail.component'
     SellerComponent,
     UserprofileComponent,
     FilehandlingComponent,
-    ProductdetailComponent
+    ProductdetailComponent,
+    CustomerComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
