@@ -122,6 +122,11 @@ form {
     margin-top: 120px;
 }
 
+
+form a{
+    text-decoration: none;
+    margin: 5px;
+}
 form .form-text {
     color: red;
 }

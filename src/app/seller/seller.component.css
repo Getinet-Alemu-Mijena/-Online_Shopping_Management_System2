@@ -347,3 +347,68 @@
     background-color: white;
     color: rgb(93, 85, 85);
 }
+.container .main-content .manage-product{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.container .main-content .manage-product table{
+    width: 100%;
+}
+.container .main-content .manage-product table th{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 7px;
+}
+@media (max-width: 768px) {
+    .container .main-content .manage-product table th {
+        padding: 0px;
+    }
+}
+.container .main-content .manage-product table td{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: rgb(232, 225, 225);
+    color: rgb(34, 15, 15);
+    padding: 5px;
+    border-radius: 7px;
+}
+@media (max-width: 768px) {
+    .container .main-content .manage-product table td {
+        padding: 1px;
+        font-size: 10px;
+    }
+}
+.container .main-content .manage-product table td button{
+    padding: 5px;
+    font-size: large;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px;
+}
+@media (max-width: 768px) {
+    .container .main-content .manage-product table td button{
+        padding: 1.3px;
+        font-size: small;
+        margin: 1.2px;
+    }
+}
+.container .main-content .manage-product table td #btn-edit{
+    background-color: rgb(16, 6, 81);
+}
+.container .main-content .manage-product table td #btn-delete{
+    background-color: red;
+}
+.container .main-content .manage-product table td #btn-view{
+    background-color: green;
+}
+.container .main-content .manage-product table td #btn-enable{
+    background-color: blue;
+}

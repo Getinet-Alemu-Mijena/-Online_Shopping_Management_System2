@@ -42,7 +42,7 @@
          <ul>
             <li><a [routerLink]="" (click)="viewProduct()">View Products</a></li>
             <li><a (click)="uploadProduct()">Upload Products</a></li>
-            <li><a href="">Product management</a></li>
+            <li><a (click)="manageProduct()">Product management</a></li>
             <li><a href="">Payment processing</a></li>
             <li><a href="">Communication</a></li>
             <li><a href="">Reports and analytics</a></li>
@@ -50,7 +50,9 @@
          </ul>
     </div> 
     <div class="main-content">
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+
+       <!-- start od seller product -->
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -59,7 +61,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -68,7 +70,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -77,7 +79,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -86,7 +88,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -95,7 +97,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -104,7 +106,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -113,7 +115,7 @@
             <p>Product Price</p>
         </div>
        </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
+       <div class="seller-products"*ngIf="!this.uploadproduct && this.viewproduct && !this.manageproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
             <p>Product Id</p>
@@ -122,8 +124,11 @@
             <p>Product Price</p>
         </div>
        </div>
+     <!-- end of seller product -->
+
+     <!-- start of seller update product -->
          
-       <div class="upload-product" *ngIf="this.uploadproduct && !this.viewproduct">
+       <div class="upload-product" *ngIf="this.uploadproduct && !this.viewproduct && !this.manageproduct">
         <h1 style="text-decoration:underline; text-decoration-color: orange;">Hello Seller Upload Your Product Here!! </h1>
           <form action="">
             <div class="form-group">
@@ -202,5 +207,337 @@
             </div>
           </form>
        </div>
+          <!-- end of seller update product -->
+
+
+    <!-- start of manage product -->
+
+    <div class="manage-product" *ngIf=" this.manageproduct && !this.uploadproduct && !this.viewproduct">
+       <table>
+        <thead>          
+            <th>Product ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Date Added</th>
+            <th>Last Updated</th>
+            <th colspan="4">Actions</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td>1rrruu</td>
+                <td colspan="4">
+                    <tr>
+                        <button id="btn-edit">Edit</button>
+                    
+                        <button id="btn-delete">Delete</button>
+                    
+                        <button id="btn-view">View</button>
+                    
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                </td>
+            </tr>
+        </tbody>
+       </table>
+    </div>
+    <!-- end of manage product -->
     </div>
 </div>
