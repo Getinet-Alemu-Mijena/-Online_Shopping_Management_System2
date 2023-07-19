@@ -1,0 +1,50 @@
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="#"><img src="assets/Logos/images.png" alt=""></a>
+    </div>
+    <div class="navbar-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="navbar-links">
+        <ul>
+            <li><a [routerLink]="['/aboutus']">About Us</a></li>
+            <li><a [routerLink]="['/contactus']">Contact Us</a></li>
+            <li><a [routerLink]="['/registration']">Sign Up</a></li>
+            <li><a [routerLink]="['/faq']">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="left-sidebar">
+        <h1>About Us</h1>
+        <p *ngIf="!this.displaymore">
+            Welcome to our online shopping platform! We are dedicated to providing you with a seamless and enjoyable shopping experience from the comfort of your own home. Our mission is to offer a wide range of high-quality products that cater to your needs and preferences.
+
+            At our online store, we prioritize customer satisfaction above all else. We strive to ensure that every interaction you have with us is met with exceptional service and support. Our friendly and knowledgeable team is always available to assist you, answer your inquiries, and guide you through the shopping process.
+            
+            We take pride in curating a diverse selection of products,...
+        </p>
+        <button (click)="displayMore()" *ngIf="!this.displaymore">Read More</button>
+        <p *ngIf="this.displaymore">
+            Welcome to our online shopping platform! We are dedicated to providing you with a seamless and enjoyable shopping experience from the comfort of your own home. Our mission is to offer a wide range of high-quality products that cater to your needs and preferences.
+
+At our online store, we prioritize customer satisfaction above all else. We strive to ensure that every interaction you have with us is met with exceptional service and support. Our friendly and knowledgeable team is always available to assist you, answer your inquiries, and guide you through the shopping process.
+
+We take pride in curating a diverse selection of products, carefully chosen to meet the latest trends and demands. Whether you're searching for fashion apparel, electronics, home decor, or unique gifts, we have a vast array of options to cater to your personal style and interests.
+
+Quality is of utmost importance to us. We partner with reputable suppliers and brands to ensure that each item you purchase meets our stringent standards. From durable materials to impeccable craftsmanship, we are committed to delivering products that exceed your expectations.
+
+Your convenience is our priority. With our user-friendly website, you can easily browse through our catalog, find detailed product descriptions, and make secure and hassle-free transactions. We strive to offer competitive prices and frequent promotions, allowing you to make the most of your shopping experience.
+
+We value your trust and aim to build long-lasting relationships with our customers. Your feedback and suggestions are invaluable to us as we continuously improve our services to meet your evolving needs. We look forward to being your go-to destination for all your online shopping requirements.
+
+Thank you for choosing us as your online shopping destination. Happy shopping!
+        </p>
+        <button (click)="displayLess()" *ngIf="this.displaymore">Read Less</button>
+    </div>
+    <div class="right-sidebar">
+       <img src="assets/Images/abouus.jfif" alt="">
+    </div>
+</div>

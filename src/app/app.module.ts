@@ -14,6 +14,9 @@ import { FilehandlingComponent } from './filehandling/filehandling.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AdminComponent } from './admin/admin.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { AdminComponent } from './admin/admin.component';
     FilehandlingComponent,
     ProductdetailComponent,
     CustomerComponent,
-    AdminComponent
+    AdminComponent,
+    AboutusComponent,
+    ContactusComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

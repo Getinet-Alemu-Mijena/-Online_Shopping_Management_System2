@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    background-color: rgb(227, 216, 216);
+    color: wheat;
+    width: 100%;
+    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar-links-show {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .navbar-links {
+        display: block;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+}
+
+.navbar-logo a {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-logo a img {
+    width: 80%;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: 5px 6px 5px gray;
+    padding: 5px;
+    margin-left: 100px;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-links ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin: 0 10px;
+    color: rgb(30, 6, 241);
+}
+
+.navbar-links li a {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(30, 6, 241);
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        background-color: #fff;
+    }
+
+    .navbar-toggle.active span:nth-child(2) {
+        transform: rotate(45deg);
+    }
+
+    .navbar-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    .navbar-toggle.active span:nth-child(1),
+    .navbar-toggle.active span:nth-child(3) {
+        margin: 0;
+    }
+
+    .navbar-toggle.active span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+}
+.container{
+    margin-top: 85px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: repeating-linear-gradient(to bottom, white, silver 30px);
+    height: auto;
+}
+.container .contact-us-container{
+    width: 80%;
+    height: 150px;
+    border-radius: 12px;
+    background-color: rgb(244, 242, 242);
+    box-shadow: 6px 6px 5px beige;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.container .left-message{
+    width: 50%;
+    height: auto;
+    background-color: rgb(219, 241, 239);
+    align-self: flex-start;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 5px wheat;
+}
+
+.container .left-message p{
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(53, 7, 53);
+}
+
+.container .right-message{
+    width: 50%;
+    height: auto;
+    background-color: white;
+    align-self: flex-end;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 5px wheat;
+}
+
+.container .right-message p{
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(242, 7, 242);
+}
+
+.container .contact-us-container marquee p{
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    color: tomato;
+}
+
+.container form .form-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.container form .form-group input{
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    padding: 23px;
+    width: 80%;
+}
+.container form .form-group button{
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    padding: 23px;
+    cursor: pointer;
+    color: rgb(116, 76, 76);
+}

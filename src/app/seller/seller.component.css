@@ -199,6 +199,20 @@
     cursor: pointer;
 }
 
+.container .left-sidebar ul li a ul li a {
+    text-decoration: none;
+    padding: 5%;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-size: smaller;
+    font-weight: 200;
+    background-color: white;
+    color: #c9559a;
+    border-radius: 10px;
+    border: 0 solid green;
+    transition: 1s;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .container .left-sidebar ul li a {
         font-size: medium;
@@ -262,6 +276,28 @@
         width: 100%;
     }
 }
+.container .main-content .upload-product .form-group a{
+    text-decoration: none;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(234, 94, 234);
+}
+
+.container .main-content .upload-product .gender{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+}
+.container .main-content .upload-product .gender p{
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+.container .main-content .upload-product .gender input{
+    padding: 3px;
+}
 .container .main-content .upload-product .form-group label{
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-weight:800;
@@ -296,6 +332,10 @@
 }
 .container .main-content .upload-product h1{
    text-align: center;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-size: larger;
+   font-style: oblique;
+   font-weight: bolder;
 }
 .container .main-content .upload-product .form-group select:hover{
     color: bisque;
@@ -411,4 +451,7 @@
 }
 .container .main-content .manage-product table td #btn-enable{
     background-color: blue;
+}
+.text-danger{
+    color: red;
 }

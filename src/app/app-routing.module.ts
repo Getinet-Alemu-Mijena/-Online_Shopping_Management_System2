@@ -9,6 +9,9 @@ import { FilehandlingComponent } from './filehandling/filehandling.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AdminComponent } from './admin/admin.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -19,6 +22,9 @@ const routes: Routes = [
   {path:'product-detail',component:ProductdetailComponent},
   {path:'customer',component:CustomerComponent},
   {path:'admins',component:AdminComponent},
+  {path:'aboutus',component:AboutusComponent},
+  {path:'contactus',component:ContactusComponent},
+  {path:'faq',component: FaqComponent},
   {path:'Home',component:HomeComponent},
   { path: '',   redirectTo: 'Home', pathMatch: 'full' }
 ];

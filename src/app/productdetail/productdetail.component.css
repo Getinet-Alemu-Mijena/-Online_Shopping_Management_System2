@@ -215,6 +215,9 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    margin: 3px;
+    border-radius: 12px;
+    box-shadow: 6px 6px 5px rgb(247, 247, 249);
 }
 
 .container .category img{
