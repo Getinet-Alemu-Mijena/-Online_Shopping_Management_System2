@@ -12,15 +12,21 @@ export class UserprofileComponent {
   edit_profile:boolean = false;
   edit_Input:boolean = false;
   saveButton:boolean = false;
-  action:boolean = false;
+  rightsidebar:boolean = false;
 
   constructor(){}
   toggleNavbar(){
    this.isNavbarOpen = !this.isNavbarOpen;
   }
-  actionOn(){
-     this.action = true;
+  rightSideBar(){
+
+     this.rightsidebar = true;
   }
+
+  notRightSideBar(){
+    
+    this.rightsidebar = false;
+ }
 
   editProfile(){
      this.edit_profile = !this.edit_profile;

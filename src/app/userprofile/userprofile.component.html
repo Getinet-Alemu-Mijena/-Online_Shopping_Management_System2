@@ -25,17 +25,13 @@
           
         
     </div>
-    <div class="user-icon" (click)="actionOn()">
-        <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
-        <div class="action" *ngIf="this.action">
-            <a [routerLink]="['/login']">Logout</a>
-            <a [routerLink]="['/userprofile']">Profile</a>
-        </div>
+    <div class="user-icon" (click)="rightSideBar()">
+        <a [routerLink]="['/rprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
     </div>
 </nav>
 
 <div class="container">
-    <div class="left-sidebar" *ngIf="!this.edit_profile">
+    <div class="left-sidebar" (click)="notRightSideBar()" *ngIf="!this.edit_profile">
         <div class="user-photo">
             <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
         </div>
@@ -50,7 +46,7 @@
         <!-- <h4><img src="assets/Images/download.png" alt=""> Haramaya University</h4> -->
     </div>
 
-    <div class="left-sidebar" *ngIf="this.edit_profile">
+    <div class="left-sidebar" (click)="notRightSideBar()" *ngIf="this.edit_profile">
         <form action="">
             <div class="user-photo">
                 <a [routerLink]="['/userprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
@@ -74,7 +70,7 @@
         </form>
     </div>
 
-    <div class="main-content">
+    <div class="main-content" (click)=" notRightSideBar()">
         <div class="user-status">
             <ul>
                 <li><a href=""><img src="assets/Images/personalInfo.png" alt="">Personal Information </a></li>
@@ -127,11 +123,36 @@
             <div class="form-group">
                 <label for="">First Name</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
+                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">  
+            </div>
+            <div class="form-group">
                 <button *ngIf="this.saveButton">Save</button>
                 <button *ngIf="this.saveButton">Cancel</button>
                 <button (click)="updateInfo()" *ngIf="!this.edit_Input">Edit</button>
             </div>
         </form>
+    </div>
+
+    <div class="right-sidebar" *ngIf="this.rightsidebar">
+        <ul>
+            <li><a [routerLink]="['/userprofile']">My Orders</a></li>
+            <li><a [routerLink]="['/userprofile']">My Wishlist</a></li>
+            <li><a [routerLink]="['/userprofile']">My Account</a></li>
+            <li><a [routerLink]="['/userprofile']">My Reviews</a></li>
+            <li><a [routerLink]="['/userprofile']">My Rewards</a></li>
+            <li><a [routerLink]="['/userprofile']">My Notifications</a></li>
+            <li><a [routerLink]="['/userprofile']">My Subscriptions</a></li>
+            <li><a [routerLink]="['/userprofile']">My Support Tickets</a></li>
+            <li><a [routerLink]="['/userprofile']">My Settings</a></li>
+            <li><a href="">Personal Information </a></li>
+            <li><a href="">Order History</a></li>
+            <li><a href="">Sales performance</a></li>
+            <li><a href="">Order management</a></li>
+            <li><a href="">Analytics</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Store information</a></li>
+            <li><a href="">Account settings</a></li>
+            <li><a [routerLink]="['/login']">Logout</a></li>
+        </ul>
     </div>
 </div>

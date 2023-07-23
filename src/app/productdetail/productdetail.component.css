@@ -351,6 +351,13 @@ body {
     align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+    .container .right-sidebar{
+        width: 100%;
+    }
+}
+
+
 .container .right-sidebar .add-to-cart {
     width: 200px;
     height: auto;

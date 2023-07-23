@@ -154,9 +154,10 @@ body{
 .container {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 25% 1fr;
-    grid-template-areas: "left main";
+    grid-template-columns: 25% 1fr 25% ;
+    grid-template-areas: "left main right";
     margin-top: 85px;
+    background-color: #f2f2f2;
 }
 
 .container .hidden {
@@ -342,7 +343,8 @@ body{
 }
 
 .container .left-sidebar .btn-danger {
-    background-color: #f2f2f2;
+    background-color: red;
+    color: white;
     margin: 3px;
 }
 
@@ -366,8 +368,48 @@ body{
     height: 40%;
 }
 
+.container .right-sidebar{
+    height: auto;
+    border-radius: 12px;
+    grid-area: right;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color:white;
+}
+
+.container .right-sidebar ul li{
+    list-style: none;
+    margin: 20px;
+}
+.container .right-sidebar ul li a{
+    color:rgb(108, 108, 206);
+    font-size: 25px;
+    font-weight: 300;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 1s;
+}
+
+/* .container .right-sidebar ul li a:a {
+    color: brown;
+  }  */
+
+@media (max-width: 768px) {
+    .container .right-sidebar {
+       width: 100%;
+    }
+}
+
+.container .right-sidebar ul li a:hover{
+    text-decoration: underline;
+    text-decoration-color: #e80edd;
+}
+
 .container .main-content {
-    grid-area: main;
+    grid-area: main right;
     background-color: #f2f2f2;
     margin: 2px;
     border-radius: 12px;

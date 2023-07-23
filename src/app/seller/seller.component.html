@@ -44,6 +44,28 @@
 
             <ul>
                 <li *ngIf="this.uploadproduct"> <a (click)="electronicsProdact()">Electronics Department</a> </li>
+                <ul>
+                    <li *ngIf="this.electronicsprodact" (click)="computers()"><a>Computer</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Cell Phone</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Television</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Fridge</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Camera</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Watch</a></li>
+                    <!-- <li *ngIf="this.electronicsprodact"><a>T</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li>
+                    <li *ngIf="this.electronicsprodact"><a>Tv</a></li> -->
+                </ul>
+
                 <li *ngIf="this.uploadproduct"> <a (click)="clothesProdact()">Clothing Department</a></li>
                 <li *ngIf="this.uploadproduct"><a href="">Home Appliances Department</a></li>
                 <li *ngIf="this.uploadproduct"><a href="">Beauty and Personal Care Department</a></li>
@@ -155,8 +177,8 @@
 
         <!-- start of seller's uploade electronics product -->
 
-        <div class="upload-product" *ngIf="this.electronicsprodact  && !this.viewproduct && !this.manageproduct">
-            <h1 style="text-decoration:underline; text-decoration-color: orange;">Hello Seller Upload Your Electronics
+        <div class="upload-product" *ngIf="this.computersproduct  && !this.viewproduct && !this.manageproduct">
+            <h1 style="text-decoration:underline; text-decoration-color: orange;">Hello Seller Upload Your Computer
                 Product
                 Here!! </h1>
             <form action="" [formGroup]="uploadForm">
@@ -202,16 +224,65 @@
                 </div>
                 <div class="form-group">
                     <label for="">Produt Description:</label>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea formControlName="produtdescription" id="" cols="30" rows="10"
+                        placeholder="Enter at least 100 character of product description."></textarea>
+                    <div class="text-danger"
+                        *ngIf="produtdescription.errors?.['required'] && (produtdescription.dirty || produtdescription.touched)">
+                        *Product description is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="produtdescription.errors?.['minlength'] && (produtdescription.dirty || produtdescription.touched)">
+                        *The Minimum length is 100!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="produtdescription.errors?.['maxlength'] && (produtdescription.dirty || produtdescription.touched)">
+                        *The maximum length is 700!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="produtdescription.errors?.['pattern'] && (produtdescription.dirty || produtdescription.touched)">
+                        *In valid product description!
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="brand">Product Brand:</label>
-                    <input type="text" id="brand" name="brand">
+                    <input type="text" id="brand" formControlName="produtbrand" placeholder="Enter product Brand.">
+                    <div class="text-danger"
+                        *ngIf="produtbrand.errors?.['required'] && (produtbrand.dirty || produtbrand.touched)">
+                        *Product brand is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="produtbrand.errors?.['minlength'] && (produtbrand.dirty || produtbrand.touched)">
+                        *The Minimum length is 8!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="produtbrand.errors?.['maxlength'] && (produtbrand.dirty || produtbrand.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="produtbrand.errors?.['pattern'] && (produtbrand.dirty || produtbrand.touched)">
+                        *In valid product brand!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="model">Product Model:</label>
-                    <input type="text" id="model" name="model">
+                    <input type="text" id="model" formControlName="productmodel" placeholder="Enter Product Model.">
+                    <div class="text-danger"
+                        *ngIf="productmodel.errors?.['required'] && (productmodel.dirty || productmodel.touched)">
+                        *Product model is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="productmodel.errors?.['minlength'] && (productmodel.dirty || productmodel.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="productmodel.errors?.['maxlength'] && (productmodel.dirty || productmodel.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="productmodel.errors?.['pattern'] && (productmodel.dirty || productmodel.touched)">
+                        *In valid product model!
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -241,32 +312,131 @@
 
                 <div class="form-group">
                     <label for="connectivity">Connectivity:</label>
-                    <input type="text" id="connectivity" name="connectivity">
+                    <input type="text" id="connectivity" formControlName="productconnectivity"
+                        placeholder="Enter product connectivity.">
+                    <div class="text-danger"
+                        *ngIf="productconnectivity.errors?.['required'] && (productconnectivity.dirty || productconnectivity.touched)">
+                        *Product connectivity is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="productconnectivity.errors?.['minlength'] && (productconnectivity.dirty || productconnectivity.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="productconnectivity.errors?.['maxlength'] && (productconnectivity.dirty || productconnectivity.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="productconnectivity.errors?.['pattern'] && (productconnectivity.dirty || productconnectivity.touched)">
+                        *In valid product connectivity!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="power-requirements">Power Requirements:</label>
-                    <input type="text" id="power-requirements" name="power-requirements">
+                    <input type="text" id="power-requirements" formControlName="powerrequirements"
+                        placeholder="Enter Power Requirements.">
+                    <div class="text-danger"
+                        *ngIf="powerrequirements.errors?.['required'] && (powerrequirements.dirty || powerrequirements.touched)">
+                        *Power Requirements is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="powerrequirements.errors?.['minlength'] && (powerrequirements.dirty || powerrequirements.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="powerrequirements.errors?.['maxlength'] && (powerrequirements.dirty || powerrequirements.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="powerrequirements.errors?.['pattern'] && (powerrequirements.dirty || powerrequirements.touched)">
+                        *In valid Power Requirements!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="warranty">Warranty:</label>
-                    <input type="text" id="warranty" name="warranty">
+                    <input type="text" id="warranty" formControlName="warranty" placeholder="Enter Product Warranty!">
+                    <div class="text-danger"
+                        *ngIf="warranty.errors?.['required'] && (warranty.dirty || warranty.touched)">
+                        *Product Warranty is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="warranty.errors?.['minlength'] && (warranty.dirty || warranty.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="warranty.errors?.['maxlength'] && (warranty.dirty || warranty.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="warranty.errors?.['pattern'] && (warranty.dirty || warranty.touched)">
+                        *In valid Product Warranty!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="dimensions">Dimensions:</label>
-                    <input type="text" id="dimensions" name="dimensions">
+                    <input type="text" id="dimensions" formControlName="dimensions"
+                        placeholder="Enter Product Dimensions.">
+                    <div class="text-danger"
+                        *ngIf="dimensions.errors?.['required'] && (dimensions.dirty || dimensions.touched)">
+                        *Product dimensions is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="dimensions.errors?.['minlength'] && (dimensions.dirty || dimensions.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="dimensions.errors?.['maxlength'] && (dimensions.dirty || dimensions.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="dimensions.errors?.['pattern'] && (dimensions.dirty || dimensions.touched)">
+                        *Invalid Product dimensions!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputs-outputs">Inputs/Outputs:</label>
-                    <textarea id="inputs-outputs" name="inputs-outputs"></textarea>
+                    <textarea id="inputs-outputs" formControlName="inputsoutputs" placeholder="Enter Inputs/Outputs Info."></textarea>
+                    <div class="text-danger"
+                        *ngIf="inputsoutputs.errors?.['required'] && (inputsoutputs.dirty || inputsoutputs.touched)">
+                        *Inputs/Outputs is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="inputsoutputs.errors?.['minlength'] && (inputsoutputs.dirty || inputsoutputs.touched)">
+                        *The Minimum length is 50!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="inputsoutputs.errors?.['maxlength'] && (inputsoutputs.dirty || inputsoutputs.touched)">
+                        *The maximum length is 200!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="inputsoutputs.errors?.['pattern'] && (inputsoutputs.dirty || inputsoutputs.touched)">
+                        *Invalid Inputs/Outputs dimensions!
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="compatibility">Compatibility:</label>
-                    <input type="text" id="compatibility" name="compatibility">
+                    <input type="text" id="compatibility" formControlName="compatibility" placeholder="Enter Product Compatibility.">
+                    <div class="text-danger"
+                        *ngIf="compatibility.errors?.['required'] && (compatibility.dirty || compatibility.touched)">
+                        *Product Compatibility is Required!
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="compatibility.errors?.['minlength'] && (compatibility.dirty || compatibility.touched)">
+                        *The Minimum length is 5!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="compatibility.errors?.['maxlength'] && (compatibility.dirty || compatibility.touched)">
+                        *The maximum length is 20!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="compatibility.errors?.['pattern'] && (compatibility.dirty || compatibility.touched)">
+                        *Invalid Product Compatibility!
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -536,17 +706,114 @@
                         <option value="Beige">Beige</option>
                     </select>
 
-                    <label for="model" *ngIf="this.productspecifications">Battery life (for portable devices):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.productspecifications">
-                    <label for="model" *ngIf="this.productspecifications"> Connectivity options (e.g., Wi-Fi, Bluetooth,
-                        USB, HDMI):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.productspecifications">
-                    <label for="model" *ngIf="this.productspecifications"> Camera specifications (for smartphones,
-                        cameras, etc.):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.productspecifications">
-                    <label for="model" *ngIf="this.productspecifications">Audio features (e.g., speaker output,
-                        microphone):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.productspecifications">
+                    <label for="model" *ngIf="this.productspecifications">Sleeve Length:</label>
+                    <select id="sleeve-length" name="sleeve-length" *ngIf="this.productspecifications">
+                        <option value="Short Sleeve">Short Sleeve</option>
+                        <option value="Long Sleeve">Long Sleeve</option>
+                        <option value="Sleeveless">Sleeveless</option>
+                        <option value="Three-Quarter Sleeve">Three-Quarter Sleeve</option>
+                    </select>
+
+                    <label for="model" *ngIf="this.productspecifications"> Neckline Type:</label>
+                    <select id="neckline" name="neckline" *ngIf="this.productspecifications">
+                        <option value="Crew Neck">Crew Neck</option>
+                        <option value="V-neck">V-neck</option>
+                        <option value="Scoop Neck">Scoop Neck</option>
+                        <option value="Square Neck">Square Neck</option>
+                        <option value="Off-the-Shoulder">Off-the-Shoulder</option>
+                        <option value="Boat Neck">Boat Neck</option>
+                        <option value="Halter Neck">Halter Neck</option>
+                        <option value="High Neck">High Neck</option>
+                    </select>
+
+                    <label for="model" *ngIf="this.productspecifications"> Closure Type:</label>
+                    <select id="closure" name="closure" *ngIf="this.productspecifications">
+                        <option value="Buttons">Buttons</option>
+                        <option value="Zipper">Zipper</option>
+                        <option value="Snaps">Snaps</option>
+                        <option value="Hook and Eye">Hook and Eye</option>
+                        <option value="Tie Closure">Tie Closure</option>
+                        <option value="Belted">Belted</option>
+                        <option value="Elastic Band">Elastic Band</option>
+                        <option value="Drawstring">Drawstring</option>
+                    </select>
+
+                    <label for="hem-style" *ngIf="this.productspecifications">Hem Style:</label>
+                    <select id="hem-style" name="hem-style" *ngIf="this.productspecifications">
+                        <option value="Straight Hem">Straight Hem</option>
+                        <option value="Curved Hem">Curved Hem</option>
+                        <option value="Asymmetrical Hem">Asymmetrical Hem</option>
+                    </select>
+
+                    <label for="collar-type" *ngIf="this.productspecifications">Collar Type:</label>
+                    <select id="collar-type" name="collar-type" *ngIf="this.productspecifications">
+                        <option value="Spread Collar">Spread Collar</option>
+                        <option value="Point Collar">Point Collar</option>
+                        <option value="Peter Pan Collar">Peter Pan Collar</option>
+                        <option value="Mandarin Collar">Mandarin Collar</option>
+                    </select>
+
+                    <label for="pockets" *ngIf="this.productspecifications">Pockets:</label>
+                    <select id="pockets" name="pockets" *ngIf="this.productspecifications">
+                        <option value="No Pockets">No Pockets</option>
+                        <option value="Chest Pocket">Chest Pocket</option>
+                        <option value="Side Pockets">Side Pockets</option>
+                        <option value="Patch Pockets">Patch Pockets</option>
+                        <option value="Interior Pockets">Interior Pockets</option>
+                    </select>
+
+                    <label for="embellishments" *ngIf="this.productspecifications">Embellishments:</label>
+                    <select id="embellishments" name="embellishments" *ngIf="this.productspecifications">
+                        <option value="None">None</option>
+                        <option value="Embroidery">Embroidery</option>
+                        <option value="Sequins">Sequins</option>
+                        <option value="Appliques">Appliques</option>
+                        <option value="Beadwork">Beadwork</option>
+                    </select>
+
+                    <label for="season-suitability" *ngIf="this.productspecifications">Season or Weather
+                        Suitability:</label>
+                    <select id="season-suitability" name="season-suitability" *ngIf="this.productspecifications">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring/Summer">Spring/Summer</option>
+                        <option value="Fall/Winter">Fall/Winter</option>
+                        <option value="Cold Weather">Cold Weather</option>
+                        <option value="Warm Weather">Warm Weather</option>
+                    </select>
+
+                    <label for="style-details" *ngIf="this.productspecifications">Style or Design Details:</label>
+                    <select id="style-details" name="style-details" *ngIf="this.productspecifications">
+                        <option value="Pleats">Pleats</option>
+                        <option value="Ruffles">Ruffles</option>
+                        <option value="Cutouts">Cutouts</option>
+                        <option value="Bows">Bows</option>
+                    </select>
+
+                    <label for="product-weight" *ngIf="this.productspecifications">Product Weight (in grams):</label>
+                    <input type="number" id="product-weight" name="product-weight" *ngIf="this.productspecifications">
+
+                    <label for="sustainability-features" *ngIf="this.productspecifications">Sustainability
+                        Features:</label>
+                    <select id="sustainability-features" name="sustainability-features"
+                        *ngIf="this.productspecifications">
+                        <option value="None">None</option>
+                        <option value="Organic Materials">Organic Materials</option>
+                        <option value="Recycled Materials">Recycled Materials</option>
+                        <option value="Fair Trade">Fair Trade</option>
+                        <option value="Ethically Sourced">Ethically Sourced</option>
+                    </select>
+
+                    <label for="certification-standards" *ngIf="this.productspecifications">Certification or
+                        Standards:</label>
+                    <select id="certification-standards" name="certification-standards"
+                        *ngIf="this.productspecifications">
+                        <option value="None">None</option>
+                        <option value="Organic Certified">Organic Certified</option>
+                        <option value="Fair Trade Certified">Fair Trade Certified</option>
+                        <option value="GOTS Certified">GOTS Certified</option>
+                        <option value="Bluesign Certified">Bluesign Certified</option>
+                    </select>
+
                 </div>
 
                 <div class="form-group gender">
@@ -558,121 +825,107 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="power-requirements">Power Requirements:</label>
-                    <input type="text" id="power-requirements" name="power-requirements">
-                </div>
-
-                <div class="form-group">
-                    <label for="warranty">Warranty:</label>
-                    <input type="text" id="warranty" name="warranty">
-                </div>
-
-                <div class="form-group">
-                    <label for="dimensions">Dimensions:</label>
-                    <input type="text" id="dimensions" name="dimensions">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputs-outputs">Inputs/Outputs:</label>
-                    <textarea id="inputs-outputs" name="inputs-outputs"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="compatibility">Compatibility:</label>
-                    <input type="text" id="compatibility" name="compatibility">
-                </div>
-
-                <div class="form-group">
-                    <label for="accessories">Accessories:</label>
-                    <textarea id="accessories" name="accessories"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="reviews">Reviews:</label>
-                    <textarea id="reviews" name="reviews"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="availability">Availability:</label>
-                    <input type="text" id="availability" name="availability">
-                </div>
-
-                <div class="form-group">
-                    <label for="ratings">Ratings:</label>
-                    <input type="text" id="ratings" name="ratings">
-                </div>
-
-                <div class="form-group">
-                    <label for="energy-efficiency">Energy Efficiency:</label>
-                    <input type="text" id="energy-efficiency" name="energy-efficiency">
-                </div>
-
-                <div class="form-group">
-                    <label for="user-manual">User Manual:</label>
-                    <input type="text" id="user-manual" name="user-manual">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Produt Quantity:</label>
-                    <input type="text">
-                </div>
-                <div class="form-group">
-                    <label for="">Produt Weight:</label>
-                    <input type="text">
-                </div>
-                <!-- <div class="form-group">
-                    <label for="">Produt Category:</label>
-                    <select name="" id="">
-                        <option value="">Select a category</option>
-                        <option value="amazon-devices">Amazon Devices</option>
-                        <option value="automotive">Automotive</option>
-                        <option value="baby-products">Baby Products</option>
-                        <option value="beauty">Beauty</option>
-                        <option value="books">Books</option>
-                        <option value="clothing">Clothing, Shoes & Jewelry</option>
-                        <option value="computers">Computers & Accessories</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="grocery">Grocery & Gourmet Food</option>
-                        <option value="health">Health & Household</option>
-                        <option value="home-garden">Home & Kitchen</option>
-                        <option value="movies-music-games">Movies, Music & Games</option>
-                        <option value="office-products">Office Products</option>
-                        <option value="pets">Pet Supplies</option>
-                        <option value="sports-outdoors">Sports & Outdoors</option>
-                        <option value="tools-home-improvement">Tools & Home Improvement</option>
-                        <option value="toys-games">Toys & Games</option>
-                        <option value="video-games">Video Games</option>
-                        <option value="watches">Watches</option>
-                        <option value="jewelry">Jewelry</option>
-                        <option value="music">Music</option>
-                        <option value="cameras">Cameras & Photography</option>
-                        <option value="office-furniture">Office Furniture</option>
-                        <option value="cell-phones">Cell Phones & Accessories</option>
-                        <option value="fitness">Fitness & Exercise</option>
-                    </select>
-                </div> -->
-                <div class="form-group">
                     <a (click)="produtKeyFeatures()">Produt Key Features : click here</a>
-                    <label for="model" *ngIf="this.produtkeyfeatures">High-performance processor:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">High-resolution display:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Ample storage capacity:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Long battery life:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Advanced connectivity options (e.g., Wi-Fi,
-                        Bluetooth):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Battery life (for portable devices):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures"> Enhanced camera capabilities:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Intuitive user interface:</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
-                    <label for="model" *ngIf="this.produtkeyfeatures">Cutting-edge technology or features (e.g., voice
-                        control, facial recognition):</label>
-                    <input type="text" id="model" name="model" *ngIf="this.produtkeyfeatures">
+
+                    <label for="comfortable-fit" *ngIf="this.produtkeyfeatures">Comfortable Fit:</label>
+                    <select id="comfortable-fit" name="comfortable-fit" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="high-quality-material" *ngIf="this.produtkeyfeatures">High-Quality Material:</label>
+                    <select id="high-quality-material" name="high-quality-material" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Versatile Styling:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Trendy Design:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Breathability:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Easy Care:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Attention to Detail:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Functional Pockets:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">UV Protection:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Eco-Friendly Materials:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Adjustable Features:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Insulation:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Odor Control:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Stretchability:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Quick-Drying: </label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Wrinkle-Resistant:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <label for="versatile-styling" *ngIf="this.produtkeyfeatures">Ethically Produced:</label>
+                    <select id="versatile-styling" name="versatile-styling" *ngIf="this.produtkeyfeatures">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label for="">Produt Image:</label>
