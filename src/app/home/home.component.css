@@ -128,6 +128,7 @@ body{
     flex-wrap: nowrap;
     justify-content: space-around;
     background-color:rgb(228, 153, 14) ;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 768px) {
@@ -141,7 +142,7 @@ body{
     border-radius: 50%;
     background-color: white;
     /* margin-right: 15px; */
-    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 768px) {
@@ -151,7 +152,7 @@ body{
     border-radius: 50%;
     background-color: white;
     /* margin: 4px; */
-    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
 }
 .container .online-shping .cart-image img{
@@ -173,7 +174,7 @@ body{
     background-color: white;
     margin-top: 5px;
     border-radius: 12px;
-    box-shadow: 6px 6px 5px rgb(205, 195, 195);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 @media screen and (max-width: 768px) {
     .container .online-shping .just-for-you{
@@ -201,14 +202,25 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .container .promotion .new-arrival{
     width: 300px;
-    height: 300px;
+    height: auto;
     border-radius: 12px;
     margin: 20px;
     background-color: white;
-    box-shadow: 6px 6px 5px white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: rotateX('45');
+}
+.container .promotion .new-arrival .owner{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.container .promotion .new-arrival .owner a{
+    text-decoration: none;
 }
 .container .promotion .new-arrival img{
     width: 300px;
@@ -247,6 +259,8 @@ body{
     flex: 1 1 auto;
     justify-content: center;
     margin: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
 }
 
 .container .products {
@@ -255,6 +269,7 @@ body{
     margin: 20px;
     border-radius: 10px;
     transition: 1s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .container .products p{
     margin-bottom: 1px;

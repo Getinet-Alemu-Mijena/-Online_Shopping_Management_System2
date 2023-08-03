@@ -11,25 +11,26 @@
 
 <div class="container">
     <h1>Login</h1>
+    <p class="form-text text-danger"> {{this.IncorrectUserOrPassword}}</p>
     <form [formGroup]="loginForm">
-      <label for="email">Phone Number:</label>
-      <input type="email" id="Phone" formControlName = "phoneNumber" placeholder="Enter your user name!">
+      <label for="email">User Name:</label>
+      <input type="text" id="username" formControlName = "userName" placeholder="Enter your user name!">
 
       <div class="form-text text-danger"
-      *ngIf="phoneNumber.errors?.['required'] && (phoneNumber.dirty || phoneNumber.touched)">
-      *Mobile is Required
+      *ngIf="userName.errors?.['required'] && (userName.dirty || userName.touched)">
+      *User Name is Required
   </div>
   <div class="form-text text-danger"
-      *ngIf="phoneNumber.errors?.['minlength'] && (phoneNumber.dirty || phoneNumber.touched)">
-      *The Minimum length is 10
+      *ngIf="userName.errors?.['minlength'] && (userName.dirty || userName.touched)">
+      *The Minimum length is 4
   </div>
   <div class="form-text text-danger"
-      *ngIf="phoneNumber.errors?.['maxlength'] && (phoneNumber.dirty || phoneNumber.touched)">
-      *The maximum length is 13
+      *ngIf="userName.errors?.['maxlength'] && (userName.dirty || userName.touched)">
+      *The maximum length is 20
   </div>
   <div class="form-text text-danger"
-      *ngIf="phoneNumber.errors?.['pattern'] && (phoneNumber.dirty || phoneNumber.touched)">
-      *Invalid Mobile
+      *ngIf="userName.errors?.['pattern'] && (userName.dirty || userName.touched)">
+      *Invalid User Name
   </div>
 
       <label for="password">Password:</label>
@@ -43,7 +44,7 @@
     <div class="form-text text-danger" *ngIf="password.errors?.['maxlength'] && (password.dirty || password.touched)">
         *The maximum length is 15
     </div>
-      <input type="submit" value="Login">
+      <input type="submit" value="Login" (click)="LoginSubmitted()">
     </form>
     Creare new account<a [routerLink]="['/registration']"> Registration</a>
   </div>

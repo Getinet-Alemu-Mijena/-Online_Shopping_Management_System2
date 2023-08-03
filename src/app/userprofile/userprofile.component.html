@@ -21,9 +21,9 @@
             <li><a href="/my-support-tickets">My Support Tickets</a></li>
             <li><a href="/my-settings">My Settings</a></li>
             <li><a href="/logout">Logout</a></li>
-          </ul>
-          
-        
+        </ul>
+
+
     </div>
     <div class="user-icon" (click)="rightSideBar()">
         <a [routerLink]="['/rprofile']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
@@ -83,52 +83,195 @@
                 <li><a href=""><img src="assets/Images/account.png" alt="">Account settings</a></li>
             </ul>
         </div>
-        <form action="">
+        <form action="" [formGroup]="updateForm">
             <div class="form-group">
                 <label for="">First Name</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="text" placeholder="First Name" *ngIf="this.edit_Input" formControlName="firstname">
+                <div class="form-text text-danger"
+                    *ngIf="firstname.errors?.['required'] && (firstname.dirty || firstname.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="firstname.errors?.['minlength'] && (firstname.dirty || firstname.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="firstname.errors?.['pattern'] && (firstname.dirty || firstname.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="firstname.errors?.['pattern'] && (firstname.dirty || firstname.touched)">
+                    *Name can only be Letters!
+                </div>
+
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">Last Name</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="text" placeholder="Last Name" *ngIf="this.edit_Input" formControlName="lastname">
+                <div class="form-text text-danger"
+                    *ngIf="lastname.errors?.['required'] && (lastname.dirty || lastname.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="lastname.errors?.['minlength'] && (lastname.dirty || lastname.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="lastname.errors?.['pattern'] && (lastname.dirty || lastname.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="lastname.errors?.['pattern'] && (lastname.dirty || lastname.touched)">
+                    *Name can only be Letters!
+                </div>
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">User Name</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="text" placeholder="User Name" *ngIf="this.edit_Input" formControlName="username">
+                <div class="form-text text-danger"
+                    *ngIf="username.errors?.['required'] && (username.dirty || username.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="username.errors?.['minlength'] && (username.dirty || username.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="username.errors?.['pattern'] && (username.dirty || username.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="username.errors?.['pattern'] && (username.dirty || username.touched)">
+                    *Name can only be Letters!
+                </div>
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">Email Address</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="text" placeholder="Email Address" *ngIf="this.edit_Input" formControlName="email">
+                <div class="form-text text-danger" *ngIf="email.errors?.['required'] && (email.dirty || email.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="email.errors?.['minlength'] && (email.dirty || email.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger" *ngIf="email.errors?.['pattern'] && (email.dirty || email.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger" *ngIf="email.errors?.['pattern'] && (email.dirty || email.touched)">
+                    *Name can only be Letters!
+                </div>
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">Phone Number</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="text" placeholder="Phone Number" *ngIf="this.edit_Input" formControlName="phoneNumber">
+                <div class="form-text text-danger"
+                    *ngIf="phoneNumber.errors?.['required'] && (phoneNumber.dirty || phoneNumber.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="phoneNumber.errors?.['minlength'] && (phoneNumber.dirty || phoneNumber.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="phoneNumber.errors?.['pattern'] && (phoneNumber.dirty || phoneNumber.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="phoneNumber.errors?.['pattern'] && (phoneNumber.dirty || phoneNumber.touched)">
+                    *Name can only be Letters!
+                </div>
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">User Roll</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">
-                <!-- <button *ngIf="this.saveButton">Save</button> -->
+                <input type="radio" formControlName="roll" value="Seller"*ngIf="this.edit_Input"><p *ngIf="this.edit_Input">Seller</p>
+                <input type="radio" formControlName="roll" value="Buyer" *ngIf="this.edit_Input"><p *ngIf="this.edit_Input">Buyer</p>
+                <input type="radio" formControlName="roll" value="Both"*ngIf="this.edit_Input"><p *ngIf="this.edit_Input">Both</p>
+                <div class="form-text text-danger" *ngIf="roll.errors?.['required']">
+                    *Select Roll
+                </div>
             </div>
             <div class="form-group">
-                <label for="">First Name</label>
+                <label for="">User Age</label>
                 <h1>Getinet</h1>
-                <input type="text" placeholder="First Name" *ngIf="this.edit_Input">  
+                <input type="text" placeholder="User Age" *ngIf="this.edit_Input" formControlName="age">
+                <div class="form-text text-danger" *ngIf="age.errors?.['required'] && (age.dirty || age.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger" *ngIf="age.errors?.['minlength'] && (age.dirty || age.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger" *ngIf="age.errors?.['pattern'] && (age.dirty || age.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger" *ngIf="age.errors?.['pattern'] && (age.dirty || age.touched)">
+                    *Name can only be Letters!
+                </div>
             </div>
             <div class="form-group">
-                <button *ngIf="this.saveButton">Save</button>
-                <button *ngIf="this.saveButton">Cancel</button>
-                <button (click)="updateInfo()" *ngIf="!this.edit_Input">Edit</button>
+                <label for="">User Gender</label>
+                <h1>Getinet</h1>
+                <input type="radio" formControlName="gender" value="Male" *ngIf="this.edit_Input"><p *ngIf="this.edit_Input">Male</p>
+                <input type="radio" formControlName="gender" value="Female" *ngIf="this.edit_Input"><p *ngIf="this.edit_Input">Female</p>
+                <div class="form-text text-danger" *ngIf="gender.errors?.['required']">
+                    *Select gender
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">User Password</label>
+                <h1>Getinet</h1>
+                <input type="text" placeholder="User Password" *ngIf="this.edit_Input" formControlName="password">
+                <div class="form-text text-danger"
+                    *ngIf="password.errors?.['required'] && (password.dirty || password.touched)">
+                    *First name is Required or is must!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="password.errors?.['minlength'] && (password.dirty || password.touched)">
+                    *The Minimum length is 2!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="password.errors?.['pattern'] && (password.dirty || password.touched)">
+                    *Name can only be Letters!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="password.errors?.['pattern'] && (password.dirty || password.touched)">
+                    *Name can only be Letters!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Confirm Password</label>
+                <h1>Getinet</h1>
+                <input type="text" placeholder="Confirm Password" *ngIf="this.edit_Input" formControlName="ConfirmPassword">
+                <div class="form-text text-danger"
+                    *ngIf="ConfirmPassword.errors?.['required'] && (ConfirmPassword.dirty || ConfirmPassword.touched)">
+                    *Password is Required
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="ConfirmPassword.errors?.['minlength'] && (ConfirmPassword.dirty || ConfirmPassword.touched)">
+                    *The Minimum length is 6
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="ConfirmPassword.errors?.['maxlength'] && (ConfirmPassword.dirty || ConfirmPassword.touched)">
+                    *The maximum length is 15
+                </div>
+                <div class="form-text text-danger" *ngIf="!passWordValidators()">
+                    *It must mutch password field!
+                </div>
+            </div>
+
+            <!-- this.cancelBtn = true;
+    this.edit_Input = false;
+    this.saveButton = false; -->
+            <div class="form-group">
+                <button *ngIf="this.edit_Input && !this.saveButton" (click)="savemethod()" >Save</button>
+                <button *ngIf="this.edit_Input && !this.cancelBtn" (click)="cancelMethod()">Cancel</button>
+                <button (click)="updateInfo()" *ngIf="!this.edit_Input || this.cancelBtn || this.saveButton">Edit</button>
             </div>
         </form>
     </div>

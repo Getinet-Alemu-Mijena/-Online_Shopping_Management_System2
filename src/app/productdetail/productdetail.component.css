@@ -206,6 +206,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .container .category{
@@ -217,7 +218,7 @@ body {
     align-items: center;
     margin: 3px;
     border-radius: 12px;
-    box-shadow: 6px 6px 5px rgb(247, 247, 249);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .container .category img{

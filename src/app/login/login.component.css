@@ -151,6 +151,7 @@ body{
   }
   
   input[type="email"],
+  input[type="text"],
   input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -161,7 +162,7 @@ body{
   }
   
   input[type="submit"] {
-    background-color: wheat;
+    background-color: rgb(248, 2, 207);
     color: white;
     padding: 12px 20px;
     border: none;
@@ -170,10 +171,6 @@ body{
     font-size: 16px;
     font-weight: bold;
     transition: 1.5s;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #3E8E41;
   }
   
   /* Media queries for responsive design */
