@@ -14,7 +14,6 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
   {path:'seller',component:SellerComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'userprofile',component:UserprofileComponent},
@@ -26,7 +25,8 @@ const routes: Routes = [
   {path:'contactus',component:ContactusComponent},
   {path:'faq',component: FaqComponent},
   {path:'Home',component:HomeComponent},
-  { path: '',   redirectTo: 'Home', pathMatch: 'full' }
+  {path:'login',component:LoginComponent},
+  { path: '',   redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

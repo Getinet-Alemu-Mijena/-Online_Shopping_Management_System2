@@ -21,13 +21,13 @@ export class CustomerComponent{
   actionOn(){
      this.action = true;
   }
-  // ngOnInit(){
-  //   if(this.userSession.getUserRoll() === "Buyer" || this.userSession.getUserRoll() === "Both"){
-  //     alert("Allowed!")
-  //   }
-  //   else{
-  //     this.router.navigate(['/login']);
-  //     this.userSession.clearUserRoll();
-  //   }
-  // }
+  ngOnInit(){
+    if(this.userSession.getUserRoll() === "Buyer" || this.userSession.getUserRoll() === "Both"){
+      alert("Allowed!")
+    }
+    else{
+      this.router.navigate(['/login']);
+      this.userSession.clearUserRoll();
+    }
+  }
 }

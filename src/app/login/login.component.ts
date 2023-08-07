@@ -43,6 +43,7 @@ export class LoginComponent {
           (response) => {
             if ((response as any).message == 'User exists') {
               this.userSession.setUserName(this.userName.value);
+              this.UsersId(this.userName.value);
               this.CheckRole(this.userName.value);
             // this.router.navigate(['/Home']);
             } else {
@@ -78,8 +79,6 @@ export class LoginComponent {
             this.router.navigate(['/Home']);
             this.userSession.setUserRoll("Both");
           }
-          this.UsersId(this.userName.value);
-          
           // alert(this.UserRole);
           // alert(this.userSession.getUserName());
           // this.Load_User_Balance(userName);
@@ -97,10 +96,12 @@ export class LoginComponent {
 
 
   UsersId(userName: string) {
+    // alert("called");
     this.http.get(`http://localhost:3050/UserId/${userName}`).subscribe(
       (response) => {
         if ((response as any).message == 'User exists') {
           this.UserId = (response as any).Ids;
+          // alert(this.UserId);
            this.userSession.setUserId(this.UserId);
         } else {
           this.IncorrectUserOrPassword = 'Incorrect User Name Or Password';

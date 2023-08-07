@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UsersessionService } from '../usersession.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -16,7 +19,9 @@ export class UserprofileComponent {
   rightsidebar:boolean = false;
   cancelBtn:boolean = false;
 
-  constructor(){}
+  constructor(  private http: HttpClient,
+    private userSession: UsersessionService,
+    private router: Router ){}
   toggleNavbar(){
    this.isNavbarOpen = !this.isNavbarOpen;
   }
@@ -137,4 +142,13 @@ export class UserprofileComponent {
       return false;
     }
   }
+  ngOnInit() {
+    if(this.userSession.getUserRoll() === "Seller" || this.userSession.getUserRoll() === "Both" || this.userSession.getUserRoll() === "Buyer" || this.userSession.getUserRoll() === "Admin" ){
+      this.router.navigate(['/userprofile']);
+    }
+    else{
+      this.router.navigate(['/login']);
+      this.userSession.clearUserRoll();
+    }
+}
 }

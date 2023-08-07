@@ -274,7 +274,7 @@
     cursor: pointer;
     margin-bottom: 70px;
     transition: 1s;
-    /* opacity: 0.7; */
+    cursor: pointer;
 }
 
 .container .main-content .seller-products:hover{
@@ -293,11 +293,19 @@
 .container .main-content .seller-products .product-property{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
 }
 .container .main-content .seller-products .product-property p{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(3, 26, 9);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 600;
+}
+.container .main-content .seller-products .product-property p label{
+    color: #03aef8;
+}
+.container .main-content .upload-product{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .container .main-content .upload-product .form-group{
     margin: 35px;
@@ -318,6 +326,7 @@
     font-weight: 600;
     cursor: pointer;
     color: rgb(234, 94, 234);
+    border-radius: 12px;
 }
 
 .container .main-content .upload-product .gender{
@@ -370,9 +379,6 @@
    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    font-size: 30px;
    font-weight: bolder;
-}
-.container .main-content .upload-product .form-group select:hover{
-    color: bisque;
 }
 .container .main-content .upload-product .form-group input:hover{
     border-color: rgb(12, 19, 16);

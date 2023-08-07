@@ -21,10 +21,10 @@ export class AdminComponent {
   actionOn(){
      this.action = true;
   }
-  // ngOnInit(){
-  //   if(this.userSession.getUserRoll()!= "Admin" || this.userSession.getUserRoll() == " "){
-  //     this.router.navigate(['/login']);
-  //     this.userSession.clearUserRoll();
-  //   }
-  // }
+  ngOnInit(){
+    if(this.userSession.getUserRoll()!= "Admin" || this.userSession.getUserRoll() == " "){
+      this.router.navigate(['/login']);
+      this.userSession.clearUserRoll();
+    }
+  }
 }

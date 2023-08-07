@@ -31,7 +31,7 @@ export class UsersessionService {
   }
 
   clearUserRoll() {
-    this.userId = null;
+    this.userRoll = null;
   }
   setUserId(data: any) {
     this.userId = data;

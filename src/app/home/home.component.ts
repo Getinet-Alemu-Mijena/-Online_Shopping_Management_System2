@@ -9,16 +9,18 @@ import { UsersessionService } from '../usersession.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  userId: any;
   constructor(private http: HttpClient,private userSession: UsersessionService, private router:Router){}
   isNavbarOpen = false;
   toggleNavbar() {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
 
-  // ngOnInit(){
-  //   if( this.userSession.getUserRoll()!= "Both" || this.userSession.getUserRoll() == " "){
-  //     this.router.navigate(['/login']);
-  //     this.userSession.clearUserRoll();
-  //   }
-  // }
+  ngOnInit(){
+    if( this.userSession.getUserRoll()!= "Both" || this.userSession.getUserRoll() == " "){
+      this.router.navigate(['/login']);
+      this.userSession.clearUserRoll();
+      this.userId  = this.userSession.getUserId(); 
+    }
+  }
 }
