@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UsersessionService {
- 
-  constructor() {}
-
+  productId: any;
   private userName: any;
   private userRoll: any;
   private userId: any;
-  
+ 
+  constructor() {}
+
   setUserName(data: any) {
     this.userName = data;
   }
@@ -43,5 +43,17 @@ export class UsersessionService {
 
   clearUserId() {
     this.userId = null;
+  }
+
+  setProductId(data: any) {
+    this.productId = data;
+  }
+
+  getProductId() {
+    return this.productId;
+  }
+
+  clearProductId() {
+    this.productId = null;
   }
 }

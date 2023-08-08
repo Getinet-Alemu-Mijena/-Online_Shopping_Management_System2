@@ -1458,7 +1458,29 @@
                     <th colspan="4">Actions</th>
                 </thead>
                 <tbody>
+                    <tr *ngFor="let product1 of product2">
+                        <td>{{product1.Id}}</td>
+                        <td>{{ product1.Product_Name }}</td>
+                        <td>{{ product1.Product_Type }}</td>
+                        <td>{{ product1.Produt_Price }}</td>
+                        <td>1rrruu</td>
+                        <td>1rrruu</td>
+                        <td>1rrruu</td>
+                        <td>1rrruu</td>
+                        <td>1rrruu</td>
+                        <td colspan="4">
                     <tr>
+                        <button id="btn-edit">Edit</button>
+
+                        <button id="btn-delete">Delete</button>
+
+                        <button id="btn-view">View</button>
+
+                        <button id="btn-enable">Enable</button>
+                    </tr>
+                    </td>
+                    </tr>
+                    <!-- <tr>
                         <td>1rrruu</td>
                         <td>1rrruu</td>
                         <td>1rrruu</td>
@@ -1743,29 +1765,7 @@
                         <button id="btn-enable">Enable</button>
                     </tr>
                     </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
