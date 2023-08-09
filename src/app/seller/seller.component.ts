@@ -15,6 +15,8 @@ import { UsersessionService } from '../usersession.service';
 })
 export class SellerComponent {
   userId: any;
+  ProductsPictures!: string[];
+  ProductPicture: any;
   constructor(
     private http: HttpClient,
     private userSession: UsersessionService,
@@ -22,9 +24,8 @@ export class SellerComponent {
   ) {}
   fb: any;
   fileName: any;
-  ProductPicture!: string;
+  // ProductPicture!: string;
   Product1!: string;
-  ProductsPicture!: string;
   Product2!: string;
 
   // start of Form Validation
@@ -33,7 +34,7 @@ export class SellerComponent {
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(100),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     produttype: new FormControl('', [Validators.required]),
     productprice: new FormControl('', [
@@ -52,31 +53,31 @@ export class SellerComponent {
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     productmodel: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     productconnectivity: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     powerrequirements: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     warranty: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     dimensions: new FormControl('', [
       // Validators.required,
@@ -88,49 +89,49 @@ export class SellerComponent {
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9]*'),
+      Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     compatibility: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z0-9]*'),
+      Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     accessories: new FormControl('', [
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9]*'),
+      Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     reviews: new FormControl('', [
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9]*'),
+      Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     availability: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     ratings: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     energyEfficiency: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     userManual: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z][a-zA-Zs]*'),
+      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     produtQuantity: new FormControl('', [
       Validators.required,
@@ -383,12 +384,15 @@ export class SellerComponent {
     this.uploadForm = this.fb.group({
       produtImage: [null, [Validators.required]],
     });
+    // this.uploadForm = this.fb.group({
+    //   images: [
+    //     null,
+    //     [Validators.required, this.validateFileTypes(['image/*'])],
+    //     [Validators.required, this.validateFileTypesVideo(['video/*'])],
+    //   ],
+    // });
     this.uploadForm = this.fb.group({
-      images: [
-        null,
-        [Validators.required, this.validateFileTypes(['image/*'])],
-        [Validators.required, this.validateFileTypesVideo(['video/*'])],
-      ],
+      images: [null, Validators.required],
     });
   }
   onFileSelected(event: any) {
@@ -414,14 +418,34 @@ export class SellerComponent {
   //   }
   // }
 
+  // fileSelected(event: any) {
+  //   const files = event.target.files;
+  //   console.log(files); // Debugging line.
+
+  //   if (files.length > 0) {
+  //     this.ProductsPicture = files[0].name;
+  //     this.Product2 = files[0];
+  //     this.uploadForm.patchValue({ images: files });
+  //   }
+  // }
+
   fileSelected(event: any) {
     const files = event.target.files;
-    console.log(files); // Debugging line.
+    this.Product2 = files;
 
     if (files.length > 0) {
-      this.ProductsPicture = files[0].name;
-      this.Product2 = files[0];
-      this.uploadForm.patchValue({ images: files });
+      this.ProductsPictures = [];
+
+      for (const file of files) {
+        this.ProductsPictures.push(file.name);
+        console.log(this.ProductsPictures);
+      }
+
+      // Replace the input element with a new one to reset its value
+      const inputElement = document.getElementById(
+        'image-upload'
+      ) as HTMLInputElement;
+      inputElement.outerHTML = inputElement.outerHTML;
     }
   }
 
@@ -569,7 +593,7 @@ export class SellerComponent {
       produtQuantity: this.produtQuantity.value,
       produtWeight: this.produtWeight.value,
       produtImage: this.ProductPicture,
-      images: this.ProductsPicture,
+      images: this.ProductsPictures,
       UserId: this.userId,
     };
 
@@ -580,6 +604,7 @@ export class SellerComponent {
         if ((response as any).message == 'Product added successfully') {
           this.uploadForm.reset();
           alert('Product added sucessfully');
+
           if (this.Product1) {
             //alert('some how it is working');
             const formData = new FormData();
@@ -591,6 +616,34 @@ export class SellerComponent {
                 alert('File Uploaded!');
               });
           }
+
+          if (this.ProductsPictures) {
+            const formData = new FormData();
+          
+            // Convert filenames to File objects and append them to FormData
+            // for (const selectedFileName of this.ProductsPictures) {
+            //   const file = new File([selectedFileName], selectedFileName, {
+            //     type: 'image/png/webp/png/jpg/jfif' // Adjust the MIME type as needed
+            //   });
+            //   formData.append('files', file);
+            // }
+            for (const selectedFileName of this.ProductsPictures) {
+              const file = new File([selectedFileName], selectedFileName);
+              formData.append('files', file);
+            }
+            
+            // Send the FormData object in the POST request
+            this.http.post('http://localhost:3050/uploadImages', formData).subscribe(
+              (response) => {
+                console.log(response);
+                alert('Files Uploaded!');
+              },
+              (error) => {
+                console.error('Error uploading files: ', error);
+              }
+            );
+            }
+          
         } else {
           alert('something is wrong');
         }
@@ -653,7 +706,10 @@ export class SellerComponent {
       }
     );
   }
-
+  navigateToProductDetail(productId: number) {
+    this.router.navigate(['product-detail', productId]);
+    this.userSession.setProductId(productId);
+  }
   // End of backend code
 
   logOut() {

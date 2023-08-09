@@ -185,6 +185,7 @@ body {
 }
 
 .container {
+    height: auto;
     display: grid;
     grid-template-columns: 550px 1fr 300px;
     grid-template-rows: 1fr;
@@ -209,7 +210,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.container .category{
+.container .category {
     background-color: white;
     grid-area: left;
     display: flex;
@@ -221,7 +222,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.container .category img{
+.container .category img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -229,13 +230,13 @@ body {
     box-shadow: 6px 6px 5px rgb(200, 184, 184);
 }
 
-.container .category li{
+.container .category li {
     list-style: none;
     margin-bottom: 15px;
     padding: 10px;
 }
 
-.container .category ul li a{
+.container .category ul li a {
     text-decoration: none;
     color: rgb(61, 35, 35);
     font-size: larger;
@@ -247,7 +248,8 @@ body {
     border-radius: 10px;
     transition: 1s;
 }
-.container .category ul li a:hover{
+
+.container .category ul li a:hover {
     background-color: #696161;
     color: white;
 }
@@ -299,7 +301,7 @@ body {
     padding: 15px;
 }
 
-.container .main-content select{
+.container .main-content select {
     padding: 12px;
     font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -318,7 +320,7 @@ body {
 }
 
 .container .main-content ul li {
-    font-family:'Times New Roman', Times, serif ;
+    font-family: 'Times New Roman', Times, serif;
     font-size: larger;
     font-weight: 500;
 }
@@ -353,7 +355,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    .container .right-sidebar{
+    .container .right-sidebar {
         width: 100%;
     }
 }
@@ -385,4 +387,32 @@ body {
 
 .container .right-sidebar .add-to-cart p {
     color: rgb(238, 72, 12);
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+}
+
+.container1 .product-description {
+    width: 80%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 12px;
+}
+
+.container1 .product-description p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 400;
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */
 }

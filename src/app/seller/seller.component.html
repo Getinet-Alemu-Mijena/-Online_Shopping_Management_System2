@@ -118,115 +118,20 @@
         <div class="seller-products" *ngFor="let product of product2">
             <!-- <img src="assets/Images/product.ProductImage" alt="Product Image"> -->
             <!-- <pre>{{ product | json }}</pre> -->
-            <img [src]="'assets/Images/' + product.ProdutImage" alt="">
+            <img [src]="'assets/Images/' + product.ProdutImage" alt="" (click)="navigateToProductDetail(product.Id)">
             <div class="product-property">
                 <p>Product Owner: <label *ngIf="userId">{{ userId }}</label> </p>
                 <p>Product Id: <label>{{ product.Id }}</label> </p>
                 <p>Product name: <label>{{ product.Product_Name }}</label> </p>
                 <p>Product type: <label>{{ product.Product_Type }}</label></p>
-                <p>Product Price: <label>{{ product.Produt_Price }}</label></p>
+                <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
             </div>
         </div>
-        <!-- <div class="seller-products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id: </p>
-                <p>Product name: </p>
-                <p>Product type:</p>
-                <p (click)="fetchProductImages()">Product Price:</p>
-            </div>
-        </div> -->
     </div>
+
+   
     <div class="main-content">
 
-        <!-- start of seller product -->
-        <!-- <div class="seller-products" *ngIf="!viewproduct" ngFor="let product of products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-              <p>Product Id: </p>
-              <p>Product name: </p>
-              <p>Product category:</p>
-              <p>Product Price:</p>
-            </div>
-          </div> -->
-
-
-
-
-
-
-        <!-- <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div>
-        <div class="seller-products" *ngIf="!this.viewproduct">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{userId}}</label> </p>
-                <p>Product Id</p>
-                <p>Product name</p>
-                <p>Product category</p>
-                <p>Product Price</p>
-            </div>
-        </div> -->
         <!-- end of seller product -->
 
         <!-- start of seller's uploade electronics product -->
@@ -1437,10 +1342,6 @@
         <!-- end of seller upload clothes product -->
 
 
-
-
-
-
         <!-- start of manage product -->
 
         <div class="manage-product" *ngIf=" this.manageproduct && !this.uploadproduct && this.viewproduct">
@@ -1448,11 +1349,12 @@
                 <thead>
                     <th>Product ID</th>
                     <th>Title</th>
-                    <th>Description</th>
+                    <th>Model</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Category</th>
                     <th>Brand</th>
+                    <!-- <th>Product_Image</th> -->
                     <th>Date Added</th>
                     <th>Last Updated</th>
                     <th colspan="4">Actions</th>
@@ -1461,33 +1363,12 @@
                     <tr *ngFor="let product1 of product2">
                         <td>{{product1.Id}}</td>
                         <td>{{ product1.Product_Name }}</td>
-                        <td>{{ product1.Product_Type }}</td>
+                        <td>{{ product1.Product_Model }}</td>
                         <td>{{ product1.Produt_Price }}</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <!-- <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
+                        <td>{{ product1.Produt_Quantity }}</td>
+                        <td>{{ product1.Product_Type }}</td>
+                        <td>{{ product1.Product_Brand }}</td>
+                        <!-- <img [src]="'assets/Images/' + product1.ProdutImage" alt=""> -->
                         <td>1rrruu</td>
                         <td>1rrruu</td>
                         <td colspan="4">
@@ -1502,270 +1383,6 @@
                     </tr>
                     </td>
                     </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td>1rrruu</td>
-                        <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
-
-                        <button id="btn-delete">Delete</button>
-
-                        <button id="btn-view">View</button>
-
-                        <button id="btn-enable">Enable</button>
-                    </tr>
-                    </td>
-                    </tr> -->
                 </tbody>
             </table>
         </div>

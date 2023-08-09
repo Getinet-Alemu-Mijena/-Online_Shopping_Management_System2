@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'userprofile',component:UserprofileComponent},
   {path:'files',component:FilehandlingComponent},
-  {path:'product-detail',component:ProductdetailComponent},
+  {path:'product-detail/:Id',component:ProductdetailComponent},
   {path:'customer',component:CustomerComponent},
   {path:'admins',component:AdminComponent},
   {path:'aboutus',component:AboutusComponent},
