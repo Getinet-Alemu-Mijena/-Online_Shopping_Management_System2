@@ -29,7 +29,8 @@ export class ProductdetailComponent{
     if (
       this.userSession.getUserRoll() === 'Seller' ||
       this.userSession.getUserRoll() === 'Both' ||
-      this.userSession.getUserRoll() === 'Admin'
+      this.userSession.getUserRoll() === 'Admin' ||
+      this.userSession.getUserRoll() === 'Buyer'
     ) {
       this.getProductDetail();
       this.  loadProductSubImages();

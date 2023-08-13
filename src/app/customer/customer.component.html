@@ -1,16 +1,14 @@
-
-
 <nav class="navbar">
     <div class="navbar-logo">
         <a href="#"><img src="assets/Logos/images.png" alt=""></a>
     </div>
     <div class="navbar-toggle" (click)="toggleNavbar()">
-            <span></span>
         <span></span>
         <span></span>
-        
+        <span></span>
+
     </div>
-    
+
     <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
         <ul class="customer-navigation">
             <li><a href="/">Home</a></li>
@@ -23,21 +21,17 @@
             <li><a href="/help">Help/Support</a></li>
             <li><a href="/track-order">Track Order</a></li>
             <li><a href="/sign-in">Sign In/Sign Up</a></li>
-          </ul>     
+        </ul>
     </div>
-    <div class="user-icon"(click)="actionOn()">
-        <a [routerLink]="['/seller']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
-        <div class="action"*ngIf="this.action">
-         <a [routerLink]="['/login']">Logout</a>
-         <a [routerLink]="['/userprofile']">Profile</a>
-        </div>
+    <div class="user-icon" (click)="actionOn()">
+        <a [routerLink]="['/customer']"><img src="assets/Logos/Getinet Alemu.jpg" alt=""></a>
     </div>
 </nav>
 
 <div class="container">
-    <div class="left-sidebar">
+    <div class="left-sidebar" (click)="remobeRightSideBar()">
         <ul class="customer-navigation">
-            <li><a href="#">Browsing and Searching</a></li>
+            <li><a (click)="viewAllProduct()">View Product</a></li>
             <li><a href="#">Product Selection</a></li>
             <li><a href="#">Placing Orders</a></li>
             <li><a href="#">Payment Processing</a></li>
@@ -47,162 +41,136 @@
             <li><a href="#">Returns and Exchanges</a></li>
             <li><a href="#">Account Management</a></li>
             <li><a href="#">Recommendations and Referrals</a></li>
-          </ul>
-          
-          
-    </div> 
-    <div class="main-content">
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
+        </ul>
+
+
+    </div>
+    <div class="right-sidebar" *ngIf="this.action">
+        <ul>
+            <li><a [routerLink]="">View Products</a></li>
+            <li><a>Upload Products</a></li>
+            <li><a [routerLink]="['/userprofile']">Your Account</a></li>
+
+            <ul>
+                <li> <a>Electronics Department</a> </li>
+                <li> <a>Clothing Department</a></li>
+                <li><a href="">Home Appliances Department</a></li>
+                <li><a href="">Beauty and Personal Care Department</a></li>
+                <li><a href="">Sports and Fitness Department</a></li>
+                <li><a href="">Books Department</a></li>
+            </ul>
+            <li><a>Product management</a></li>
+            <li><a href="">Payment processing</a></li>
+            <li><a href="">Communication</a></li>
+            <li><a href="">Reports and analytics</a></li>
+            <li><a href="">Feedback and ratings</a></li>
+            <li><a [routerLink]="['/login']" (click)="logOut()">Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content" *ngIf="!this.viewproduct"  (click)="remobeRightSideBar()">
+        <div class="seller-products" *ngFor="let product of product1">
+            <ng-container *ngIf="product.isVideo; else imageTemplate">
+                <video controls>
+                    <source [src]="'assets/Images/' + product.ProdutImage" type="video/mp4"
+                        (click)="navigateToProductDetail(product.Id)">
+                    Your browser does not support the video tag.
+                </video>
+            </ng-container>
+            <ng-template #imageTemplate>
+                <img [src]="'assets/Images/' + product.ProdutImage" alt=""
+                    (click)="navigateToProductDetail(product.Id)">
+            </ng-template>
+            <div class="product-property">
+                <p>Product Owner: <label *ngIf="userId">{{ userId }}</label> </p>
+                <p>Product Id: <label>{{ product.Id }}</label> </p>
+                <p>Product name: <label>{{ product.Product_Name }}</label> </p>
+                <p>Product type: <label>{{ product.Product_Type }}</label></p>
+                <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
+            </div>
         </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
+    </div>
+
+
+    <div class="main-content" *ngIf="this.viewproduct" (click)="remobeRightSideBar()">
+        <div class="upload-product" *ngIf="this.uploadproduct && !this.viewproduct">
+            <h1 style="text-decoration:underline; text-decoration-color: orange;">Hello Seller Upload Your Product
+                Here!! </h1>
+            <form action="">
+                <div class="form-group">
+                    <label for="">Produt Name:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Price:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Description:</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Brand:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Dimensions:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Quantity:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Weight:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Category:</label>
+                    <select name="" id="">
+                        <option value="">Select a category</option>
+                        <option value="amazon-devices">Amazon Devices</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="baby-products">Baby Products</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="books">Books</option>
+                        <option value="clothing">Clothing, Shoes & Jewelry</option>
+                        <option value="computers">Computers & Accessories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="grocery">Grocery & Gourmet Food</option>
+                        <option value="health">Health & Household</option>
+                        <option value="home-garden">Home & Kitchen</option>
+                        <option value="movies-music-games">Movies, Music & Games</option>
+                        <option value="office-products">Office Products</option>
+                        <option value="pets">Pet Supplies</option>
+                        <option value="sports-outdoors">Sports & Outdoors</option>
+                        <option value="tools-home-improvement">Tools & Home Improvement</option>
+                        <option value="toys-games">Toys & Games</option>
+                        <option value="video-games">Video Games</option>
+                        <option value="watches">Watches</option>
+                        <option value="jewelry">Jewelry</option>
+                        <option value="music">Music</option>
+                        <option value="cameras">Cameras & Photography</option>
+                        <option value="office-furniture">Office Furniture</option>
+                        <option value="cell-phones">Cell Phones & Accessories</option>
+                        <option value="fitness">Fitness & Exercise</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Key Features:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Image:</label>
+                    <input class="my-file" type="file">
+                </div>
+                <div class="form-group">
+                    <label for="">Produt's Images:</label>
+                    <input class="my-file" type="file" id="image-upload" name="images[]" multiple>
+                </div>
+                <div class="form-group">
+                    <button>Submit</button>
+                </div>
+            </form>
         </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-       <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
-        <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-        <div class="product-property">
-            <p>Product Id</p>
-            <p>Product name</p>
-            <p>Product category</p>
-            <p>Product Price</p>
-        </div>
-       </div>
-         
-       <div class="upload-product" *ngIf="this.uploadproduct && !this.viewproduct">
-        <h1 style="text-decoration:underline; text-decoration-color: orange;">Hello Seller Upload Your Product Here!! </h1>
-          <form action="">
-            <div class="form-group">
-                <label for="">Produt Name:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Price:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Description:</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="">Produt Brand:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Dimensions:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Quantity:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Weight:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Category:</label>
-                <select name="" id="">
-                    <option value="">Select a category</option>
-                    <option value="amazon-devices">Amazon Devices</option>
-                    <option value="automotive">Automotive</option>
-                    <option value="baby-products">Baby Products</option>
-                    <option value="beauty">Beauty</option>
-                    <option value="books">Books</option>
-                    <option value="clothing">Clothing, Shoes & Jewelry</option>
-                    <option value="computers">Computers & Accessories</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="grocery">Grocery & Gourmet Food</option>
-                    <option value="health">Health & Household</option>
-                    <option value="home-garden">Home & Kitchen</option>
-                    <option value="movies-music-games">Movies, Music & Games</option>
-                    <option value="office-products">Office Products</option>
-                    <option value="pets">Pet Supplies</option>
-                    <option value="sports-outdoors">Sports & Outdoors</option>
-                    <option value="tools-home-improvement">Tools & Home Improvement</option>
-                    <option value="toys-games">Toys & Games</option>
-                    <option value="video-games">Video Games</option>
-                    <option value="watches">Watches</option>
-                    <option value="jewelry">Jewelry</option>
-                    <option value="music">Music</option>
-                    <option value="cameras">Cameras & Photography</option>
-                    <option value="office-furniture">Office Furniture</option>
-                    <option value="cell-phones">Cell Phones & Accessories</option>
-                    <option value="fitness">Fitness & Exercise</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Produt Key Features:</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label for="">Produt Image:</label>
-                <input class="my-file" type="file">
-            </div>
-            <div class="form-group">
-                <label for="">Produt's Images:</label>
-                <input class="my-file" type="file" id="image-upload" name="images[]" multiple>
-            </div>
-            <div class="form-group">
-                <button>Submit</button>
-            </div>
-          </form>
-       </div>
     </div>
 </div>
