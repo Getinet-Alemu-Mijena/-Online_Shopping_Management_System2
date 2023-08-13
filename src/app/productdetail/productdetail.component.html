@@ -73,35 +73,18 @@
 <div class="container">
   <div class="left-sidebar" *ngIf="this.backicon  || !this.category">
     <div class="sub-images-container">
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
-      </div>
-      <div class="images">
-        <img src="assets/Logos/images.png" alt="">
+      <div class="images" *ngFor="let image of product1">
+        <img src="assets/Images/{{ image }}" alt="" (mouseenter)="subzoomin = true" (mouseleave)="subzoomin = false">
       </div>
       <p>Video</p>
     </div>
-    <div class="big-image" *ngIf="product">
-      <img [src]="'assets/Images/' + product.ProdutImage" alt="">
+    <div class="big-image" *ngIf="product && !this.subzoomin">
+      <img [src]="'assets/Images/' + product.ProdutImage" alt=""(mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
       <p>Roll over image to zoom in</p>
+    </div>
+
+    <div class="big-image" *ngIf = "product1 && this.subzoomin">
+      <img [src]="'assets/Images/' + product1.ProdutsImage"  alt="" (mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
     </div>
   </div>
 
@@ -133,8 +116,12 @@
 
   </div>
 
-
+  <div class="zoom-in" *ngIf="this.zoomin">
+      <img [src]="'assets/Images/' + product.ProdutImage"alt="">
+  </div>
   <div class="main-content">
+
+    
     <h4 *ngIf="product">
       {{product.Product_Name}}
     </h4>
@@ -218,30 +205,9 @@
 
     <hr>
     <h2>About this item</h2>
-    <ul>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-      <li>LIGHTSPEED wireless delivers pro-grade performance with flexibility and freedom from cords. Creates a clean
-        aesthetic for battlestations. Delivers 40 hours on a single full charge.</li>
-    </ul>
+      <div class="product-description">
+        <p *ngIf="product"> {{product.AboutThisProduct}} </p>
+      </div>
   </div>
   <div class="right-sidebar">
     <div class="add-to-cart">

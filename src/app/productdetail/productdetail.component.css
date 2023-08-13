@@ -146,7 +146,7 @@ body {
 }
 
 .sub-nav {
-    width: 100%;
+    width: auto;
     height: 50px;
     left: 0;
     right: 0;
@@ -187,14 +187,34 @@ body {
 .container {
     height: auto;
     display: grid;
-    grid-template-columns: 550px 1fr 300px;
+    grid-template-columns: 500px 700px 300px;
     grid-template-rows: 1fr;
     grid-template-areas: "left main right";
     margin-top: 7px;
     left: 0;
     right: 0;
 }
+.container .zoom-in{
+    background-color: rgb(255, 255, 255);
+    width: 955px;
+    height: 700px;
+    margin-top: 90px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    z-index: 80;
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
 
+.container .zoom-in img{
+    width: 955px;
+    height: 700px;
+}
 @media screen and (max-width: 768px) {
     .container {
         display: block;
@@ -266,8 +286,8 @@ body {
 
 .container .left-sidebar .sub-images-container .images {
     height: 70px;
-    width: 70%;
-    margin: 2px;
+    width: 50px;
+    margin: 7px;
     background-color: white;
     box-shadow: 6px 6px 5px wheat;
     border-radius: 10px;
@@ -275,7 +295,7 @@ body {
 
 .container .left-sidebar .sub-images-container .images img {
     height: 70px;
-    width: 70%;
+    width: 50px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -317,12 +337,20 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 800;
     margin-bottom: 20px;
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */
 }
 
 .container .main-content ul li {
     font-family: 'Times New Roman', Times, serif;
     font-size: larger;
     font-weight: 500;
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */
 }
 
 .product-properties {
@@ -385,8 +413,19 @@ body {
     background-color: orange;
 }
 
+.container .right-sidebar .add-to-cart{
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */ 
+}
+
 .container .right-sidebar .add-to-cart p {
     color: rgb(238, 72, 12);
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */
 }
 
 .container1 {
@@ -408,6 +447,26 @@ body {
 }
 
 .container1 .product-description p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 400;
+    overflow: hidden;
+    /* Hide any overflow content */
+    word-wrap: break-word;
+    /* Wrap long words to the next line */
+}
+.container .main-content .product-description {
+    width: 80%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-radius: 12px;
+}
+
+.container .main-content .product-description p {
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
     font-weight: 400;

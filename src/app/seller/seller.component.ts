@@ -17,6 +17,10 @@ export class SellerComponent {
   userId: any;
   ProductsPictures!: string[];
   ProductPicture: any;
+  product: any;
+  product3: any;
+  changestatus: boolean = false;
+  // productId: string;
   constructor(
     private http: HttpClient,
     private userSession: UsersessionService,
@@ -30,108 +34,121 @@ export class SellerComponent {
 
   // start of Form Validation
   uploadForm = new FormGroup({
+    productId: new FormControl('', [
+      Validators.required,
+      Validators.minLength(30),
+      Validators.maxLength(500),
+      // Validators.pattern('/^.*$/'),
+    ]),
     productname: new FormControl('', [
       Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(100),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      Validators.minLength(30),
+      Validators.maxLength(500),
+      // Validators.pattern('/^.*$/'),
     ]),
+    aboutthisitem: new FormControl('', [
+      Validators.required,
+      Validators.minLength(100),
+      Validators.maxLength(500),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
+    ]),
+    ProdutCategory: new FormControl('',[Validators.required]),
     produttype: new FormControl('', [Validators.required]),
     productprice: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20),
-      Validators.pattern('^[0-9]+[d+(.d+)]?[0-9]*$'),
+      // Validators.pattern('^[0-9]+[d+(.d+)]?[0-9]*$'),
     ]),
     produtdescription: new FormControl('', [
       Validators.required,
       Validators.minLength(100),
-      Validators.maxLength(700),
-      Validators.pattern(/^[a-zA-Z0-9\s.,!?'"()-]+$/),
+      Validators.maxLength(2000),
+      // Validators.pattern(/^[a-zA-Z0-9\s.,!?'"()-]+$/),
     ]),
     produtbrand: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     productmodel: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     productconnectivity: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     powerrequirements: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     warranty: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     dimensions: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('d+(.d+)?s*xs*d+(.d+)?s*xs*d+(.d+)?'),
+      // Validators.pattern('d+(.d+)?s*xs*d+(.d+)?s*xs*d+(.d+)?'),
     ]),
     inputsoutputs: new FormControl('', [
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     compatibility: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     accessories: new FormControl('', [
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     reviews: new FormControl('', [
       // Validators.required,
       Validators.minLength(50),
       Validators.maxLength(200),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     availability: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     ratings: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     energyEfficiency: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     userManual: new FormControl('', [
       // Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20),
-      Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
+      // Validators.pattern('[a-zA-Z ][a-zA-Zs ]*'),
     ]),
     produtQuantity: new FormControl('', [
       Validators.required,
@@ -143,115 +160,124 @@ export class SellerComponent {
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(20),
-      Validators.pattern('[0-9]*'),
+      // Validators.pattern('[0-9]*'),
     ]),
     screensize: new FormControl('', [
       // Validators.required,
       Validators.minLength(2),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     resolution: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     memoryCapacity: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     operatingSystem: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     batteryLife: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     cameraSpecifications: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     audioFeatures: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     processor: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     installedRAM: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     systemType: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     penAndTouch: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     edition: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     version: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     installedOn: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     oSBuild: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     serialNumber: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     experience: new FormControl('', [
       // Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z0-9 ]*'),
+      // Validators.pattern('[a-zA-Z0-9 ]*'),
     ]),
     produtImage: new FormControl('', [Validators.required]),
     images: new FormControl('', [Validators.required]),
   });
+  get productId(): FormControl {
+    return this.uploadForm.get('productId') as FormControl;
+  }
   get productname(): FormControl {
     return this.uploadForm.get('productname') as FormControl;
+  }
+  get aboutthisitem(): FormControl {
+    return this.uploadForm.get('aboutthisitem') as FormControl;
+  }
+  get ProdutCategory(): FormControl {
+    return this.uploadForm.get('ProdutCategory') as FormControl;
   }
   get produttype(): FormControl {
     return this.uploadForm.get('produttype') as FormControl;
@@ -405,29 +431,11 @@ export class SellerComponent {
       this.uploadForm.patchValue({ produtImage: null });
     }
   }
+  inputArray: any[] = []; // Array to hold input elements
 
-  // fileSelected(event: any) {
-  //   const files = event.target.files;
-  //   console.log(files);  // Debugging line.
-  //   this.ProductsPicture = files.name;
-  //   this.Product2 = files;
-  //   if (files.length > 0) {
-  //     this.uploadForm.patchValue({ images: files });
-  //   } else {
-  //     this.uploadForm.patchValue({ images: null });
-  //   }
-  // }
-
-  // fileSelected(event: any) {
-  //   const files = event.target.files;
-  //   console.log(files); // Debugging line.
-
-  //   if (files.length > 0) {
-  //     this.ProductsPicture = files[0].name;
-  //     this.Product2 = files[0];
-  //     this.uploadForm.patchValue({ images: files });
-  //   }
-  // }
+  addInput() {
+    this.inputArray.push({});
+  }
 
   fileSelected(event: any) {
     const files = event.target.files;
@@ -496,6 +504,7 @@ export class SellerComponent {
   productspecifications: boolean = false;
   produtkeyfeatures: boolean = false;
   clothesprodact: boolean = false;
+  editButton: boolean = false;
 
   toggleNavbar(): boolean {
     alert('clicked');
@@ -514,6 +523,25 @@ export class SellerComponent {
     this.viewproduct = true;
     this.manageproduct = false;
     this.electronicsprodact = false;
+    this.editButton = false;
+  }
+
+  editProduct(produtId: string) {
+    this.uploadproduct = true;
+    this.viewproduct = true;
+    this.manageproduct = false;
+    this.electronicsprodact = false;
+    this.editButton = true;
+    this.http
+      .get<any>(`http://localhost:3050/product?id=${produtId}`)
+      .subscribe(
+        (response) => {
+          this.product3 = response;
+        },
+        (error) => {
+          console.error('Error fetching product details: ', error);
+        }
+      );
   }
 
   viewProduct() {
@@ -521,12 +549,14 @@ export class SellerComponent {
     this.uploadproduct = false;
     this.manageproduct = false;
     this.electronicsprodact = false;
+    this.editButton = false;
   }
 
   manageProduct() {
     this.manageproduct = true;
     this.uploadproduct = false;
     this.viewproduct = true;
+    this.editButton = false;
   }
 
   electronicsProdact() {
@@ -534,6 +564,7 @@ export class SellerComponent {
     this.manageproduct = false;
     this.uploadproduct = false;
     this.viewproduct = true;
+    this.editButton = false;
   }
   clothesProdact() {
     this.clothesprodact = true;
@@ -541,6 +572,7 @@ export class SellerComponent {
     this.manageproduct = false;
     this.uploadproduct = false;
     this.viewproduct = true;
+    this.editButton = false;
   }
   productSpecifications() {
     this.productspecifications = true;
@@ -549,6 +581,12 @@ export class SellerComponent {
   produtKeyFeatures() {
     this.produtkeyfeatures = true;
   }
+  changeStatus(){
+    this.changestatus = true;
+  }
+  notChangeStatus(){
+    this.changestatus = false;
+  }
   // End navigation through page
 
   // Start of backend code
@@ -556,6 +594,8 @@ export class SellerComponent {
   addProduct() {
     let data = {
       productName: this.productname.value,
+      aboutthisproduct: this.aboutthisitem.value,
+      productCategory: this.ProdutCategory.value,
       produtType: this.produttype.value,
       productPrice: this.productprice.value,
       produtDescription: this.produtdescription.value,
@@ -619,14 +659,6 @@ export class SellerComponent {
 
           if (this.ProductsPictures) {
             const formData = new FormData();
-          
-            // Convert filenames to File objects and append them to FormData
-            // for (const selectedFileName of this.ProductsPictures) {
-            //   const file = new File([selectedFileName], selectedFileName, {
-            //     type: 'image/png/webp/png/jpg/jfif' // Adjust the MIME type as needed
-            //   });
-            //   formData.append('files', file);
-            // }
             for (const selectedFileName of this.ProductsPictures) {
               const file = new File([selectedFileName], selectedFileName);
               formData.append('files', file);
@@ -643,6 +675,7 @@ export class SellerComponent {
               }
             );
             }
+            this.viewProduct();
           
         } else {
           alert('something is wrong');
@@ -654,8 +687,9 @@ export class SellerComponent {
     );
   }
 
-  //Check if the product alreeady exists
+  //Check if the product already exists
   checkProduct() {
+    alert("vvv");
     this.http
       .get(
         `http://localhost:3050/checkProducts/${this.productname.value}/${this.serialNumber.value}`
@@ -675,20 +709,7 @@ export class SellerComponent {
   }
   //End of backend
 
-  //View All Products
-  // product2:any;
-  // fetchProductImages(): void {
-  //   this.http.get<any[]>(`http://localhost:3050/getProductImages/${this.userId}`).subscribe(
-  //     (response) => {
-  //       this.product2 = response;
-  //       // alert(this.product2);
-  //       // console.log(this.product2);
-  //     },
-  //     (error) => {
-  //       console.error('Error: ', error);
-  //     }
-  //   );
-  // }
+  
 
   // View All Products
   product2: any[] = [];
@@ -710,9 +731,141 @@ export class SellerComponent {
     this.router.navigate(['product-detail', productId]);
     this.userSession.setProductId(productId);
   }
+
+  // code to update a product
+  updateProduct(productId:any) {
+      // Assuming you have a property 'id' in product3
+  
+    const updatedProduct = {
+      // Construct the updated product data based on your form controls
+      // Example: productName: this.productname.value, etc.
+      // ...
+      Product_Name: this.productname.value,
+      AboutThisProduct: this.aboutthisitem.value,
+      ProductCategory: this.ProdutCategory.value,
+      Product_Type: this.produttype.value,
+      Produt_Price: this.productprice.value,
+      Produt_Description: this.produtdescription.value,
+      Product_Brand: this.produtbrand.value,
+      Product_Model: this.productmodel.value,
+      Screen_Size: this.screensize.value,
+      Resolution: this.resolution.value,
+      Memory_Capacity: this.memoryCapacity.value,
+      Operating_System: this.operatingSystem.value,
+      Battery_Life: this.batteryLife.value,
+      Camera_Specifications: this.cameraSpecifications.value,
+      Audio_Features: this.audioFeatures.value,
+      Processor: this.processor.value,
+      Installed_RAM: this.installedRAM.value,
+      System_Type: this.systemType.value,
+      PenAndTouch: this.penAndTouch.value,
+      Edition: this.edition.value,
+      Version: this.version.value,
+      Installed_On: this.installedOn.value,
+      OS_build: this.oSBuild.value,
+      Serial_Number: this.serialNumber.value,
+      Exprience: this.experience.value,
+      Connectivity_Option: this.productconnectivity.value,
+      Power_Requirements: this.powerrequirements.value,
+      Warranty: this.warranty.value,
+      Dimensions: this.dimensions.value,
+      Inputs_Outputs: this.inputsoutputs.value,
+      Compatibility: this.compatibility.value,
+      Accessories: this.accessories.value,
+      Reviews: this.reviews.value,
+      Availability: this.availability.value,
+      Ratings: this.ratings.value,
+      Energy_Efficiency: this.energyEfficiency.value,
+      User_Manual: this.userManual.value,
+      Produt_Quantity: this.produtQuantity.value,
+      Produt_Weight: this.produtWeight.value,
+      ProdutImage: this.ProductPicture,
+      ProdutsImage: this.ProductsPictures.join(', ') // Combine filenames into a single string
+    };
+  
+    // Send the updated product data to the backend API
+    this.http
+      .put(`http://localhost:3050/updateProduct/${productId}`, updatedProduct)
+      .subscribe(
+        (response) => {
+          if ((response as any).message === 'Product updated successfully') {
+            alert('Product updated successfully');
+            if (this.Product1) {
+              //alert('some how it is working');
+              const formData = new FormData();
+              formData.append('file', this.Product1);
+              this.http
+                .post('http://localhost:3050/uploadImage', formData)
+                .subscribe((response) => {
+                  console.log(response);
+                  alert('File Uploaded!');
+                });
+            }
+  
+            if (this.ProductsPictures) {
+              const formData = new FormData();
+            
+              // Convert filenames to File objects and append them to FormData
+              // for (const selectedFileName of this.ProductsPictures) {
+              //   const file = new File([selectedFileName], selectedFileName, {
+              //     type: 'image/png/webp/png/jpg/jfif' // Adjust the MIME type as needed
+              //   });
+              //   formData.append('files', file);
+              // }
+              for (const selectedFileName of this.ProductsPictures) {
+                const file = new File([selectedFileName], selectedFileName);
+                formData.append('files', file);
+              }
+              
+              // Send the FormData object in the POST request
+              this.http.post('http://localhost:3050/uploadImages', formData).subscribe(
+                (response) => {
+                  console.log(response);
+                  alert('Files Uploaded!');
+                },
+                (error) => {
+                  console.error('Error uploading files: ', error);
+                }
+              );
+              }
+            this.uploadForm.reset();
+            // Optionally, you can fetch the updated product data again
+            this.fetchProductData();
+            this.viewProduct(); // Redirect to the product list view
+          } else {
+            alert('Failed to update product');
+          }
+        },
+        (error) => {
+          console.error('Error updating product: ', error);
+        }
+      );
+  }
+
+  // code to delete a product
+  products: any[] = []; // Assuming you have a list of products
+
+  deleteProduct(productId: number) {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.http.delete(`http://localhost:3050/deleteProduct/${productId}`).subscribe(
+        (response) => {
+          console.log(response);
+          // Refresh the product list or update it in some way
+          this.fetchProductData();
+        },
+        (error) => {
+          console.error('Error deleting product: ', error);
+        }
+      );
+    }
+  }
+  
   // End of backend code
 
   logOut() {
     this.userSession.clearUserId();
+    this.userSession.clearProductId();
+    this.userSession.clearUserName();
+    this.userSession.clearUserRoll();
   }
 }

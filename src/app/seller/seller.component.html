@@ -115,9 +115,7 @@
     </div>
     <div class="main-content" *ngIf="!this.viewproduct">
 
-        <div class="seller-products" *ngFor="let product of product2">
-            <!-- <img src="assets/Images/product.ProductImage" alt="Product Image"> -->
-            <!-- <pre>{{ product | json }}</pre> -->
+        <!-- <div class="seller-products" *ngFor="let product of product2">
             <img [src]="'assets/Images/' + product.ProdutImage" alt="" (click)="navigateToProductDetail(product.Id)">
             <div class="product-property">
                 <p>Product Owner: <label *ngIf="userId">{{ userId }}</label> </p>
@@ -126,10 +124,35 @@
                 <p>Product type: <label>{{ product.Product_Type }}</label></p>
                 <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
             </div>
+        </div> -->
+
+
+        <div class="main-content" *ngIf="!this.viewproduct">
+            <div class="seller-products" *ngFor="let product of product2">
+                <ng-container *ngIf="product.isVideo; else imageTemplate">
+                    <video controls>
+                        <source [src]="'assets/Images/' + product.ProdutImage" type="video/mp4"
+                            (click)="navigateToProductDetail(product.Id)">
+                        Your browser does not support the video tag.
+                    </video>
+                </ng-container>
+                <ng-template #imageTemplate>
+                    <img [src]="'assets/Images/' + product.ProdutImage" alt=""
+                        (click)="navigateToProductDetail(product.Id)">
+                </ng-template>
+                <div class="product-property">
+                    <p>Product Owner: <label *ngIf="userId">{{ userId }}</label> </p>
+                    <p>Product Id: <label>{{ product.Id }}</label> </p>
+                    <p>Product name: <label>{{ product.Product_Name }}</label> </p>
+                    <p>Product type: <label>{{ product.Product_Type }}</label></p>
+                    <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
+                </div>
+            </div>
         </div>
+
     </div>
 
-   
+
     <div class="main-content">
 
         <!-- end of seller product -->
@@ -141,6 +164,12 @@
                 Product
                 Here!! </h1>
             <form action="" [formGroup]="uploadForm">
+                <div class="form-group" *ngIf="editButton">
+                    <label for="">Produt Id:</label>
+                    <!-- <input type="text" disabled formControlName = "productId" [(ngModel)] = "product3.Id" placeholder="Enter product Id."> -->
+                    <input type="text" formControlName="productId" [disabled]="!productId.valid"
+                        placeholder="Enter product Id." [(ngModel)]="product3.Id">
+                </div>
                 <div class="form-group">
                     <label for="">Produt Name:</label>
                     <input type="text" formControlName="productname" placeholder="Enter product name.">
@@ -150,20 +179,79 @@
                     </div>
                     <div class="form-text text-danger"
                         *ngIf="productname.errors?.['minlength'] && (productname.dirty || productname.touched)">
-                        *The Minimum length is 10!
+                        *The Minimum length is 30!
                     </div>
                     <div class="text-danger"
                         *ngIf="productname.errors?.['maxlength'] && (productname.dirty || productname.touched)">
-                        *The maximum length is 100!
+                        *The maximum length is 500!
+                    </div>
+                    <!-- <div class="form-text text-danger"
+                        *ngIf="productname.errors?.['pattern'] && (productname.dirty || productname.touched)">
+                        *Name can only be Letters! and numbers!
+                    </div> -->
+                </div>
+                <div class="form-group">
+                    <label for="">About This Produt:</label>
+                    <input class="about" type="text" formControlName="aboutthisitem"
+                        placeholder="Enter product about this product." *ngFor="let input of inputArray; let i = index"
+                        [id]="'input' + i">
+                    <div class="text-danger"
+                        *ngIf="aboutthisitem.errors?.['required'] && (aboutthisitem.dirty || aboutthisitem.touched)">
+                        *This is Required!
                     </div>
                     <div class="form-text text-danger"
-                        *ngIf="productname.errors?.['pattern'] && (productname.dirty || productname.touched)">
-                        *Name can only be Letters!
+                        *ngIf="aboutthisitem.errors?.['minlength'] && (aboutthisitem.dirty || aboutthisitem.touched)">
+                        *The Minimum length is 100!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="aboutthisitem.errors?.['maxlength'] && (aboutthisitem.dirty || aboutthisitem.touched)">
+                        *The maximum length is 500!
+                    </div>
+                    <!-- <div class="form-text text-danger"
+                        *ngIf="aboutthisitem.errors?.['pattern'] && (aboutthisitem.dirty || aboutthisitem.touched)">
+                        *This can only be Letters! and numbers!
+                    </div> -->
+                    <button (click)="addInput()">Add</button>
+                </div>
+                <div class="form-group">
+                    <label for="">Produt Category:</label>
+                    <select formControlName="ProdutCategory" id="" size="1">
+                        <option value="">Select a category</option>
+                        <option value="amazon-devices">Amazon Devices</option>
+                        <option value="automotive">Automotive</option>
+                        <option value="baby-products">Baby Products</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="books">Books</option>
+                        <option value="clothing">Clothing, Shoes & Jewelry</option>
+                        <option value="computers">Computers & Accessories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="grocery">Grocery & Gourmet Food</option>
+                        <option value="health">Health & Household</option>
+                        <option value="home-garden">Home & Kitchen</option>
+                        <option value="movies-music-games">Movies, Music & Games</option>
+                        <option value="office-products">Office Products</option>
+                        <option value="pets">Pet Supplies</option>
+                        <option value="sports-outdoors">Sports & Outdoors</option>
+                        <option value="tools-home-improvement">Tools & Home Improvement</option>
+                        <option value="toys-games">Toys & Games</option>
+                        <option value="video-games">Video Games</option>
+                        <option value="watches">Watches</option>
+                        <option value="jewelry">Jewelry</option>
+                        <option value="music">Music</option>
+                        <option value="cameras">Cameras & Photography</option>
+                        <option value="office-furniture">Office Furniture</option>
+                        <option value="cell-phones">Cell Phones & Accessories</option>
+                        <option value="fitness">Fitness & Exercise</option>
+                    </select>
+                    <div class="text-danger"
+                        *ngIf="ProdutCategory.errors?.['required'] && (ProdutCategory.dirty || ProdutCategory.touched)">
+                        *Produt Category is Required!
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">Produt Type:</label>
                     <select id="size" formControlName="produttype">
+                        <option value="">Select a Produt Type</option>
                         <option value="Computer">Computer</option>
                         <option value="XS">Cell Phone</option>
                         <option value="Television">Television</option>
@@ -194,10 +282,10 @@
                         *ngIf="productprice.errors?.['maxlength'] && (productprice.dirty || productprice.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="productprice.errors?.['pattern'] && (productprice.dirty || productprice.touched)">
                         *Product price can only take a number and double value!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="">Produt Description:</label>
@@ -213,12 +301,12 @@
                     </div>
                     <div class="text-danger"
                         *ngIf="produtdescription.errors?.['maxlength'] && (produtdescription.dirty || produtdescription.touched)">
-                        *The maximum length is 700!
+                        *The maximum length is 2000!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="produtdescription.errors?.['pattern'] && (produtdescription.dirty || produtdescription.touched)">
                         *In valid product description!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="brand">Product Brand:</label>
@@ -235,10 +323,10 @@
                         *ngIf="produtbrand.errors?.['maxlength'] && (produtbrand.dirty || produtbrand.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="produtbrand.errors?.['pattern'] && (produtbrand.dirty || produtbrand.touched)">
                         *In valid product brand!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -256,10 +344,10 @@
                         *ngIf="productmodel.errors?.['maxlength'] && (productmodel.dirty || productmodel.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="productmodel.errors?.['pattern'] && (productmodel.dirty || productmodel.touched)">
                         *In valid product model!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <a (click)="productSpecifications()">Product Specifications: click here</a>
@@ -278,10 +366,10 @@
                         *ngIf="screensize.errors?.['maxlength'] && (screensize.dirty || screensize.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="screensize.errors?.['pattern'] && (screensize.dirty || screensize.touched)">
                         *Invalid screen size!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">resolution:(Optional)</label>
@@ -299,10 +387,10 @@
                         *ngIf="resolution.errors?.['maxlength'] && (resolution.dirty || resolution.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="resolution.errors?.['pattern'] && (resolution.dirty || resolution.touched)">
                         *Invalid Resolution!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">memory capacity:(Optional)</label>
@@ -320,10 +408,10 @@
                         *ngIf="memoryCapacity.errors?.['maxlength'] && (memoryCapacity.dirty || memoryCapacity.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="memoryCapacity.errors?.['pattern'] && (memoryCapacity.dirty || memoryCapacity.touched)">
                         *Invalid Memory capacity!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">operating system:(Optional)</label>
@@ -341,13 +429,14 @@
                         *ngIf="operatingSystem.errors?.['maxlength'] && (operatingSystem.dirty || operatingSystem.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="operatingSystem.errors?.['pattern'] && (operatingSystem.dirty || operatingSystem.touched)">
                         *Invalid operating system!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
-                    <label for="model" *ngIf="this.productspecifications">Battery life (for portable devices):(Optional)</label>
+                    <label for="model" *ngIf="this.productspecifications">Battery life (for portable
+                        devices):(Optional)</label>
                     <input type="text" id="model" formControlName="batteryLife" *ngIf="this.productspecifications"
                         placeholder="Enter Battery life.">
                     <!-- <div class="text-danger"
@@ -362,10 +451,10 @@
                         *ngIf="batteryLife.errors?.['maxlength'] && (batteryLife.dirty || batteryLife.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="batteryLife.errors?.['pattern'] && (batteryLife.dirty || batteryLife.touched)">
                         *Invalid Battery life!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications"> Camera specifications (for smartphones,
@@ -384,10 +473,10 @@
                         *ngIf="cameraSpecifications.errors?.['maxlength'] && (cameraSpecifications.dirty || cameraSpecifications.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="cameraSpecifications.errors?.['pattern'] && (cameraSpecifications.dirty || cameraSpecifications.touched)">
                         *Invalid Camera specifications!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Audio features (e.g., speaker output,
@@ -406,10 +495,10 @@
                         *ngIf="audioFeatures.errors?.['maxlength'] && (audioFeatures.dirty || audioFeatures.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="audioFeatures.errors?.['pattern'] && (audioFeatures.dirty || audioFeatures.touched)">
                         *Invalid Audio features!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Processor:(Optional)</label>
@@ -427,10 +516,10 @@
                         *ngIf="processor.errors?.['maxlength'] && (processor.dirty || processor.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="processor.errors?.['pattern'] && (processor.dirty || processor.touched)">
                         *Invalid Processor!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Installed RAM:(Optional)</label>
@@ -448,10 +537,10 @@
                         *ngIf="installedRAM.errors?.['maxlength'] && (installedRAM.dirty || installedRAM.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="installedRAM.errors?.['pattern'] && (installedRAM.dirty || installedRAM.touched)">
                         *Invalid Installed RAM!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">System Type:(Optional)</label>
@@ -469,10 +558,10 @@
                         *ngIf="systemType.errors?.['maxlength'] && (systemType.dirty || systemType.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="systemType.errors?.['pattern'] && (systemType.dirty || systemType.touched)">
                         *Invalid System Type!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Pen and Touch:(Optional)</label>
@@ -490,10 +579,10 @@
                         *ngIf="penAndTouch.errors?.['maxlength'] && (penAndTouch.dirty || penAndTouch.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="penAndTouch.errors?.['pattern'] && (penAndTouch.dirty || penAndTouch.touched)">
                         *Invalid Pen and Touch!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Edition:(Optional)</label>
@@ -510,9 +599,9 @@
                         *ngIf="edition.errors?.['maxlength'] && (edition.dirty || edition.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger" *ngIf="edition.errors?.['pattern'] && (edition.dirty || edition.touched)">
+                    <!-- <div class="text-danger" *ngIf="edition.errors?.['pattern'] && (edition.dirty || edition.touched)">
                         *Invalid Product Edition!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Version:(Optional)</label>
@@ -529,9 +618,9 @@
                         *ngIf="version.errors?.['maxlength'] && (version.dirty || version.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger" *ngIf="version.errors?.['pattern'] && (version.dirty || version.touched)">
+                    <!-- <div class="text-danger" *ngIf="version.errors?.['pattern'] && (version.dirty || version.touched)">
                         *Invalid Product Version!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Installed On:(Optional)</label>
@@ -549,10 +638,10 @@
                         *ngIf="installedOn.errors?.['maxlength'] && (installedOn.dirty || installedOn.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="installedOn.errors?.['pattern'] && (installedOn.dirty || installedOn.touched)">
                         *Invalid Product Installed On!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">OS build:(Optional)</label>
@@ -569,9 +658,9 @@
                         *ngIf="oSBuild.errors?.['maxlength'] && (oSBuild.dirty || oSBuild.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger" *ngIf="oSBuild.errors?.['pattern'] && (oSBuild.dirty || oSBuild.touched)">
+                    <!-- <div class="text-danger" *ngIf="oSBuild.errors?.['pattern'] && (oSBuild.dirty || oSBuild.touched)">
                         *Invalid Product OS build!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Serial number:(Optional)</label>
@@ -589,10 +678,10 @@
                         *ngIf="serialNumber.errors?.['maxlength'] && (serialNumber.dirty || serialNumber.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="serialNumber.errors?.['pattern'] && (serialNumber.dirty || serialNumber.touched)">
                         *Invalid Product Serial number!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="model" *ngIf="this.productspecifications">Exprience:(Optional)</label>
@@ -610,10 +699,10 @@
                         *ngIf="experience.errors?.['maxlength'] && (experience.dirty || experience.touched)">
                         *The maximum length is 30!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="experience.errors?.['pattern'] && (experience.dirty || experience.touched)">
                         *Invalid Product Exprience!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -633,10 +722,10 @@
                         *ngIf="productconnectivity.errors?.['maxlength'] && (productconnectivity.dirty || productconnectivity.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="productconnectivity.errors?.['pattern'] && (productconnectivity.dirty || productconnectivity.touched)">
                         *In valid product connectivity!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -655,10 +744,10 @@
                         *ngIf="powerrequirements.errors?.['maxlength'] && (powerrequirements.dirty || powerrequirements.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="powerrequirements.errors?.['pattern'] && (powerrequirements.dirty || powerrequirements.touched)">
                         *In valid Power Requirements!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -676,10 +765,10 @@
                         *ngIf="warranty.errors?.['maxlength'] && (warranty.dirty || warranty.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="warranty.errors?.['pattern'] && (warranty.dirty || warranty.touched)">
                         *In valid Product Warranty!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -698,10 +787,10 @@
                         *ngIf="dimensions.errors?.['maxlength'] && (dimensions.dirty || dimensions.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="dimensions.errors?.['pattern'] && (dimensions.dirty || dimensions.touched)">
                         *Invalid Product dimensions!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -720,10 +809,10 @@
                         *ngIf="inputsoutputs.errors?.['maxlength'] && (inputsoutputs.dirty || inputsoutputs.touched)">
                         *The maximum length is 200!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="inputsoutputs.errors?.['pattern'] && (inputsoutputs.dirty || inputsoutputs.touched)">
                         *Invalid Inputs/Outputs dimensions!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -742,10 +831,10 @@
                         *ngIf="compatibility.errors?.['maxlength'] && (compatibility.dirty || compatibility.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="compatibility.errors?.['pattern'] && (compatibility.dirty || compatibility.touched)">
                         *Invalid Product Compatibility!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -764,10 +853,10 @@
                         *ngIf="accessories.errors?.['maxlength'] && (accessories.dirty || accessories.touched)">
                         *The maximum length is 200!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="accessories.errors?.['pattern'] && (accessories.dirty || accessories.touched)">
                         *Invalid Accessories!
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -785,9 +874,9 @@
                         *ngIf="reviews.errors?.['maxlength'] && (reviews.dirty || reviews.touched)">
                         *The maximum length is 200!
                     </div>
-                    <div class="text-danger" *ngIf="reviews.errors?.['pattern'] && (reviews.dirty || reviews.touched)">
+                    <!-- <div class="text-danger" *ngIf="reviews.errors?.['pattern'] && (reviews.dirty || reviews.touched)">
                         *Invalid Reviews!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -806,10 +895,10 @@
                         *ngIf="availability.errors?.['maxlength'] && (availability.dirty || availability.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="availability.errors?.['pattern'] && (availability.dirty || availability.touched)">
                         *Invalid Product Availability!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -826,9 +915,7 @@
                         *ngIf="ratings.errors?.['maxlength'] && (ratings.dirty || ratings.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger" *ngIf="ratings.errors?.['pattern'] && (ratings.dirty || ratings.touched)">
-                        *Invalid Product Ratings!
-                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -847,10 +934,7 @@
                         *ngIf="energyEfficiency.errors?.['maxlength'] && (energyEfficiency.dirty || energyEfficiency.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
-                        *ngIf="energyEfficiency.errors?.['pattern'] && (energyEfficiency.dirty || energyEfficiency.touched)">
-                        *Invalid Product Ratings!
-                    </div>
+
                 </div>
 
                 <div class="form-group">
@@ -868,10 +952,10 @@
                         *ngIf="userManual.errors?.['maxlength'] && (userManual.dirty || userManual.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="userManual.errors?.['pattern'] && (userManual.dirty || userManual.touched)">
                         *Invalid User Manual!
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form-group">
@@ -909,10 +993,10 @@
                         *ngIf="produtWeight.errors?.['maxlength'] && (produtWeight.dirty || produtWeight.touched)">
                         *The maximum length is 20!
                     </div>
-                    <div class="text-danger"
+                    <!-- <div class="text-danger"
                         *ngIf="produtWeight.errors?.['pattern'] && (produtWeight.dirty || produtWeight.touched)">
                         *Invalid Produt Weight!
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label for="">Produt Image:</label>
@@ -938,8 +1022,11 @@
                         *Upload only image or video!
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="!this.editButton">
                     <button (click)="checkProduct()">Upload</button>
+                </div>
+                <div class="form-group" *ngIf="editButton">
+                    <button (click)="updateProduct(product3.Id)">Update</button>
                 </div>
             </form>
         </div>
@@ -1372,14 +1459,15 @@
                         <td>1rrruu</td>
                         <td>1rrruu</td>
                         <td colspan="4">
-                    <tr>
-                        <button id="btn-edit">Edit</button>
+                    <tr class="action">
+                        <button id="btn-edit" (click)="editProduct(product1.Id)">Edit</button>
 
-                        <button id="btn-delete">Delete</button>
+                        <button id="btn-delete" (click)="deleteProduct(product1.Id)">Delete</button>
 
-                        <button id="btn-view">View</button>
+                        <button id="btn-view" (click)="navigateToProductDetail(product1.Id)">View</button>
 
-                        <button id="btn-enable">Enable</button>
+                        <button id="btn-enable" (click)="changeStatus()" *ngIf="!this.changestatus">Enable</button>
+                        <button id="btn-disable" (click)="notChangeStatus()" *ngIf="this.changestatus">Disable</button>
                     </tr>
                     </td>
                     </tr>
