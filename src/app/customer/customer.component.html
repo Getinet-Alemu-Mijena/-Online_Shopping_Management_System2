@@ -15,12 +15,11 @@
             <li><a href="/products">Products/Categories</a></li>
             <li><a href="/my-orders">My Orders</a></li>
             <li><a href="/wishlist">Wishlist</a></li>
-            <li><a href="/cart">Cart/Checkout</a></li>
-            <li><a href="/my-account">My Account</a></li>
+            <li><a (click)="shoppingCart()">Cart/Checkout</a></li>
             <li><a href="/deals">Deals/Sales</a></li>
-            <li><a href="/help">Help/Support</a></li>
+            <li><a [routerLink]="['/contactus']">Help/Support</a></li>
             <li><a href="/track-order">Track Order</a></li>
-            <li><a href="/sign-in">Sign In/Sign Up</a></li>
+            <li><a [routerLink]="['/login']">Sign In/Sign Up</a></li>
         </ul>
     </div>
     <div class="user-icon" (click)="actionOn()">
@@ -39,7 +38,7 @@
             <li><a href="#">Customer Support</a></li>
             <li><a href="#">Reviewing and Rating</a></li>
             <li><a href="#">Returns and Exchanges</a></li>
-            <li><a href="#">Account Management</a></li>
+            <li><a [routerLink]="['/userprofile']">Account Management</a></li>
             <li><a href="#">Recommendations and Referrals</a></li>
         </ul>
 
@@ -67,6 +66,128 @@
             <li><a [routerLink]="['/login']" (click)="logOut()">Logout</a></li>
         </ul>
     </div>
+    <div class="main-content1" *ngIf="this.viewproduct && this.shoppingcart"(click)="remobeRightSideBar()">
+         <table>
+            <thead>		
+                <th>Product Owner</th>
+                <th>Product Id</th>
+                <th>Customer Id</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Date Added</th>
+                <th>Product Category</th>
+                <th>Calculated Price </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+                <tr>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                    <td>hhdhd</td>
+                </tr>
+            </tbody>
+         </table>
+         <hr>
+         <div class="total-price">
+            <p>The total price for all the product is: <label for="">4758 ETB Birr</label> </p>
+         </div>
+         <button>Cashout</button>
+        </div>
+
     <div class="main-content" *ngIf="!this.viewproduct"  (click)="remobeRightSideBar()">
         <div class="seller-products" *ngFor="let product of product1">
             <ng-container *ngIf="product.isVideo; else imageTemplate">

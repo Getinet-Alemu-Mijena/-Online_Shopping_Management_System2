@@ -71,21 +71,20 @@
 
 
 <div class="container">
-  <div class="left-sidebar" *ngIf="this.backicon  || !this.category">
+  <div class="left-sidebar" *ngIf="this.backicon  || !this.category" (click)="notAddToCart()">
     <div class="sub-images-container">
-      <div class="images" *ngFor="let image of product1">
-        <img src="assets/Images/{{ image }}" alt="" (mouseenter)="subzoomin = true" (mouseleave)="subzoomin = false">
+      <div class="images" *ngFor="let image of product1; let i = index">
+        <img src="assets/Images/{{ image }}" alt="" (mouseenter)="subzoomin = i" >
       </div>
       <p>Video</p>
-    </div>
-    <div class="big-image" *ngIf="product && !this.subzoomin">
-      <img [src]="'assets/Images/' + product.ProdutImage" alt=""(mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
-      <p>Roll over image to zoom in</p>
-    </div>
-
-    <div class="big-image" *ngIf = "product1 && this.subzoomin">
-      <img [src]="'assets/Images/' + product1.ProdutsImage"  alt="" (mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
-    </div>
+      </div>
+      <div class="big-image">
+        <img *ngIf="subzoomin == -1" [src]="'assets/Images/' + product.ProdutImage" alt=""
+             (mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
+        <img *ngIf="subzoomin !== -1" src="assets/Images/{{ product1[subzoomin] }}" alt=""
+             (mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
+        <p>Roll over image to zoom in</p>
+      </div>
   </div>
 
 
@@ -117,11 +116,86 @@
   </div>
 
   <div class="zoom-in" *ngIf="this.zoomin">
-      <img [src]="'assets/Images/' + product.ProdutImage"alt="">
+    <img *ngIf="subzoomin !== -1" src="assets/Images/{{ product1[subzoomin] }}" alt="">
+    <img *ngIf="subzoomin == -1" [src]="'assets/Images/' + product.ProdutImage" alt=""
+             (mouseenter)="zoomin = true" (mouseleave)="zoomin = false">
   </div>
-  <div class="main-content">
 
-    
+  <div class="add-to-cart1" *ngIf="this.addtoCart">
+    <form action="" [formGroup]="addToChart">
+      <div class="form-group">
+        <label for="">Product Owner</label>
+        <input type="text" *ngIf="product" formControlName="productowner" [(ngModel)]="product.ProductOwner" readonly>
+        <div class="text-danger"
+          *ngIf="productowner.errors?.['required'] && (productowner.dirty || productowner.touched)">
+          *Product Owner is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Product Id</label>
+        <input type="text" *ngIf="product" formControlName="ProductId" [(ngModel)]="product.Id" readonly>
+        <div class="text-danger" *ngIf="ProductId.errors?.['required'] && (ProductId.dirty || ProductId.touched)">
+          *Product Id is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Customer Id</label>
+        <input type="text" *ngIf="product" formControlName="CustomerId" [(ngModel)]="this.userId" readonly>
+        <div class="text-danger" *ngIf="CustomerId.errors?.['required'] && (CustomerId.dirty || CustomerId.touched)">
+          *Customer Id is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Product Price</label>
+        <input type="text" *ngIf="product" formControlName="ProductPrice" [(ngModel)]="product.Produt_Price" readonly>
+        <div class="text-danger"
+          *ngIf="ProductPrice.errors?.['required'] && (ProductPrice.dirty || ProductPrice.touched)">
+          *Product Price is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Product Quantity</label>
+        <input type="text" *ngIf="product" formControlName="ProductQuantity" placeholder="Enter the amount you want!">
+        <div class="text-danger"
+          *ngIf="ProductQuantity.errors?.['required'] && (ProductQuantity.dirty || ProductQuantity.touched)">
+          *Product Quantity is Required!
+        </div>
+        <div class="form-text text-danger"
+          *ngIf="ProductQuantity.errors?.['pattern'] && (ProductQuantity.dirty || ProductQuantity.touched)">
+          *Product Quantity only be numbers!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Date Added</label>
+        <input type="text" *ngIf="product" formControlName="DateAdded" [(ngModel)]="this.formattedTime" readonly>
+        <div class="text-danger" *ngIf="DateAdded.errors?.['required'] && (DateAdded.dirty || DateAdded.touched)">
+          *Date Added is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Product Category</label>
+        <input type="text" *ngIf="product" formControlName="ProductCategory" [(ngModel)]="product.ProductCategory"
+          readonly>
+        <div class="text-danger"
+          *ngIf="ProductCategory.errors?.['required'] && (ProductCategory.dirty || ProductCategory.touched)">
+          *Product Category is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Product Type</label>
+        <input type="text" *ngIf="product" formControlName="ProductType" [(ngModel)]="product.Product_Type" readonly>
+        <div class="text-danger" *ngIf="ProductType.errors?.['required'] && (ProductType.dirty || ProductType.touched)">
+          *Product Type is Required!
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="insertToCart(product.Produt_Quantity)">Add to cart!</button>
+      </div>
+    </form>
+  </div>
+  <div class="main-content" (click)="notAddToCart()">
+
+
     <h4 *ngIf="product">
       {{product.Product_Name}}
     </h4>
@@ -205,9 +279,9 @@
 
     <hr>
     <h2>About this item</h2>
-      <div class="product-description">
-        <p *ngIf="product"> {{product.AboutThisProduct}} </p>
-      </div>
+    <div class="product-description">
+      <p *ngIf="product"> {{product.AboutThisProduct}} </p>
+    </div>
   </div>
   <div class="right-sidebar">
     <div class="add-to-cart">
@@ -216,12 +290,12 @@
         {{product.Product_Name}}
       </h4>
       <p *ngIf="product"> {{product.Produt_Price}} <label for="">Birr</label></p>
-      <button>Add to chart</button>
+      <button (click)="addToCart()">Add to chart</button>
     </div>
   </div>
 </div>
 
-<div class="container1">
+<div class="container1" (click)="notAddToCart()">
   <h4>Product description</h4>
   <div class="product-description">
     <p *ngIf="product"> {{product.Produt_Description}} </p>

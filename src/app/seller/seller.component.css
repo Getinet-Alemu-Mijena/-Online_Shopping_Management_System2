@@ -287,6 +287,10 @@
     transition: 1s;
 }
 
+.container .main-content .seller-products img:hover{
+    transform: rotate(45deg);
+}
+
 .container .main-content .seller-products video{
     width: 250px;
     height: 300px;
@@ -294,9 +298,7 @@
     border-radius: 12px;
     transition: 1s;
 }
-.container .main-content .seller-products img:hover{
-    transform: rotate(45deg);
-}
+
 .container .main-content .seller-products video:hover{
     transform: rotate(45deg);
 }

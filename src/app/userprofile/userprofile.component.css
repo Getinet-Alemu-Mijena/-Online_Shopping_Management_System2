@@ -376,6 +376,43 @@ body{
     background-color:#f2f2f2;
 }
 
+.container .right-sidebar .user-balance{
+    margin: 50%;
+    width: 80%;
+    height: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: rgb(229, 237, 235);
+    padding: 20px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-radius: 12px;
+}
+.container .right-sidebar .user-balance p{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    color: rgb(212, 82, 139);
+}
+.container .right-sidebar .user-balance p label{
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    color: rgb(218, 8, 245);
+}
+
+.container .right-sidebar .user-balance button{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    color:black ;
+    background-color: orange;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
 .container .right-sidebar ul li{
     list-style: none;
     margin: 20px;

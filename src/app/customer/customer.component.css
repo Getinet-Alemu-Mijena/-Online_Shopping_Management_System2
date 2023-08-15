@@ -109,6 +109,7 @@
     font-size: 16px;
     text-decoration: none;
     color: rgb(40, 8, 250);
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -266,6 +267,86 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.container .main-content1{
+    grid-area: main;
+    background-color: #f5f5f5 azure;
+    margin: 2px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.container .main-content1 button{
+    padding: 12px;
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    margin-bottom: 10px;
+    background-color: orange;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.container .main-content1 table th{
+    padding: 7px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-size: larger;
+    background-color: darkslategray;
+    color: wheat;
+    border-radius: 7px;
+    margin: 7px;
+}
+.container .main-content1 table td{
+    padding: 7px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: small;
+    background-color: rgb(93, 100, 100);
+    color: rgb(243, 240, 235);
+    border-radius: 7px;
+    text-align: center;
+    margin: 7px;
+}
+.container .main-content1 .total-price{
+    height: 150px;
+    width: 70%;
+    background-color: rgb(219, 234, 219);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    margin-bottom: 20px;
+}
+.container .main-content1 .total-price p{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    color: purple;
+    padding: 10px;
+    text-align: center;
+}
+.container .main-content1 .total-price p label{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    color: rgb(161, 201, 14);
+    padding: 10px;
+    text-align: center;
 }
 .container .main-content .seller-products{
     width: 250px;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -13,7 +13,7 @@ import { UsersessionService } from '../usersession.service';
   templateUrl: './seller.component.html',
   styleUrls: ['./seller.component.css'],
 })
-export class SellerComponent {
+export class SellerComponent{
   userId: any;
   ProductsPictures!: string[];
   ProductPicture: any;

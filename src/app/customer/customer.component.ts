@@ -9,6 +9,7 @@ import { UsersessionService } from '../usersession.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent{
+  shoppingcart: boolean = false;
   constructor(private http: HttpClient,private userSession: UsersessionService, private router:Router){}
   isNavbarOpen:boolean = false;
   action:boolean = false;
@@ -23,6 +24,7 @@ export class CustomerComponent{
   }
   viewAllProduct(){
     this.viewproduct = false;
+    this.shoppingcart = false;
   }
   remobeRightSideBar(){
     this.action = false;
@@ -30,6 +32,10 @@ export class CustomerComponent{
   navigateToProductDetail(productId: number) {
     this.router.navigate(['product-detail', productId]);
     this.userSession.setProductId(productId);
+  }
+  shoppingCart(){
+    this.shoppingcart = true;
+    this.viewproduct = true;
   }
   userId:any = this.userSession.getUserId();
   ngOnInit(){
