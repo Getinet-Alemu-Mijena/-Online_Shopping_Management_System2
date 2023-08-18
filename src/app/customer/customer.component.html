@@ -38,7 +38,7 @@
             <li><a href="#">Customer Support</a></li>
             <li><a href="#">Reviewing and Rating</a></li>
             <li><a href="#">Returns and Exchanges</a></li>
-            <li><a [routerLink]="['/userprofile']">Account Management</a></li>
+            <li><a [routerLink] = "['/userprofile']">Account Management</a></li>
             <li><a href="#">Recommendations and Referrals</a></li>
         </ul>
 
@@ -76,116 +76,35 @@
                 <th>Product Quantity</th>
                 <th>Date Added</th>
                 <th>Product Category</th>
+                <th>Product Type</th>
                 <th>Calculated Price </th>
+                <th>Action</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                </tr>
-                <tr>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
-                    <td>hhdhd</td>
+                <tr *ngFor="let product1 of product2">
+                    <td>{{ product1.ProductOwner }}</td>
+                    <td>{{ product1.ProductId }}</td>
+                    <td>{{ product1.CustomerId }}</td>
+                    <td>{{ product1.ProductPrice }} ETB Birr</td>
+                    <td>{{ product1.ProductQuantity }}</td>
+                    <td>{{ product1.DateAdded }}</td>
+                    <td>{{ product1.ProductCategory }}</td>
+                    <td>{{product1.ProductType}}</td>
+                    <td>{{ (product1.ProductPrice) * (product1.ProductQuantity) | number:'1.2-2' }} ETB Birr</td>
+                    <td colspan="3">
+                        <tr>
+                            <button type="button" id="btn-delete">Delete</button>
+                            <button type="button" id="btn-edit">Edit</button>
+                            <button type="button" id="btn-make-payment" (click)="makePayment(product1.ProductOwner, product1.ProductPrice, product1.ProductQuantity,product1.Id)">Make Payment</button>
+                        </tr>
+                    </td>
                 </tr>
             </tbody>
          </table>
          <hr>
          <div class="total-price">
-            <p>The total price for all the product is: <label for="">4758 ETB Birr</label> </p>
-         </div>
-         <button>Cashout</button>
+            <p>The total price for all the products is: <label>{{ calculateTotalPrice() | number:'1.2-2' }} ETB Birr</label></p>
+          </div>
         </div>
 
     <div class="main-content" *ngIf="!this.viewproduct"  (click)="remobeRightSideBar()">
@@ -202,11 +121,11 @@
                     (click)="navigateToProductDetail(product.Id)">
             </ng-template>
             <div class="product-property">
-                <p>Product Owner: <label *ngIf="userId">{{ userId }}</label> </p>
+                <p>Product Owner: <label>{{product.ProductOwner}}</label> </p>
                 <p>Product Id: <label>{{ product.Id }}</label> </p>
                 <p>Product name: <label>{{ product.Product_Name }}</label> </p>
                 <p>Product type: <label>{{ product.Product_Type }}</label></p>
-                <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
+                <p>Product Price: <label>{{ product.Produt_Price }}</label> ETB Birr</p>
             </div>
         </div>
     </div>
@@ -289,9 +208,8 @@
                     <input class="my-file" type="file" id="image-upload" name="images[]" multiple>
                 </div>
                 <div class="form-group">
-                    <button>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-</div>

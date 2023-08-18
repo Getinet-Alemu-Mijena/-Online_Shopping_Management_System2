@@ -114,7 +114,8 @@ export class RegistrationComponent {
       Roll: this.roll.value,
       Gender: this.gender.value,
       Age: this.age.value,
-      passw: this.password.value
+      passw: this.password.value,
+      Balance:'50'
     };
     this.http.post('http://localhost:3050/insertCustomer', data).subscribe(
       (response) => {

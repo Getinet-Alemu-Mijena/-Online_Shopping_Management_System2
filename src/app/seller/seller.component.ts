@@ -19,7 +19,6 @@ export class SellerComponent{
   ProductPicture: any;
   product: any;
   product3: any;
-  changestatus: boolean = false;
   // productId: string;
   constructor(
     private http: HttpClient,
@@ -581,12 +580,13 @@ export class SellerComponent{
   produtKeyFeatures() {
     this.produtkeyfeatures = true;
   }
-  changeStatus(){
-    this.changestatus = true;
+  changeStatus(produtId: number){
+    const product1 = this.product2.find(p => p.Id === produtId);
+    if (product1) {
+      product1.status = !product1.status; // Toggle the status
+    }
   }
-  notChangeStatus(){
-    this.changestatus = false;
-  }
+
   // End navigation through page
 
   // Start of backend code

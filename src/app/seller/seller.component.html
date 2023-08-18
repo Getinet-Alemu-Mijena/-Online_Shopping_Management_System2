@@ -145,7 +145,7 @@
                     <p>Product Id: <label>{{ product.Id }}</label> </p>
                     <p>Product name: <label>{{ product.Product_Name }}</label> </p>
                     <p>Product type: <label>{{ product.Product_Type }}</label></p>
-                    <p>Product Price: <label>{{ product.Produt_Price }}</label> Birr</p>
+                    <p>Product Price: <label>{{ product.Produt_Price }}</label> ETB Birr</p>
                 </div>
             </div>
         </div>
@@ -1466,8 +1466,8 @@
 
                         <button id="btn-view" (click)="navigateToProductDetail(product1.Id)">View</button>
 
-                        <button id="btn-enable" (click)="changeStatus()" *ngIf="!this.changestatus">Enable</button>
-                        <button id="btn-disable" (click)="notChangeStatus()" *ngIf="this.changestatus">Disable</button>
+                        <button id="btn-enable" (click)="changeStatus(product1.Id)" *ngIf="!product1.status">Enable</button>
+                        <button id="btn-disable" (click)="changeStatus(product1.Id)" *ngIf="product1.status">Disable</button>
                     </tr>
                     </td>
                     </tr>

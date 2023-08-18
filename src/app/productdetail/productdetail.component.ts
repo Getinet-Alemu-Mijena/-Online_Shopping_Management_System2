@@ -184,6 +184,7 @@ export class ProductdetailComponent {
       DateAdded: this.DateAdded.value,
       ProductCategory: this.ProductCategory.value,
       ProductType: this.ProductType.value,
+      status:'unpaid'
     };
     this.http
       .post<any>('http://localhost:3050/addToCart', product2) // Use 'any' as the response type
