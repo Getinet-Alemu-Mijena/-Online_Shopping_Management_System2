@@ -93,7 +93,7 @@
                     <td>{{ (product1.ProductPrice) * (product1.ProductQuantity) | number:'1.2-2' }} ETB Birr</td>
                     <td colspan="3">
                         <tr>
-                            <button type="button" id="btn-delete">Delete</button>
+                            <button type="button" id="btn-delete" (click)="deleteFromCart(product1.ProductId,product1.Id,product1.ProductOwner,product1.ProductQuantity)">Delete</button>
                             <button type="button" id="btn-edit">Edit</button>
                             <button type="button" id="btn-make-payment" (click)="makePayment(product1.ProductOwner, product1.ProductPrice, product1.ProductQuantity,product1.Id)">Make Payment</button>
                         </tr>

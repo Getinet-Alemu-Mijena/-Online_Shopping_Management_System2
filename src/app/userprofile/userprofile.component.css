@@ -401,7 +401,9 @@ body{
     font-weight: 600;
     color: rgb(218, 8, 245);
 }
-
+.form-text {
+    color:red;
+}
 .container .right-sidebar .user-balance button{
     font-size: large;
     font-family: 'Times New Roman', Times, serif;

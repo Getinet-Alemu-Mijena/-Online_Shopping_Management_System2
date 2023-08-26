@@ -155,7 +155,10 @@ export class ProductdetailComponent {
   parsedProductQuantity!:number;
   parsedProductQuantityValue!:number;
   insertToCart(productQuantity: any) {
-    if(productQuantity == 0 || productQuantity == null || productQuantity < 0){
+   let product_Quantity:number = parseInt(productQuantity);
+   let Product_Quantity1:number = parseInt(this.ProductQuantity.value);
+    if(product_Quantity == 0 || product_Quantity == null || product_Quantity < 0){
+      alert("Product is unavailable!");
       const updateData1 = { Availability: 'unavailable' };
       this.http.put(`http://localhost:3050/updateProductAvailability/${this.ProductId.value}`, updateData1 )
       .subscribe(
@@ -168,7 +171,11 @@ export class ProductdetailComponent {
         }
       );
       // alert("The product is unavailable!");
-    }else{
+    }
+    else if(product_Quantity < Product_Quantity1){
+      alert("Sorry the amount you need is not available. Please see the quantity of the product from the product detail and enter the amount you want accordingly!");
+    }
+    else{
      this.parsedProductQuantity = parseInt(productQuantity, 10); // Change base to 10 for integers
      this.parsedProductQuantityValue = parseInt(this.ProductQuantity.value, 10); 
     this.productQuantity1 = (this.parsedProductQuantity - this.parsedProductQuantityValue).toString(); 

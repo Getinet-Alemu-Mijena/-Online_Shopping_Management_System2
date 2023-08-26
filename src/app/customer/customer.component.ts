@@ -14,7 +14,7 @@ export class CustomerComponent {
     private http: HttpClient,
     private userSession: UsersessionService,
     private router: Router
-  ) {}
+  ) { }
   isNavbarOpen: boolean = false;
   action: boolean = false;
   uploadproduct: boolean = false;
@@ -100,7 +100,11 @@ export class CustomerComponent {
   systemOwnerBalance!: number;
   commissionFromCustomer!: number;
   commissionFomProductOwner!: number;
-  getCustomerBalance(productowner: number,calculatedPrice: number,productIdInCart:number) {
+  getCustomerBalance(
+    productowner: number,
+    calculatedPrice: number,
+    productIdInCart: number
+  ) {
     //get customer Balance
     this.http
       .get(`http://localhost:3050/customerBalance/${this.userId}`)
@@ -108,7 +112,11 @@ export class CustomerComponent {
         (response) => {
           if ((response as any).message == 'Customer Balance exists') {
             this.customerBalance = (response as any).Ids;
-            this.convertBalanceToFloat(productowner,calculatedPrice,productIdInCart);
+            this.convertBalanceToFloat(
+              productowner,
+              calculatedPrice,
+              productIdInCart
+            );
           } else {
             alert('Something is an error');
           }
@@ -119,7 +127,11 @@ export class CustomerComponent {
         }
       );
   }
-  convertBalanceToFloat(productowner:number,calculatedPrice: number,productIdInCart:number): void {
+  convertBalanceToFloat(
+    productowner: number,
+    calculatedPrice: number,
+    productIdInCart: number
+  ): void {
     if (typeof this.customerBalance === 'string') {
       const balanceFloat = parseFloat(this.customerBalance);
       this.customerBalance = balanceFloat;
@@ -132,11 +144,21 @@ export class CustomerComponent {
       ) {
         alert('Your Balance is insufficient!');
       } else {
-        this.updateCustomerBalance(productowner,calculatedPrice,updatedCustomerbalance,productIdInCart);
+        this.updateCustomerBalance(
+          productowner,
+          calculatedPrice,
+          updatedCustomerbalance,
+          productIdInCart
+        );
       }
     }
   }
-  updateCustomerBalance(productowner:number, calculatedPrice:number, updatedCustomerBalance: number,productIdInCart:number) {
+  updateCustomerBalance(
+    productowner: number,
+    calculatedPrice: number,
+    updatedCustomerBalance: number,
+    productIdInCart: number
+  ) {
     const updateData4 = { updated_Customer_Balance: updatedCustomerBalance };
     this.http
       .put(
@@ -154,7 +176,7 @@ export class CustomerComponent {
         (error) => {
           console.error('Error updating Customer Balance', error);
         }
-      );  
+      );
   }
   getProductOwnerBalance(productOwner: number, calculatedPrice: number) {
     this.http
@@ -271,13 +293,14 @@ export class CustomerComponent {
     // Create a payload for the HTTP request, assuming you want to send productIdInCart to the server
     const payload = { productIdInCart };
 
-    this.http.put<any>('http://localhost:3050/changeProductStatusInCart', payload)
+    this.http
+      .put<any>('http://localhost:3050/changeProductStatusInCart', payload)
       .subscribe(
-        response => {
+        (response) => {
           console.log('Product status changed successfully:', response);
           // You can perform further actions or update UI here
         },
-        error => {
+        (error) => {
           console.error('Error changing product status:', error);
         }
       );
@@ -287,13 +310,92 @@ export class CustomerComponent {
     productowner: number,
     productPrice: string,
     productQuantity: string,
-    productIdInCart:number
+    productIdInCart: number
   ) {
     let priceFloat: number = parseFloat(productPrice);
     let quantityFloat: number = parseFloat(productQuantity);
     let calculatedPrice: number = priceFloat * quantityFloat;
-    this.getCustomerBalance(productowner,calculatedPrice,productIdInCart);
-   }
+    this.getCustomerBalance(productowner, calculatedPrice, productIdInCart);
+  }
+  //Deleting from carts table
+  deleteFromCart(
+    productId: number,
+    productIdInCart: any,
+    productOwner: any,
+    product_Quantity: string
+  ) {
+    // Assuming you have an API call to delete the product from the cart
+    if(confirm('Are you sure you want to delete this product?')){
+    this.http
+      .delete(
+        `http://localhost:3050/deleteFromCart/${productIdInCart}/${productOwner}`,
+        { responseType: 'text' } // Set the response type to text
+      )
+      .subscribe(
+        () => {
+          console.log('Product deleted from cart successfully');
+          alert("Product deleted from cart successfully");
+          this.getProductQuantity(productId, productOwner, product_Quantity);
+        },
+        (error) => {
+          console.error('Error deleting product from cart:', error);
+        }
+      );
+  }
+}
+  getProductQuantity(productId: number, productOwner: string, product_Quantity: string) {
+    this.http.get<any>(
+      `http://localhost:3050/getProductQuantity/${productId}/${productOwner}`
+    ).subscribe(
+      response => {
+        console.log('Raw response:', response); // Log the raw response
+  
+        try {
+          let productQuantity: number = parseInt(response.quantity);
+          console.log('Parsed product quantity:', productQuantity); // Log the parsed quantity
+          alert(productQuantity);
+          
+          let quantity: number = parseInt(product_Quantity);
+          let updatedProductQuantity: number = productQuantity + quantity;
+          alert(updatedProductQuantity);
+          this.updateProductQuantity(productId, productOwner, updatedProductQuantity);
+        } catch (error) {
+          console.error('Error parsing product quantity:', error);
+        }
+      },
+      error => {
+        console.error('Error retrieving product quantity:', error);
+      }
+    );
+  }
+  
+  updateProductQuantity(
+    productId: number,
+    productOwner: string,
+    productQuantity: number
+  ) {
+    const updateData5 = {
+      productId: productId,
+      productOwner: productOwner,
+      productQuantity: productQuantity,
+    };
+
+    this.http
+      .put<any>(`http://localhost:3050/updateProductQuantity/${productId}/${productOwner}/${productQuantity}`,
+        updateData5
+      )
+      .subscribe(
+        (response) => {
+          console.log('Product quantity updated successfully:', response);
+          alert('Product quantity updated successfully!');
+          this.fetchCartData();
+        },
+        (error) => {
+          console.error('Error updating product quantity:', error);
+        }
+      );
+  }
+
   logOut() {
     this.userSession.clearUserId();
     this.userSession.clearProductId();
