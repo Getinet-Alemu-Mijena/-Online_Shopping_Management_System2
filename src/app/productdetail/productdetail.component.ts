@@ -15,8 +15,6 @@ export class ProductdetailComponent {
   productId: any;
   product: any;
   userId: any;
-  // zoomin!: boolean;
-  // subzoomin!: boolean;
   product1: any;
   currentTime: any;
   hours: any;
@@ -122,6 +120,66 @@ export class ProductdetailComponent {
   notAddToCart() {
     this.addtoCart = false;
   }
+
+  // code to add product to products wishlist
+  addToWishList(productOwner:string, productId:string, Produt_Price:string, productCategory:string, productType:string, productName:string, productImage:string){
+
+    const data = {
+      userId: this.userId,
+      product_Owner:productOwner,
+      product_Id: productId,
+      ProdutPrice: Produt_Price,
+      product_Category:productCategory,
+      product_Type:productType,
+      product_Name:productName,
+      product_Image:productImage
+    };
+   this.http.post('http://localhost:3050/addToWishList', data).subscribe(
+    (response)=>{
+
+      if((response as any).message == "Product added to your wishlist successfully"){
+        alert("Product added to your wishlist successfully");
+      }else{
+        alert("Something is an error!");
+      }
+    },
+    (error)=>{
+     console.log("Error",error);
+    }
+   );
+  }
+  product_Owner:any;
+  product_Id: any;
+  ProdutPrice: any;
+  product_Category:any;
+  product_Type:any;
+  product_Name:any;
+  product_Image:any;
+  // check if the product already exists
+ checkProducts(productOwner:string, productId:string, Produt_Price:string, productCategory:string, productType:string, productName:string, productImage:string){
+ this.product_Owner =productOwner;
+ this.product_Id =  productId;
+ this.ProdutPrice = Produt_Price;
+ this.product_Category = productCategory;
+ this.product_Type = productType;
+ this.product_Name = productName;
+ this.product_Image = productImage;
+
+  this.http.get(`http://localhost:3050/checkProductsInWishlist/${this.userId}/${this.product_Id}`).subscribe(
+      (reponse)=>{
+       if((reponse as any).message == 'Product already exists'){
+        alert("Poroduct already exists!");
+       }else{
+        this.addToWishList(this.product_Owner, this.product_Id, this.ProdutPrice, this.product_Category, this.product_Type,  this.product_Name, this.product_Image);
+       }
+      },
+      (error)=>{
+        console.error("Error", error);
+      }
+  );
+ }
+
+
   // Code to send http request to back end to load product detail
   getProductDetail() {
     this.http

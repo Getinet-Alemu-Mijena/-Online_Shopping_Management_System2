@@ -11,10 +11,10 @@
 
     <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
         <ul class="customer-navigation">
-            <li><a href="/">Home</a></li>
+            <li><a [routerLink]="['/Home']">Home</a></li>
             <li><a href="/products">Products/Categories</a></li>
             <li><a href="/my-orders">My Orders</a></li>
-            <li><a href="/wishlist">Wishlist</a></li>
+            <li><a (click)="productWishlist()">Wishlist</a></li>
             <li><a (click)="shoppingCart()">Cart/Checkout</a></li>
             <li><a href="/deals">Deals/Sales</a></li>
             <li><a [routerLink]="['/contactus']">Help/Support</a></li>
@@ -31,15 +31,14 @@
     <div class="left-sidebar" (click)="remobeRightSideBar()">
         <ul class="customer-navigation">
             <li><a (click)="viewAllProduct()">View Product</a></li>
-            <li><a href="#">Product Selection</a></li>
-            <li><a href="#">Placing Orders</a></li>
+            <li><a (click)="customerpreferences()">Your Preferences</a></li>
+            <li><a (click)="recommendedProducts()">Recommended Products</a></li>
             <li><a href="#">Payment Processing</a></li>
             <li><a href="#">Tracking and Monitoring</a></li>
             <li><a href="#">Customer Support</a></li>
             <li><a href="#">Reviewing and Rating</a></li>
             <li><a href="#">Returns and Exchanges</a></li>
             <li><a [routerLink] = "['/userprofile']">Account Management</a></li>
-            <li><a href="#">Recommendations and Referrals</a></li>
         </ul>
 
 
@@ -107,7 +106,250 @@
           </div>
         </div>
 
+        <div class="main-content1 product-prefernces" *ngIf = " this.viewproduct && !this.shoppingcart &&  this.customerPreferences">
+          <p>Enter Your Preferences.</p>
+          <h6>
+            Welcome to our vibrant and diverse online marketplace, where your shopping desires come to life! At our e-commerce store, we're dedicated to tailoring your shopping experience to your preferences. Our extensive range of products, from fashion to electronics, home decor to gadgets, has been curated to cater to every taste and style.
+
+We understand that every shopper is unique, and that's why we invite you to explore our collection and discover items that resonate with your personal preferences. Dive into our user-friendly interface, where you can easily navigate through categories, filtering results based on color, size, brand, and more.
+
+Unleash your imagination as you add items to your cart. Select your preferred color palettes, designs, and sizes, ensuring that each choice aligns perfectly with your individual flair. Our interactive wishlist feature allows you to save products that speak to you, so you can revisit and refine your selections at your leisure.
+
+But we don't stop there – our commitment to customization extends to recommendations. Based on your browsing history and selections, we'll offer you tailored suggestions that match your evolving tastes, helping you discover new favorites that you might not have considered.
+
+Your shopping journey is as unique as you are, and we're thrilled to be a part of it. Join us in creating a shopping experience that's not only convenient but also celebrates your distinctive style. Embark on this exciting adventure of self-expression, where every click is an opportunity to curate a world that mirrors your preferences and aspirations. Happy shopping!
+          </h6>
+          <form [formGroup]="preferenceForm">
+            <div class="form-group">
+                <label for="">Product Category</label>
+                <select formControlName="productCategory" id="" size="1">
+                    <option value="">Select a category</option>
+                    <option value="amazon-devices">Amazon Devices</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="baby-products">Baby Products</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="books">Books</option>
+                    <option value="clothing">Clothing, Shoes & Jewelry</option>
+                    <option value="computers">Computers & Accessories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="grocery">Grocery & Gourmet Food</option>
+                    <option value="health">Health & Household</option>
+                    <option value="home-garden">Home & Kitchen</option>
+                    <option value="movies-music-games">Movies, Music & Games</option>
+                    <option value="office-products">Office Products</option>
+                    <option value="pets">Pet Supplies</option>
+                    <option value="sports-outdoors">Sports & Outdoors</option>
+                    <option value="tools-home-improvement">Tools & Home Improvement</option>
+                    <option value="toys-games">Toys & Games</option>
+                    <option value="video-games">Video Games</option>
+                    <option value="watches">Watches</option>
+                    <option value="jewelry">Jewelry</option>
+                    <option value="music">Music</option>
+                    <option value="cameras">Cameras & Photography</option>
+                    <option value="office-furniture">Office Furniture</option>
+                    <option value="cell-phones">Cell Phones & Accessories</option>
+                    <option value="fitness">Fitness & Exercise</option>
+                  </select>
+
+                <div class="form-text text-danger" *ngIf="productCategory.errors?.['required'] && (productCategory.dirty || productCategory.touched)">
+                    *Product Category is Required!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Product Brand</label>
+                <input type="text" formControlName="ProductBrand">
+                <div class="form-text text-danger" *ngIf="ProductBrand.errors?.['required'] && (ProductBrand.dirty || ProductBrand.touched)">
+                    *Product Brand is Required!
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="ProductBrand.errors?.['minlength'] && (ProductBrand.dirty || ProductBrand.touched)">
+                    *The Minimum length is 3!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductBrand.errors?.['maxlength'] && (ProductBrand.dirty || ProductBrand.touched)">
+                *The Maximum length is 20!
+            </div>
+                <div class="form-text text-danger" *ngIf="ProductBrand.errors?.['pattern'] && (ProductBrand.dirty || ProductBrand.touched)">
+                    *Name can only be Letters!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Product Type</label>
+                <input type="text" formControlName="ProductType">
+                <div class="form-text text-danger" *ngIf="ProductType.errors?.['required'] && (ProductType.dirty || ProductType.touched)">
+                    *Product Type is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductType.errors?.['minlength'] && (ProductType.dirty || ProductType.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="ProductType.errors?.['maxlength'] && (ProductType.dirty || ProductType.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="ProductType.errors?.['pattern'] && (ProductType.dirty || ProductType.touched)">
+                *Product Type can only be Letters!
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="">Product Size and Fit</label>
+                <input type="text" formControlName="ProductSize">
+                <div class="form-text text-danger" *ngIf="ProductSize.errors?.['required'] && (ProductSize.dirty || ProductSize.touched)">
+                    *Product Size is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductSize.errors?.['minlength'] && (ProductSize.dirty || ProductSize.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="ProductSize.errors?.['maxlength'] && (ProductSize.dirty || ProductSize.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="ProductSize.errors?.['pattern'] && (ProductSize.dirty || ProductSize.touched)">
+                *Product Size can only be Letters!
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="">Product Color</label>
+                <input type="text" formControlName="ProductColor">
+                <div class="form-text text-danger" *ngIf = "ProductColor.errors?.['required'] && (ProductColor.dirty || ProductColor.touched)">
+                    *Product Size is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductColor.errors?.['minlength'] && (ProductColor.dirty || ProductColor.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="ProductColor.errors?.['maxlength'] && (ProductColor.dirty || ProductColor.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="ProductColor.errors?.['pattern'] && (ProductColor.dirty || ProductColor.touched)">
+                *Product Size can only be Letters!
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="">Product Price Range</label>
+                <input type="text" formControlName = "ProductPrice">
+                <div class="form-text text-danger" *ngIf = "ProductPrice.errors?.['required'] && (ProductPrice.dirty || ProductPrice.touched)">
+                    *Product Price is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductPrice.errors?.['minlength'] && (ProductPrice.dirty || ProductPrice.touched)">
+                *The Minimum length is 2!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="ProductPrice.errors?.['maxlength'] && (ProductPrice.dirty || ProductPrice.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf = "ProductPrice.errors?.['pattern'] && (ProductPrice.dirty || ProductPrice.touched)">
+                *Product Price can only be numbers!
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="">Preffered Shipping</label>
+                <input type="text" formControlName="ProductShipping">
+                <div class="form-text text-danger" *ngIf="ProductShipping.errors?.['required'] && (ProductShipping.dirty || ProductShipping.touched)">
+                    *Product Shipping is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="ProductShipping.errors?.['minlength'] && (ProductShipping.dirty || ProductShipping.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="ProductShipping.errors?.['maxlength'] && (ProductShipping.dirty || ProductShipping.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="ProductShipping.errors?.['pattern'] && (ProductShipping.dirty || ProductShipping.touched)">
+                *Product Shipping can only be Letters!
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="">Notification Preferences </label>
+                <input type="text" formControlName="NotificationPreferences">
+                <div class="form-text text-danger" *ngIf="NotificationPreferences.errors?.['required'] && (NotificationPreferences.dirty || NotificationPreferences.touched)">
+                    *Notification Preferences is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="NotificationPreferences.errors?.['minlength'] && (NotificationPreferences.dirty || NotificationPreferences.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="NotificationPreferences.errors?.['maxlength'] && (NotificationPreferences.dirty || NotificationPreferences.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="NotificationPreferences.errors?.['pattern'] && (NotificationPreferences.dirty || NotificationPreferences.touched)">
+                *Notification Preferences can only be Letters!
+            </div>
+            </div>
+            <div class="form-group">
+                <!-- <label for="">Promotions and Offers </label> -->
+                <input type="text" formControlName="PromotionsAndOffers">
+                <div class="form-text text-danger" *ngIf="PromotionsAndOffers.errors?.['required'] && (PromotionsAndOffers.dirty || PromotionsAndOffers.touched)">
+                    *Promotions And Offers is Required!
+                </div>
+                <div class="form-text text-danger"
+                *ngIf="PromotionsAndOffers.errors?.['minlength'] && (PromotionsAndOffers.dirty || PromotionsAndOffers.touched)">
+                *The Minimum length is 3!
+            </div>
+            <div class="form-text text-danger"
+            *ngIf="PromotionsAndOffers.errors?.['maxlength'] && (PromotionsAndOffers.dirty || PromotionsAndOffers.touched)">
+            *The Maximum length is 20!
+        </div>
+            <div class="form-text text-danger" *ngIf="PromotionsAndOffers.errors?.['pattern'] && (PromotionsAndOffers.dirty || PromotionsAndOffers.touched)">
+                *Promotions And Offers can only be Letters!
+            </div>
+            </div>
+            <div class="form-group my-btn">
+                <button type="submit" (click)="productPreferences()">Submit data!</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="main-content" *ngIf = " this.viewproduct && !this.shoppingcart &&  !this.customerPreferences && this.recommended_products">
+            <!-- <p>Recommende products</p> -->
+            <div class="recommended-product-container" *ngFor = "let product2 of product4">
+                <div class="left-side">
+                    <img [src]="'assets/Images/' + product2.ProdutImage" alt=""
+                    (click)="navigateToProductDetail(product2.Id)">
+                </div>
+                <div class="right-side">
+                    <p>Product Owner: <label>{{product2.ProductOwner}}</label> </p>
+                    <p>Product Id: <label>{{ product2.Id }}</label> </p>
+                    <p>Product name: <label>{{ product2.Product_Name }}</label> </p>
+                    <p>Product Category: <label>{{ product2.ProductCategory }}</label> </p>
+                    <p>Product type: <label>{{ product2.Product_Type }}</label></p>
+                    <p>Product Price: <label>{{ product2.Produt_Price }}</label> ETB</p>
+                </div>
+            </div>
+          </div>
+
+          <div class="main-content" *ngIf="this.product_Wishlist  && !this.shoppingcart && this.viewproduct && !this.customerPreferences && !this.recommended_products">
+            
+            <div class="recommended-product-container" *ngFor = "let product4 of product5">
+                <div class="left-side">
+                    <img [src]="'assets/Images/' + product4.ProductImage" alt=""
+                    (click)="navigateToProductDetail(product4.ProductId)">
+                </div>
+                <div class="right-side"> 
+                    <p>Product Owner: <label>{{product4.ProductOwner}}</label> </p>
+                    <p>Product Id: <label>{{ product4.ProductId }}</label> </p>
+                    <p>Product name: <label>{{ product4.ProductName }}</label> </p>
+                    <p>Product Category: <label>{{ product4.ProductCategory }}</label> </p>
+                    <p>Product type: <label>{{ product4.ProductType }}</label></p>
+                    <p>Product Price: <label>{{ product4.ProductPrice }}</label> ETB</p>
+                </div>
+            </div>
+
+          </div>
+
     <div class="main-content" *ngIf="!this.viewproduct"  (click)="remobeRightSideBar()">
+        <h6>Welcome to your ultimate online shopping destination, where your dreams become reality with just a click. Discover a world of endless possibilities as you step into our virtual marketplace. From fashion-forward apparel that captures the latest trends to cutting-edge electronics that redefine innovation, we have meticulously curated a selection that caters to your every need.
+
+            As you navigate our sleek and intuitive interface, be prepared to embark on a journey of seamless exploration. Our user-centric design ensures that finding your desired products is effortless, with powerful search options and intuitive filters that help you pinpoint the perfect items. Whether you're a trendsetter seeking the latest arrivals or a savvy shopper looking for the best deals, we've got you covered.
+            
+            But it doesn't stop at shopping alone – we're committed to enhancing your experience. Dive into customer reviews and ratings to make informed decisions, and enjoy lightning-fast, secure checkout that puts your mind at ease. Our personalized recommendations are tailored to your interests, making sure you never miss out on hidden gems that align with your preferences.
+            
+            Welcome to a new era of shopping, where the digital realm meets your unique desires. Unleash your imagination, express your individuality, and transform your shopping journey into an adventure. Join us as we redefine convenience, style, and innovation in the world of online shopping. Your wish list is just the beginning.</h6>
         <div class="seller-products" *ngFor="let product of product1">
             <ng-container *ngIf="product.isVideo; else imageTemplate">
                 <video controls>

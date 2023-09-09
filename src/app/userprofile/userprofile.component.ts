@@ -189,11 +189,9 @@ export class UserprofileComponent {
       this.http.put(url, userPicture).subscribe(
         response => {
           console.log('User updated:', response);
-          alert("Data is updated");
         },
         error => {
           console.error('Error updating user:', error);
-          alert("Something is wrong!");
         }
       );
 
@@ -206,7 +204,6 @@ export class UserprofileComponent {
         this.http.post('http://localhost:3050/updateUserProfilePicture', formData, { responseType: 'text' })
         .subscribe((response) => {
           console.log(response);
-          alert('File Uploaded!');
           this.updateForm.reset();
           this.getUserDetail();
         });      
@@ -219,7 +216,7 @@ export class UserprofileComponent {
       Id: this.userId,
       First_Name: this.firstname.value,
       Last_Name: this.lastname.value,
-      User_Name: this.lastname.value,
+      User_Name: this.username.value,
       Email_Address: this.email.value,
       Phone_Number: this.phoneNumber.value,
       Gender: this.gender.value,
@@ -230,7 +227,6 @@ export class UserprofileComponent {
       this.http.put(url, user).subscribe(
         response => {
           console.log('User updated:', response);
-          alert("Data is updated");
           this.getUserDetail();
         },
         error => {

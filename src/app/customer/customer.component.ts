@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersessionService } from '../usersession.service';
 
@@ -9,16 +10,103 @@ import { UsersessionService } from '../usersession.service';
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent {
-  shoppingcart: boolean = false;
   constructor(
     private http: HttpClient,
     private userSession: UsersessionService,
     private router: Router
   ) { }
+
+  preferenceForm = new FormGroup({
+    productCategory: new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3)
+    ]),
+    ProductBrand:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    ProductType:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    ProductSize:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    ProductPrice:new FormControl('',[
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(20),
+      Validators.pattern('[0-9 ]*')
+    ]),
+    ProductColor:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    ProductShipping:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    NotificationPreferences:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+    PromotionsAndOffers:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+      Validators.pattern('[a-zA-Z ]*')
+    ]),
+  });
+
+  get productCategory(): FormControl {
+    return this.preferenceForm.get('productCategory') as FormControl;
+  }
+  get ProductBrand(): FormControl {
+    return this.preferenceForm.get('ProductBrand') as FormControl;
+  }
+  get ProductType(): FormControl {
+    return this.preferenceForm.get('ProductType') as FormControl;
+  }
+  get ProductSize(): FormControl {
+    return this.preferenceForm.get('ProductSize') as FormControl;
+  }
+  get ProductPrice(): FormControl {
+    return this.preferenceForm.get('ProductPrice') as FormControl;
+  }
+  get ProductColor(): FormControl {
+    return this.preferenceForm.get('ProductColor') as FormControl;
+  }
+  get ProductShipping(): FormControl {
+    return this.preferenceForm.get('ProductShipping') as FormControl;
+  }
+  get NotificationPreferences(): FormControl {
+    return this.preferenceForm.get('NotificationPreferences') as FormControl;
+  }
+  get PromotionsAndOffers(): FormControl {
+    return this.preferenceForm.get('PromotionsAndOffers') as FormControl;
+  }
   isNavbarOpen: boolean = false;
   action: boolean = false;
   uploadproduct: boolean = false;
   viewproduct: boolean = false;
+  shoppingcart: boolean = false;
+  customerPreferences:boolean = false;
+  recommended_products:boolean = false;
+  product_Wishlist:boolean = false;
   toggleNavbar(): boolean {
     alert('clicked');
     return (this.isNavbarOpen = !this.isNavbarOpen);
@@ -29,6 +117,23 @@ export class CustomerComponent {
   viewAllProduct() {
     this.viewproduct = false;
     this.shoppingcart = false;
+    this.customerPreferences = false;
+    this.recommended_products = false
+    this.product_Wishlist = false;
+  }
+  customerpreferences(){
+    this.viewproduct = true;
+    this.shoppingcart = false;
+    this.customerPreferences = true;
+    this.recommended_products = false
+    this.product_Wishlist = false;
+  }
+  recommendedProducts(){
+    this.recommended_products = true
+    this.viewproduct = true;
+    this.shoppingcart = false;
+    this.customerPreferences = false;
+    this.product_Wishlist = false;
   }
   remobeRightSideBar() {
     this.action = false;
@@ -40,9 +145,22 @@ export class CustomerComponent {
   shoppingCart() {
     this.shoppingcart = true;
     this.viewproduct = true;
+    this.customerPreferences = false;
+    this.recommended_products = false
+    this.product_Wishlist = false;
   }
-  userId: any = this.userSession.getUserId();
+
+  productWishlist(){
+    this.product_Wishlist = true;
+    this.shoppingcart = false;
+    this.viewproduct = true;
+    this.customerPreferences = false;
+    this.recommended_products = false
+  }
+  userId: any;
   ngOnInit() {
+      
+    this.userId = this.userSession.getUserId();
     if (
       this.userSession.getUserRoll() === 'Buyer' ||
       this.userSession.getUserRoll() === 'Both'
@@ -50,11 +168,118 @@ export class CustomerComponent {
       this.fetchProductData();
       this.fetchCartData();
       this.calculateTotalPrice();
+      this.recommendToCustomer();
+      this.displayWishListProduct();
     } else {
       this.router.navigate(['/login']);
       this.userSession.clearUserRoll();
     }
   }
+
+
+  // Add product preferences
+  productPreferences(){
+    let data = {
+      UserId: this.userId,
+      product_Category: this.productCategory.value,
+      productBrand: this.ProductBrand.value,
+      productType: this.ProductType.value,
+      productSize: this.ProductSize.value,
+      productPrice: this.ProductPrice.value,
+      productColor: this.ProductColor.value,
+      productShipping: this.ProductShipping.value,
+      notificationPreferences:this.NotificationPreferences.value,
+      promotionsAndOffers: this.PromotionsAndOffers.value
+    };
+    this.http.post('http://localhost:3050/addPreferences', data).subscribe(
+      (response)=>{
+        if((response as any).message == 'Preference added successfully'){
+         alert("Done successfully!");
+         this.preferenceForm.reset();
+        }else{
+          alert("Something is wrong!");
+        }
+      }, 
+      (error)=>{
+        console.error('Error:', error);
+      }
+    );
+  }
+  // Id	
+  // UserId	
+  // ProductCategory	
+  // ProductBrand	
+  // ProductType	
+  // ProductSize	
+  // ProductColor	
+  // ProductPrice	
+  // PrefferedShipping	
+  // Notification	
+  // Promotion	
+  // Recommendation to the user
+  User_Id:any;
+  product_Category:any;
+  Product_Brand:any;
+  Product_Type:any;	
+  Product_Size	:any;
+  Product_Color:any;	
+  Product_Price:any;	
+  Preffered_Shipping	:any;
+  Notification_:any;	
+  Promotion_	:any;
+  product3: any[] = [];
+  recommendToCustomer(): void{
+    this.http.get<any[]>(`http://localhost:3050/recommendationToTheUser/${this.userId}`).subscribe(
+  (data) => {
+    this.product3 = data; 
+    for (const product of this.product3) {
+      this.User_Id = product.UserId;
+      this.product_Category = product.ProductCategory;
+     this.Product_Brand = product.ProductBrand;
+     this. Product_Type = product.ProductType;	
+     this. Product_Size	= product.ProductSize;
+     this. Product_Color=product.ProductColor;
+     this. Product_Price=product.ProductPrice;
+     this. Preffered_Shipping	=product.PrefferedShipping;
+     this. Notification_=product.Notification;
+     this.Promotion_	=product.Promotion;
+     this.displayRecommendeProducts(this.product_Category, this.Product_Brand, this.Product_Type, this.Product_Size, this.Product_Color, this.Product_Price,this.Preffered_Shipping, this.Notification_, this.Promotion_);
+    }
+  },
+  (error) => {
+    console.error(error);
+  }
+);
+}
+
+// code to display products from wishlist
+product5: any[] = [];
+displayWishListProduct(){
+ this.http.get<any[]>(`http://localhost:3050/displayWishListProduct/${this.userId}`).subscribe(
+  (data)=>{
+    this.product5 = data;
+  },
+  (error)=>{
+    console.error("Error:", error);
+  }
+ );
+}
+
+// code to display recommended products 
+product4: any[] = [];
+displayRecommendeProducts(product_Category:string, Product_Brand:string, Product_Type:string, Product_Size:string, Product_Color:string, Product_Price:string, Preffered_Shipping:string, Notification_:string, Promotion_:string){
+  this.http.get<any[]>(`http://localhost:3050/displayRecommendeProducts/${product_Category}/${Product_Brand}/${Product_Type}/${Product_Size}/${Product_Color}/${Product_Price}/${Preffered_Shipping}/${Notification_}/${Promotion_}`).subscribe(
+   (data)=>{
+   this.product4 = data;
+   for(const product of this.product4){
+    // alert(product.Product_Name);
+   }
+   },
+   (error)=>{
+    console.error(error);
+   }
+  );
+}
 
   product1: any[] = [];
   fetchProductData(): void {

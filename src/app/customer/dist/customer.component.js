@@ -8,21 +8,147 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.CustomerComponent = void 0;
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var CustomerComponent = /** @class */ (function () {
     function CustomerComponent(http, userSession, router) {
         this.http = http;
         this.userSession = userSession;
         this.router = router;
-        this.shoppingcart = false;
+        this.preferenceForm = new forms_1.FormGroup({
+            productCategory: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(3)
+            ]),
+            ProductBrand: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            ProductType: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            ProductSize: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            ProductPrice: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(2),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[0-9 ]*')
+            ]),
+            ProductColor: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            ProductShipping: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            NotificationPreferences: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ]),
+            PromotionsAndOffers: new forms_1.FormControl('', [
+                forms_1.Validators.required,
+                forms_1.Validators.minLength(3),
+                forms_1.Validators.maxLength(20),
+                forms_1.Validators.pattern('[a-zA-Z ]*')
+            ])
+        });
         this.isNavbarOpen = false;
         this.action = false;
         this.uploadproduct = false;
         this.viewproduct = false;
-        this.userId = this.userSession.getUserId();
+        this.shoppingcart = false;
+        this.customerPreferences = false;
+        this.recommended_products = false;
+        this.product_Wishlist = false;
+        this.product3 = [];
+        // code to display products from wishlist
+        this.product5 = [];
+        // code to display recommended products 
+        this.product4 = [];
         this.product1 = [];
         //Fetching data from the cart table
         this.product2 = [];
     }
+    Object.defineProperty(CustomerComponent.prototype, "productCategory", {
+        get: function () {
+            return this.preferenceForm.get('productCategory');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductBrand", {
+        get: function () {
+            return this.preferenceForm.get('ProductBrand');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductType", {
+        get: function () {
+            return this.preferenceForm.get('ProductType');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductSize", {
+        get: function () {
+            return this.preferenceForm.get('ProductSize');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductPrice", {
+        get: function () {
+            return this.preferenceForm.get('ProductPrice');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductColor", {
+        get: function () {
+            return this.preferenceForm.get('ProductColor');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "ProductShipping", {
+        get: function () {
+            return this.preferenceForm.get('ProductShipping');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "NotificationPreferences", {
+        get: function () {
+            return this.preferenceForm.get('NotificationPreferences');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(CustomerComponent.prototype, "PromotionsAndOffers", {
+        get: function () {
+            return this.preferenceForm.get('PromotionsAndOffers');
+        },
+        enumerable: false,
+        configurable: true
+    });
     CustomerComponent.prototype.toggleNavbar = function () {
         alert('clicked');
         return (this.isNavbarOpen = !this.isNavbarOpen);
@@ -33,6 +159,23 @@ var CustomerComponent = /** @class */ (function () {
     CustomerComponent.prototype.viewAllProduct = function () {
         this.viewproduct = false;
         this.shoppingcart = false;
+        this.customerPreferences = false;
+        this.recommended_products = false;
+        this.product_Wishlist = false;
+    };
+    CustomerComponent.prototype.customerpreferences = function () {
+        this.viewproduct = true;
+        this.shoppingcart = false;
+        this.customerPreferences = true;
+        this.recommended_products = false;
+        this.product_Wishlist = false;
+    };
+    CustomerComponent.prototype.recommendedProducts = function () {
+        this.recommended_products = true;
+        this.viewproduct = true;
+        this.shoppingcart = false;
+        this.customerPreferences = false;
+        this.product_Wishlist = false;
     };
     CustomerComponent.prototype.remobeRightSideBar = function () {
         this.action = false;
@@ -44,18 +187,100 @@ var CustomerComponent = /** @class */ (function () {
     CustomerComponent.prototype.shoppingCart = function () {
         this.shoppingcart = true;
         this.viewproduct = true;
+        this.customerPreferences = false;
+        this.recommended_products = false;
+        this.product_Wishlist = false;
+    };
+    CustomerComponent.prototype.productWishlist = function () {
+        this.product_Wishlist = true;
+        this.shoppingcart = false;
+        this.viewproduct = true;
+        this.customerPreferences = false;
+        this.recommended_products = false;
     };
     CustomerComponent.prototype.ngOnInit = function () {
+        this.userId = this.userSession.getUserId();
         if (this.userSession.getUserRoll() === 'Buyer' ||
             this.userSession.getUserRoll() === 'Both') {
             this.fetchProductData();
             this.fetchCartData();
             this.calculateTotalPrice();
+            this.recommendToCustomer();
+            this.displayWishListProduct();
         }
         else {
             this.router.navigate(['/login']);
             this.userSession.clearUserRoll();
         }
+    };
+    // Add product preferences
+    CustomerComponent.prototype.productPreferences = function () {
+        var _this = this;
+        var data = {
+            UserId: this.userId,
+            product_Category: this.productCategory.value,
+            productBrand: this.ProductBrand.value,
+            productType: this.ProductType.value,
+            productSize: this.ProductSize.value,
+            productPrice: this.ProductPrice.value,
+            productColor: this.ProductColor.value,
+            productShipping: this.ProductShipping.value,
+            notificationPreferences: this.NotificationPreferences.value,
+            promotionsAndOffers: this.PromotionsAndOffers.value
+        };
+        this.http.post('http://localhost:3050/addPreferences', data).subscribe(function (response) {
+            if (response.message == 'Preference added successfully') {
+                alert("Done successfully!");
+                _this.preferenceForm.reset();
+            }
+            else {
+                alert("Something is wrong!");
+            }
+        }, function (error) {
+            console.error('Error:', error);
+        });
+    };
+    CustomerComponent.prototype.recommendToCustomer = function () {
+        var _this = this;
+        this.http.get("http://localhost:3050/recommendationToTheUser/" + this.userId).subscribe(function (data) {
+            _this.product3 = data;
+            for (var _i = 0, _a = _this.product3; _i < _a.length; _i++) {
+                var product = _a[_i];
+                _this.User_Id = product.UserId;
+                _this.product_Category = product.ProductCategory;
+                _this.Product_Brand = product.ProductBrand;
+                _this.Product_Type = product.ProductType;
+                _this.Product_Size = product.ProductSize;
+                _this.Product_Color = product.ProductColor;
+                _this.Product_Price = product.ProductPrice;
+                _this.Preffered_Shipping = product.PrefferedShipping;
+                _this.Notification_ = product.Notification;
+                _this.Promotion_ = product.Promotion;
+                _this.displayRecommendeProducts(_this.product_Category, _this.Product_Brand, _this.Product_Type, _this.Product_Size, _this.Product_Color, _this.Product_Price, _this.Preffered_Shipping, _this.Notification_, _this.Promotion_);
+            }
+        }, function (error) {
+            console.error(error);
+        });
+    };
+    CustomerComponent.prototype.displayWishListProduct = function () {
+        var _this = this;
+        this.http.get("http://localhost:3050/displayWishListProduct/" + this.userId).subscribe(function (data) {
+            _this.product5 = data;
+        }, function (error) {
+            console.error("Error:", error);
+        });
+    };
+    CustomerComponent.prototype.displayRecommendeProducts = function (product_Category, Product_Brand, Product_Type, Product_Size, Product_Color, Product_Price, Preffered_Shipping, Notification_, Promotion_) {
+        var _this = this;
+        this.http.get("http://localhost:3050/displayRecommendeProducts/" + product_Category + "/" + Product_Brand + "/" + Product_Type + "/" + Product_Size + "/" + Product_Color + "/" + Product_Price + "/" + Preffered_Shipping + "/" + Notification_ + "/" + Promotion_).subscribe(function (data) {
+            _this.product4 = data;
+            for (var _i = 0, _a = _this.product4; _i < _a.length; _i++) {
+                var product = _a[_i];
+                // alert(product.Product_Name);
+            }
+        }, function (error) {
+            console.error(error);
+        });
     };
     CustomerComponent.prototype.fetchProductData = function () {
         var _this = this;

@@ -142,55 +142,16 @@
     </p>
 
     <div class="all-products">
-        <div class="products">
-            <div><img src="assets/Logos/Getinet Alemu.jpg" alt=""></div>
+        <div class="products" *ngFor="let product of product2">
+            <div><img [src]="'assets/Images/' + product.ProdutImage" alt="" (click)="navigateToProductDetail(product.Id)"></div>
             <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
+                <p>Product Owner: <label>{{ product.ProductOwner}}</label> </p>
+                <p>Product Id: <label>{{ product.Id }}</label> </p>
+                <p>Product name: <label>{{ product.Product_Name }}</label> </p>
+                <p>Product type: <label>{{ product.Product_Type }}</label></p>
+                <p>Product Price: <label>{{ product.Produt_Price }}</label> ETB Birr</p>
             </div>
         </div>
-        <div class="products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
-            </div>
-        </div>
-        <div class="products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
-            </div>
-        </div>
-        <div class="products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
-            </div>
-        </div>
-        <div class="products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
-            </div>
-        </div>
-        <div class="products">
-            <img src="assets/Logos/Getinet Alemu.jpg" alt="">
-            <div class="owner">
-                <h3><a href="">Getinet Alemu</a></h3>
-                <p><a href="">Product type</a></p>
-                <p>Date of relese</p>
-            </div>
-        </div>
-
     </div>
 
 </div>

@@ -132,6 +132,50 @@ var ProductdetailComponent = /** @class */ (function () {
     ProductdetailComponent.prototype.notAddToCart = function () {
         this.addtoCart = false;
     };
+    // code to add product to products wishlist
+    ProductdetailComponent.prototype.addToWishList = function (productOwner, productId, Produt_Price, productCategory, productType, productName, productImage) {
+        var data = {
+            userId: this.userId,
+            product_Owner: productOwner,
+            product_Id: productId,
+            ProdutPrice: Produt_Price,
+            product_Category: productCategory,
+            product_Type: productType,
+            product_Name: productName,
+            product_Image: productImage
+        };
+        this.http.post('http://localhost:3050/addToWishList', data).subscribe(function (response) {
+            if (response.message == "Product added to your wishlist successfully") {
+                alert("Product added to your wishlist successfully");
+            }
+            else {
+                alert("Something is an error!");
+            }
+        }, function (error) {
+            console.log("Error", error);
+        });
+    };
+    // check if the product already exists
+    ProductdetailComponent.prototype.checkProducts = function (productOwner, productId, Produt_Price, productCategory, productType, productName, productImage) {
+        var _this = this;
+        this.product_Owner = productOwner;
+        this.product_Id = productId;
+        this.ProdutPrice = Produt_Price;
+        this.product_Category = productCategory;
+        this.product_Type = productType;
+        this.product_Name = productName;
+        this.product_Image = productImage;
+        this.http.get("http://localhost:3050/checkProductsInWishlist/" + this.userId + "/" + this.product_Id).subscribe(function (reponse) {
+            if (reponse.message == 'Product already exists') {
+                alert("Poroduct already exists!");
+            }
+            else {
+                _this.addToWishList(_this.product_Owner, _this.product_Id, _this.ProdutPrice, _this.product_Category, _this.product_Type, _this.product_Name, _this.product_Image);
+            }
+        }, function (error) {
+            console.error("Error", error);
+        });
+    };
     // Code to send http request to back end to load product detail
     ProductdetailComponent.prototype.getProductDetail = function () {
         var _this = this;

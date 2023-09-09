@@ -33,7 +33,7 @@
 <div class="container">
     <div class="left-sidebar" (click)="notRightSideBar()" *ngIf="!this.edit_profile">
         <div class="user-photo">
-            <a [routerLink]="['/userprofile']"><img src="assets/Logos/{{userDetail.ProfilrPicture}}" alt=""></a>
+            <a [routerLink]="['/userprofile']"><img src="assets/Images/{{userDetail.ProfilrPicture}}" alt=""></a>
         </div>
         <h2 *ngIf="userDetail">{{userDetail.User_Name}}</h2>
         <h3 *ngIf="userDetail">{{userDetail.User_Name}}</h3>
@@ -47,7 +47,7 @@
     <div class="left-sidebar" (click)="notRightSideBar()" *ngIf="this.edit_profile">
         <form action="" [formGroup]="updateForm">
             <div class="user-photo">
-                <a [routerLink]="['/userprofile']"><img src="assets/Logos/{{userDetail.ProfilrPicture}}" alt=""></a>
+                <a [routerLink]="['/userprofile']"><img src="assets/Images/{{userDetail.ProfilrPicture}}" alt=""></a>
             </div>
             <div class="form-group">
                 <label for="file-upload" class="custom-file-upload">

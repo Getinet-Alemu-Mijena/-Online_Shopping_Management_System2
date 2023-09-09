@@ -264,7 +264,7 @@ body{
 }
 
 .container .products {
-    width: 400px;
+    width: 300px;
     height: auto;
     margin: 20px;
     border-radius: 10px;
@@ -272,7 +272,10 @@ body{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .container .products p{
-    margin-bottom: 1px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Optionally add this to show ellipsis for truncated text */
+    white-space: wrap; /* Optionally add this to prevent line breaks */
 }
 .container .products p a{
     text-decoration: none;
@@ -288,7 +291,8 @@ body{
     transform: scale(1.1);
 }
 .container .products img{
-    width: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 10px;
     cursor: pointer;
     margin-bottom: 10px;

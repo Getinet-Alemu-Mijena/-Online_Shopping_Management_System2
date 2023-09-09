@@ -291,6 +291,8 @@
       </h4>
       <p *ngIf="product"> {{product.Produt_Price}} <label for="">Birr</label></p>
       <button (click)="addToCart()">Add to chart</button>
+      <h2>Add to your wishlist.</h2>
+      <button *ngIf="product" (click)="checkProducts(product.ProductOwner, product.Id, product.Produt_Price, product.ProductCategory, product.Product_Type, product.Product_Name, product.ProdutImage)">Add to Wishlist</button>
     </div>
   </div>
 </div>
