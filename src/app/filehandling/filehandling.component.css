@@ -1,74 +1,35 @@
-.upload-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .upload-label {
-    background-color: #428bca;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .upload-button {
-    background-color: #5cb85c;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .image-preview {
-    margin-top: 20px;
-  }
-  
-  .preview-image {
-    max-width: 300px;
-  }
+/* Style for the navigation bar */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: relative;
+}
 
-  .upload-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .upload-label {
-    background-color: #428bca;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .upload-button {
-    background-color: #5cb85c;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .upload-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .upload-label {
-    background-color: #428bca;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .upload-button {
-    background-color: #5cb85c;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  
+.navbar-toggle {
+  cursor: pointer;
+  padding: 15px;
+  color: white;
+  font-size: 24px;
+  display: none;
+}
+
+.navbar-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  margin-right: 20px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Toggle the navigation links to display in block */
+.active {
+  display: block;
+}

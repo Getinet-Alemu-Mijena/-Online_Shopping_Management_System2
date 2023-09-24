@@ -127,8 +127,8 @@ body{
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    background-color:rgb(228, 153, 14) ;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* background-color:rgb(228, 153, 14) ; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
 }
 
 @media screen and (max-width: 768px) {
@@ -142,7 +142,7 @@ body{
     border-radius: 50%;
     background-color: white;
     /* margin-right: 15px; */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
 }
 
 @media screen and (max-width: 768px) {
@@ -174,7 +174,7 @@ body{
     background-color: white;
     margin-top: 5px;
     border-radius: 12px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
 }
 @media screen and (max-width: 768px) {
     .container .online-shping .just-for-you{

@@ -13,14 +13,11 @@
     
     <div class="navbar-links" [ngClass]="{'navbar-links-show': isNavbarOpen}">
         <ul class="admin-navigation">
-            <li><a [routerLink] = "['/Home']" >Dashboard</a></li>
-            <li><a href="/admin/dashboard">Dashboard</a></li>
-            <li><a href="/admin/products">Products</a></li>
+            <li><a [routerLink] = "['/Home']" >Home</a></li>
             <li><a href="/admin/orders">Orders</a></li>
             <li><a href="/admin/customers">Customers</a></li>
             <li><a href="/admin/inventory">Inventory</a></li>
             <li><a href="/admin/analytics">Analytics</a></li>
-            <li><a href="/admin/payments">Payments</a></li>
             <li><a href="/admin/discounts">Discounts/Coupons</a></li>
             <li><a href="/admin/reports">Reports</a></li>
             <li><a href="/admin/settings">Settings</a></li>
@@ -41,20 +38,54 @@
 <div class="container">
     <div class="left-sidebar">
         <ul>
-            <li><a href="#">User Management</a></li>
+            <li> <a (click)="viewProduct()">view Product</a> </li>
+            <li><a (click)="managemeUser()">User Management</a></li>
             <li><a href="#">Product Management</a></li>
             <li><a href="#">Order Management</a></li>
             <li><a href="#">Customer Support</a></li>
             <li><a href="#">Analytics and Reporting</a></li>
-            <li><a href="#">Platform Maintenance</a></li>
             <li><a href="#">Marketing and Promotions</a></li>
             <li><a href="#">Vendor Management</a></li>
-            <li><a href="#">Payment Processing</a></li>
-            <li><a href="#">Platform Settings and Customization</a></li>
           </ul>
           
     </div> 
-    <div class="main-content">
+    <div class="main-content" *ngIf = "this.viewproduct &&  this.manageProduct">
+    <table>
+        <thead>
+            <th>#Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Name</th>
+            <th>Email Address</th>
+            <th>Gender</th>
+            <th>Phone Number</th>
+            <th>User Roll</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.Id}}</td>
+                <td>{{user.First_Name}}</td>
+                <td>{{user.Last_Name}}</td>
+                <td>{{user.User_Name}}</td>
+                <td>{{user.Email_Address}}</td>
+                <td>{{user.Gender}}</td>
+                <td>{{user.Phone_Number}}</td>
+                <td>{{user.Roll}}</td>
+                <td colspan="3">
+                    <tr>
+                        <td>
+                            <button id="Delete" (click)="deleteUser(user.Id)">Delete</button>
+                            <button id="Deactivate" (click)="deactivateUser(user.Id)">Deactivate</button>
+                            <button id="Activate" (click)="activateUser(user.Id)">Activate</button>
+                        </td>
+                    </tr>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="main-content" *ngIf = "!this.viewproduct && !this.manageProduct">
        <div class="seller-products"*ngIf="!this.uploadproduct || this.viewproduct">
         <img src="assets/Logos/Getinet Alemu.jpg" alt="">
         <div class="product-property">
@@ -203,9 +234,8 @@
                 <input class="my-file" type="file" id="image-upload" name="images[]" multiple>
             </div>
             <div class="form-group">
-                <button>Submit</button>
+                <button> type="submit"Submit</button>
             </div>
           </form>
        </div>
-    </div>
-</div>
+

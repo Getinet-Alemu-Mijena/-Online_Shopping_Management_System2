@@ -72,7 +72,7 @@ export class LoginComponent {
             this.userSession.setUserRoll("Buyer");
           }
           else if(this.UserRole === "Admin"){
-            this.router.navigate(['/Admin']);
+            this.router.navigate(['/admins']);
             this.userSession.setUserRoll("Admin");
           }
           else {
@@ -84,7 +84,7 @@ export class LoginComponent {
           // this.Load_User_Balance(userName);
          
         } else {
-          this.IncorrectUserOrPassword = 'Incorrect User Name Or Password';
+          this.IncorrectUserOrPassword = 'Incorrect User Name Or Password/ You are not activated!';
         }
       },
       (error) => {

@@ -1,13 +1,13 @@
-<!-- <div>
-  <input type="file" (change)="onFileSelected($event)">
-  <button (click)="uploadVideo()">Upload Video</button>
-</div>
-<div *ngIf="message">
-  {{ message }}
-</div> -->
-
-  
-  
-  
-  
-  
+<nav class="navbar">
+  <div class="navbar-toggle" (click)="toggleNavbar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="navbar-links" [ngClass]="{'active': isNavbarOpen}">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
